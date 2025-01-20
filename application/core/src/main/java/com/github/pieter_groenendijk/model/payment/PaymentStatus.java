@@ -13,7 +13,7 @@ public class PaymentStatus {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "paymentStatusId")
-    private Long paymentStatusId;
+    private short paymentStatusId;
 
     @Column(
         name = "title",
@@ -22,4 +22,20 @@ public class PaymentStatus {
         unique = true
     )
     private String title;
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public short getPaymentStatusId() {
+        return paymentStatusId;
+    }
+
+    public void setPaymentStatusId(short paymentStatusId) {
+        this.paymentStatusId = paymentStatusId;
+    }
 }

@@ -4,78 +4,44 @@ import com.github.pieter_groenendijk.model.product.ProductCopy;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 @Entity
 @Table(name = "Loan")
 public class Loan {
     @Id
-    @GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long loanId;
     @Column(name = "startDate", nullable = false)
-    @Temporal(TemporalType.DATE)
-    private Date startDate;
+    private LocalDate startDate;
     @Column(name = "returnBy")
-    @Temporal(TemporalType.DATE)
     private LocalDate returnBy;
 
     @Column(name = "extendedReturnBy")
-    @Temporal(TemporalType.DATE)
-    private Date extendedReturnBy;
+    private LocalDate extendedReturnBy;
     @Column(name = "returnedOn")
-    @Temporal(TemporalType.DATE)
-    private Date returnedOn;
+    private LocalDate returnedOn;
+
+    @Enumerated(EnumType.STRING)
     @Column(name= "loanStatus")
-    private String loanStatus;
+    private LoanStatus loanStatus;
     @ManyToOne
-    @JoinColumn(name = "membershipId", nullable = false, unique = true)
+    @JoinColumn(name = "membershipId", nullable = false)
     private Membership membership;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "productCopyId")
     private ProductCopy productCopy;
 
-    @Column(name = "isExtended")
-    private boolean isExtended;
-
-    // Getters and Setters
-    public void setLoanId(Long loanId) {
-        this.loanId = loanId;
-    }
 
     public Long getLoanId() {
         return loanId;
     }
 
-    public Date getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
-    }
-
-    public LocalDate getReturnBy() {
-        return returnBy;
-    }
-
-    public void setReturnBy(LocalDate returnBy) {
-        this.returnBy = returnBy;
-    }
-
-    public Date getReturnedOn() {
-        return returnedOn;
-    }
-
-    public void setReturnedOn(Date returnedOn) {
-        this.returnedOn = returnedOn;
-    }
-
-    public String getLoanStatus() {
+    public LoanStatus getLoanStatus() {
         return loanStatus;
     }
 
-    public void setLoanStatus(String loanStatus) {
+    public void setLoanStatus(LoanStatus loanStatus) {
         this.loanStatus = loanStatus;
     }
 
@@ -87,10 +53,53 @@ public class Loan {
         this.membership = membership;
     }
 
-    public void setExtended(boolean isExtended) {
-        this.isExtended = isExtended;
+    public Long getProductCopy() {
+        return productCopy.getProductCopyId();
     }
 
-    public boolean isExtended() { return isExtended; }
+    public void setProductCopy(ProductCopy productCopy) {
+        this.productCopy = productCopy;
+    }
 
+    public LocalDate getReturnBy() {
+        return returnBy;
+    }
+
+    public void setReturnBy(LocalDate returnBy) {
+        this.returnBy = returnBy;
+    }
+
+    public LocalDate getExtendedReturnBy() {
+        return extendedReturnBy;
+    }
+
+    public void setExtendedReturnBy(LocalDate extendedReturnBy) {
+        this.extendedReturnBy = extendedReturnBy;
+    }
+
+    public LocalDate getReturnedOn() {
+        return returnedOn;
+    }
+
+    public void setReturnedOn(LocalDate returnedOn) {
+        this.returnedOn = returnedOn;
+    }
+
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
+    }
+
+    public void setProductCopyId(ProductCopy productCopy) {
+        this.productCopy = productCopy;
+    }
+
+    public void setMembershipId(long membershipId) {
+    }
+
+    public LocalDate getStartDate() {
+        return startDate;
+    }
+
+    public void setLoanId(long l) {
+    }
 }

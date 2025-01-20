@@ -1,13 +1,28 @@
 package com.github.pieter_groenendijk.controller;
 
+import com.github.pieter_groenendijk.exception.EntityNotFoundException;
 import com.github.pieter_groenendijk.hibernate.SessionFactoryFactory;
+import com.github.pieter_groenendijk.model.DTO.LoanRequestDTO;
 import com.github.pieter_groenendijk.model.Loan;
-import com.github.pieter_groenendijk.repository.ILoanRepository;
-import com.github.pieter_groenendijk.repository.IMembershipRepository;
-import com.github.pieter_groenendijk.repository.LoanRepository;
-import com.github.pieter_groenendijk.repository.MembershipRepository;
-import com.github.pieter_groenendijk.service.ILoanService;
-import com.github.pieter_groenendijk.service.LoanService;
+import com.github.pieter_groenendijk.repository.*;
+import com.github.pieter_groenendijk.model.event.Event;
+import com.github.pieter_groenendijk.repository.loan.ILoanRepository;
+import com.github.pieter_groenendijk.repository.loan.LoanRepository;
+import com.github.pieter_groenendijk.repository.event.EventRepository;
+import com.github.pieter_groenendijk.repository.event.IEventRepository;
+import com.github.pieter_groenendijk.repository.loan.event.ILoanEventRepostory;
+import com.github.pieter_groenendijk.repository.loan.event.LoanEventRepostory;
+import com.github.pieter_groenendijk.repository.scheduling.ITaskRepository;
+import com.github.pieter_groenendijk.scheduling.TaskScheduler;
+import com.github.pieter_groenendijk.service.event.emitting.EventEmitterPool;
+import com.github.pieter_groenendijk.service.event.scheduling.EventScheduler;
+import com.github.pieter_groenendijk.service.loan.ILoanService;
+import com.github.pieter_groenendijk.service.loan.LoanService;
+import com.github.pieter_groenendijk.service.loan.event.ILoanEventService;
+import com.github.pieter_groenendijk.service.loan.event.LoanEventService;
+import com.github.pieter_groenendijk.service.loan.event.scheduling.LoanEventScheduler;
+import com.github.pieter_groenendijk.service.reservation.IReservationService;
+import com.github.pieter_groenendijk.service.reservation.ReservationService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -30,29 +45,60 @@ public class LoanController {
 
     public LoanController() {
         ILoanRepository loanRepository = new LoanRepository(sessionFactory);
-        this.loanService = new LoanService(loanRepository);
+        IProductRepository productRepository = new ProductRepository(sessionFactory);
+        IMembershipRepository membershipRepository = new MembershipRepository(sessionFactory);
+        IReservationService reservationService = new ReservationService(
+            new ReservationRepository(sessionFactory),
+            membershipRepository,
+            new AccountRepository(sessionFactory),
+            productRepository
+        );
+
+        // TODO: Make this mess work with beans or dependency injection!!!!
+        IEventRepository eventRepository = new EventRepository(sessionFactory);
+        ILoanEventRepostory loanEventRepostory = new LoanEventRepostory(sessionFactory);
+        ILoanEventService eventService = new LoanEventService(
+            new LoanEventScheduler(
+                eventRepository,
+                loanEventRepostory,
+                new EventScheduler(
+                    (ITaskRepository<Event<?>>) eventRepository,
+                    new TaskScheduler(1),
+                    new EventEmitterPool()
+                )
+            )
+        );
+        this.loanService = new LoanService(loanRepository, membershipRepository, eventService, reservationService, productRepository);
     }
 
     @Operation(summary = "Create a Loan", description = "Create a new Loan")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Loan created"),
-            @ApiResponse(responseCode = "400", description = "Invalid input"),
             @ApiResponse(responseCode = "404", description = "Membership or Product not found")
     })
     @PostMapping
-    public Loan store(@RequestBody Loan loan) {
-      return loanService.store(loan);
+    public ResponseEntity<?> store(@RequestBody LoanRequestDTO loanRequestDTO) throws Exception {
+        try {
+            Loan loan = loanService.store(loanRequestDTO);
+            return ResponseEntity.status(HttpStatus.CREATED).build();
+        } catch (EntityNotFoundException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
     }
 
     @Operation(summary = "Retrieve a loan", description = "Retrieve a loan by Id")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Loan found"),
-            @ApiResponse(responseCode = "204", description = "No loan found for the given loanId\"")
+            @ApiResponse(responseCode = "404", description = "No loan found for the given loanId\"")
     })
     @GetMapping("/{loanId}")
-    public Loan retrieveLoanByLoanId(@PathVariable("loanId") long loanId) {
-        Loan loan = loanService.retrieveLoanByLoanId(loanId);
-            return loan;
+    public ResponseEntity<Loan> retrieveLoanByLoanId(@PathVariable("loanId") long loanId) {
+       try {
+            Loan loan = loanService.retrieveLoanByLoanId(loanId);
+            return ResponseEntity.ok(loan);
+        } catch (EntityNotFoundException ex) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
     }
 
     @Operation(summary = "Retrieve all loans for a membership", description = "Retrieve loans by membershipId")
@@ -71,7 +117,6 @@ public class LoanController {
         }
     }
 }
-
 
 
 
