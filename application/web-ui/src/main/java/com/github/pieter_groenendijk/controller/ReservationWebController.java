@@ -11,16 +11,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.client.RestTemplate;
 
 public class ReservationWebController {
 
-    private final IReservationService reservationService;
-    private final ILoanService loanService;
+    private final RestTemplate restTemplate;
 
-    public ReservationWebController(ReservationController reservationController, IReservationService reservationService, ILoanService loanService) {
-        this.reservationService = reservationService;
-        this.loanService = loanService;
+    public ReservationWebController(RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
     }
+
     @GetMapping("/create")
     public String showCreateReservationForm(Model model) {
         model.addAttribute("reservationDTO", new ReservationDTO());

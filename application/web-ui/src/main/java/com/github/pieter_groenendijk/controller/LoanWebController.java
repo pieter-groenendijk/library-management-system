@@ -3,24 +3,25 @@ import com.github.pieter_groenendijk.controller.LoanController;
 import com.github.pieter_groenendijk.model.DTO.LoanRequestDTO;
 import com.github.pieter_groenendijk.repository.loan.ILoanRepository;
 import com.github.pieter_groenendijk.service.loan.ILoanService;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.client.RestTemplate;
 
 import java.time.LocalDate;
 
 public class LoanWebController {
 
-    private final LoanController loanController;
+    private final RestTemplate restTemplate;
 
-
-    public LoanWebController(LoanController loanController, ILoanService loanService, ILoanRepository loanRepository) {
-        this.loanController = loanController;
-        ;
+    public LoanWebController(RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
     }
+
 
 
     @GetMapping("/loan")
@@ -39,7 +40,9 @@ public class LoanWebController {
         System.out.println("Loan submitted: " + loanRequestDTO);
 
         try {
-            ResponseEntity response = loanController.store(loanRequestDTO);
+            String url = "http://localhost:8080/api/loan"; 
+            HttpEntity<LoanRequestDTO> request = new HttpEntity<>(loanRequestDTO);
+            ResponseEntity<Void> response = restTemplate.postForEntity(url, request, Void.class);
 
             if (response.getStatusCode() == HttpStatus.CREATED) {
                 return "redirect:/loan/success";
@@ -47,6 +50,7 @@ public class LoanWebController {
                 return "redirect:/loan/failure";
             }
         } catch (Exception e) {
+            System.out.println("Error processing loan: " + e.getMessage());
             return "redirect:/loan/failure";
         }
     }
