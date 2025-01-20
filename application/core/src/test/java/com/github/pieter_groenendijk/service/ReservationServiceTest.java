@@ -39,6 +39,9 @@ class ReservationServiceTest {
     @Mock
     private IProductRepository productRepository;
 
+    @Mock
+    private IMembershipTypeRepository mockMembershipTypeRepository;
+
     @InjectMocks
     private ReservationService reservationService;
 
@@ -129,7 +132,7 @@ class ReservationServiceTest {
         IAccountRepository mockAccountRepository = mock(IAccountRepository.class);
         IMembershipRepository mockMembershipRepository = mock(IMembershipRepository.class);
         IProductRepository mockProductRepository = mock(IProductRepository.class);
-        ReservationService reservationService = new ReservationService(mockReservationRepository, mockMembershipRepository, mockAccountRepository, mockProductRepository);
+        ReservationService reservationService = new ReservationService(mockReservationRepository, mockMembershipRepository, mockAccountRepository, mockProductRepository, mockMembershipTypeRepository);
 
         when(mockReservationRepository.retrieveReservationById(reservationId)).thenReturn(Optional.of(reservation));
 
