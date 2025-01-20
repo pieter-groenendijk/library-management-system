@@ -30,3 +30,49 @@ TransactieStrategy (context): De hoofdklassen die de gezamenlijke eigenschappen 
 LeningStrategy of ReserveringStrategy om de transactie te creëren of te behandelen. Dit zou een verwijzing bevatten naar de TransactieStrategy. <br>
 Lening (concrete strategie): Een implementatie van de Transactie interface, die de logica voor leningen bevat. <br>
 Reservering (concrete strategie): Een implementatie van de Transactie interface, die de logica voor reserveringen bevat. <br>
+
+
+## Notificaties
+### Huidige Implementatie
+Mogelijk zijn veel notificaties gekoppeld aan de staat waarin een lening[^1] zich in bevindt. Zo wordt er 
+bijv. een notificatie gestuurd wanneer het leentermijn van een lening voorbij is. Binnen onze applicatie beschouwen
+we een geleend product als een lening; ze zijn hetzelfde.
+
+Het nadeel hiervan is dus dat wanneer men 5 producten in 1 keer leent, deze 5 aparte notificaties krijgt (per product) dat
+het leentermijn van dat product over is.
+
+Dit is voornamelijk een _ux_ probleem. Het is niet fijn voor een gebruiker om zo informatie dubbelop te ontvangen. Toont
+geen respect naar de gebruiker zijn tijd en aandacht.
+
+Naast dit is het ook te benoemen dat het niet efficiënt klinkt voor de server om dit per geleend product uit te voeren.
+
+[^1]: In dit hoofdstuk wordt een lening als voorbeeld gebruikt als bron van notificaties. In werkelijkheid is dit
+niet het enige entiteit dat dit probleem vertoont.
+
+### Mogelijke Verbeteringen
+#### 1. Bundelen van notificaties
+Op de back-end worden leningen nog steeds als een individueel geleend product gezien. De verandering is hoe we er met
+de presentatie laag mee omgaan. De presentatielaag zou dan de gestuurde notificaties kunnen bundelen in één notificatie.
+
+##### Voordelen
+- Notificaties worden nuttiger en concreter
+- Back-end blijft hetzelfde. Er zal hier geen werk verricht moeten worden.
+
+##### Nadelen
+- Dit geldt enkel voor de presentatie van notificaties binnen ons eigen platform. _Third party_ presentatie hebben wij weinig
+of minder invloed op. Denk aan bijv. aan mail en sms.
+- Vrij _magicky_ om te implementeren. Wanneer een notificatie eenmaal gegeneerd is wordt het moeilijker om deze dynamisch
+te matchen en te bundelen aangezien de beschikbare informatie voornamelijk in _plain text_ is.
+
+#### 2. Verandering definitie lening 
+We veranderen de definitie van een lening. Een lening zou dan een collectie van geleende producten kunnen zijn. Dit nieuwe
+entiteit kan dan de bron zijn van de notificaties. Dit sluit ook niet uit dat je een notificatie kan krijgen voor één van
+de producten uit de lening. 
+
+##### Voordelen
+- Notificaties kunnen zowel gebaseerd zijn op een lening, als een individueel geleend product daaruit.
+
+##### Nadelen
+- Voegt complexiteit toe. 
+- Modificatie van _core_ functionaliteit. Hoewel grotendeels geminimaliseerd zal er nog steeds een kleine waterval van
+aanpassingen komen.
