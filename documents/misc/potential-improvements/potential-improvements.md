@@ -139,3 +139,9 @@ We zouden deze producten kunnen proberen op te sporen in de presentatielaag, en 
 ##### Nadelen
 - Voegt veel complexiteit toe aan de presentatielaag.
 - Vrij _magicky_. Het wordt een uitdaging om algoritmisch te detecteren voor welke producten dit geldt.
+
+
+## Event types
+### Huidige implementatie
+Momenteel is het type van een _event_ aangegeven in de database en applicatie via een enum _EventType_. Het nadeel is dus
+dat elk type hierin zal staan.
