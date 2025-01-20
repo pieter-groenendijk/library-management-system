@@ -32,7 +32,7 @@ Lening (concrete strategie): Een implementatie van de Transactie interface, die 
 Reservering (concrete strategie): Een implementatie van de Transactie interface, die de logica voor reserveringen bevat. <br>
 
 
-## Notificaties
+## Notificaties i.v.m. bijv. Leningen
 ### Huidige Implementatie
 Mogelijk zijn veel notificaties gekoppeld aan de staat waarin een lening[^1] zich in bevindt. Zo wordt er 
 bijv. een notificatie gestuurd wanneer het leentermijn van een lening voorbij is. Binnen onze applicatie beschouwen
@@ -76,3 +76,31 @@ de producten uit de lening.
 - Voegt complexiteit toe. 
 - Modificatie van _core_ functionaliteit. Hoewel grotendeels geminimaliseerd zal er nog steeds een kleine waterval van
 aanpassingen komen.
+
+## Atomaire Acties
+### Huidige Implementatie
+Momenteel is er matige, inefficiënte en onduidelijke transactie controle. Dat brengt data risico's met zich mee. De controle
+die er momenteel is, is op data access niveau, namelijk bij de _repositories_. Dit is zeker niet genoeg, en in veel situaties
+zelfs nutteloos.
+
+### Mogelijke Verbeteringen
+#### 1. Nested Transacties
+Één mogelijke oplossing is door gebruik te maken van _nested transactions_, of realistischer: _savepoints_.
+
+##### Voordelen
+- De huidige implementatie van transactie controle op repository niveau kan behouden worden. Daarmee wordt er ook relatief
+weinig complexiteit toegevoegd aan de simpele _crud_ acties. 
+
+##### Nadelen
+- De inefficiënte methode in de repositories wordt behouden. Graag ruimen we dit natuurlijk op.
+
+#### 2. Verantwoordelijkheid verplaatsen naar service laag
+We kunnen de verantwoordelijkheid van transactie controle verplaatsen naar de service laag, en natuurlijk deze code 
+verbeteren. Sinds we Spring Boot gebruiken zouden we zelfs op een declaratieve manier dit aanpakken via _annotations_.
+
+##### Voordelen
+- Complexiteit vermindert. 
+- Efficiënte en duidelijke transactie controle. 
+
+##### Nadelen
+- Modificatie op relatief veel punten. Hoewel het op service niveau, dus vrij veilig zou moeten kunnen gebeuren.
