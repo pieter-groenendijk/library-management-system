@@ -38,3 +38,5 @@ Net zoals bij de usecase representeerd dit concept de registraties van digitale 
 - Leenhistorie komt voor uit gebruik van een digitaal product of uit een exemplaar uitlening.
 - Leenhistorie en aggregatie relatie met ProductCopy en DigitaalProductGebruik.
 - Catalogus heeft een aggregatie relatie met Product.
+- Beheerder en Editor zijn uit het domeinmodel verwijderd omdat ze geen zelfstandige entiteiten zijn in het uiteindelijke model.
+Dit betekent dat deze rollen geen aparte klassen/objecten vertegenwoordigen, rollen van een andere entiteit, zoals een Gebruiker of Lid. Zo wordt het model eenvoudiger en meer gefocust op de daadwerkelijke entiteiten die beheerd worden in de applicatie.
