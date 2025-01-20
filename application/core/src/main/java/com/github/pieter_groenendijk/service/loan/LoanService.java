@@ -72,7 +72,7 @@ public class LoanService implements ILoanService {
 
         return loan;
     }
-    
+
     private void checkIfAccountIsBlocked(Membership membership) throws Exception {
         if (membership.isBlocked()) {
             throw new IllegalStateException("The account is blocked and cannot make a loan.");
