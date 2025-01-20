@@ -59,7 +59,7 @@ public class LoanService implements ILoanService {
         Membership membership = membershipRepository.retrieveMembershipById(loanRequestDTO.getMembershipId())
                 .orElseThrow(() -> new EntityNotFoundException("Membership not found"));
         loan.setMembership(membership);
-
+        checkIfAccountIsBlocked(membership);
         ProductCopy productCopy = productRepository.retrieveProductCopyById(loanRequestDTO.getProductCopyId())
                 .orElseThrow(() -> new EntityNotFoundException("ProductCopy not found"));
         loan.setProductCopy(productCopy);
@@ -71,6 +71,12 @@ public class LoanService implements ILoanService {
         EVENT_SERVICE.handleEventsForNewLoan(loan);
 
         return loan;
+    }
+    
+    private void checkIfAccountIsBlocked(Membership membership) throws Exception {
+        if (membership.isBlocked()) {
+            throw new IllegalStateException("The account is blocked and cannot make a loan.");
+        }
     }
 
     @Override
