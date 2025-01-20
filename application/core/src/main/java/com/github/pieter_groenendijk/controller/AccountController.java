@@ -11,6 +11,8 @@ import com.github.pieter_groenendijk.repository.MembershipRepository;
 import com.github.pieter_groenendijk.repository.IAccountRepository;
 import com.github.pieter_groenendijk.repository.IMembershipTypeRepository;
 import com.github.pieter_groenendijk.repository.IMembershipRepository;
+import com.github.pieter_groenendijk.repository.fine.IFineRepository;
+import com.github.pieter_groenendijk.repository.fine.FineRepository;
 import com.github.pieter_groenendijk.model.Account;
 import com.github.pieter_groenendijk.model.DTO.AccountRequestDTO;
 
@@ -35,7 +37,8 @@ public class AccountController {
         IAccountRepository accountRepository = new AccountRepository(sessionFactory);
         IMembershipTypeRepository membershipTypeRepository = new MembershipTypeRepository(sessionFactory);
         IMembershipRepository membershipRepository = new MembershipRepository(sessionFactory);
-        accountService = new AccountService(accountRepository, membershipTypeRepository, membershipRepository);
+        IFineRepository fineRepository = new FineRepository(sessionFactory);
+        accountService = new AccountService(accountRepository, membershipTypeRepository, membershipRepository, fineRepository);
     }
 
     @Operation(summary = "Retrieve an account", description = "Retrieve an account by Id")
@@ -80,5 +83,10 @@ public class AccountController {
         return ResponseEntity.status(HttpStatus.ACCEPTED).build();
     }
 
-    @Operation(summary = )
+    @Operation(summary = "Pay debs", description = "Pay debets")
+    @PostMapping("/payDebts/{id}")
+    public ResponseEntity<?> payDebt(@PathVariable("id") long id) {
+        accountService.payDebt(id);
+        return ResponseEntity.status(HttpStatus.ACCEPTED).build();
+    }
 }

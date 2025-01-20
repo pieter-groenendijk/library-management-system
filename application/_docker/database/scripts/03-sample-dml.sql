@@ -65,10 +65,6 @@ INSERT INTO
 VALUES
     ('day-overdue-lending', 20),
     ('uncollected-reservation-pattern', 1000);
-
-INSERT INTO "Fine" ("fineType", "account", "amountInCents", "loan", "reservation", "associationType", "declaredOn", "paidBy")
-VALUES
-    (1, 1, 40, 1, null, null, null, null);
 -- endregion
 
 -- Insert a product in to database
@@ -181,7 +177,7 @@ VALUES ('2024-01-01', '2024-01-15', '2024-01-12' , NULL, 'RETURNED', 1, 1),
 
 INSERT INTO "Fine" ("fineType", "account", "amountInCents", "loan", "reservation", "associationType")
 VALUES
-    (1, 1, 40, 1, null, 'test'),
+    (1, 1, 40, 5, null, 'test'),
 	(1, 1, 80, 2, null, 'test'),
 	(2, 2, 60, 3, null, 'test'),
 	(2, 1, 200, 4, null, 'test');

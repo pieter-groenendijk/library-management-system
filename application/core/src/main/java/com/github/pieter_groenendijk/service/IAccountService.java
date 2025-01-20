@@ -55,4 +55,6 @@ public interface IAccountService {
     List<LendingLimit> retrieveLendingLimitList(long id);
 
     void softDeleteLendingLimit(long id);
+
+    void payDebt(long accountId);
 }
