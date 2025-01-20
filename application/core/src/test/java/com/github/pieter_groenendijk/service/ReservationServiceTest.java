@@ -71,7 +71,7 @@ class ReservationServiceTest {
         productCopy.setProductCopyId(1L);
 
         Membership mockMembership = mock(Membership.class);
-        
+
 
         // Mock MembershipType behavior
         MembershipType mockMembershipType = mock(MembershipType.class);
