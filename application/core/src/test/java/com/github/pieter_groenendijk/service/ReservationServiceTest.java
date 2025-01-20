@@ -1,11 +1,8 @@
 package com.github.pieter_groenendijk.service;
 
 import com.github.pieter_groenendijk.exception.EntityNotFoundException;
-import com.github.pieter_groenendijk.model.Account;
+import com.github.pieter_groenendijk.model.*;
 import com.github.pieter_groenendijk.model.DTO.ReservationDTO;
-import com.github.pieter_groenendijk.model.Membership;
-import com.github.pieter_groenendijk.model.Reservation;
-import com.github.pieter_groenendijk.model.ReservationStatus;
 import com.github.pieter_groenendijk.model.product.ProductCopy;
 import com.github.pieter_groenendijk.model.product.ProductCopyStatus;
 import com.github.pieter_groenendijk.repository.*;
@@ -76,8 +73,12 @@ class ReservationServiceTest {
         Membership membership = new Membership();
         membership.setMembershipId(1L);
 
+        MembershipType mockMembershipType = mock(MembershipType.class);
+        when(mockMembershipType.getMaxLendings()).thenReturn(2);
+
         when(productRepository.retrieveProductCopyById(1L)).thenReturn(Optional.of(productCopy));
         when(membershipRepository.retrieveMembershipById(1L)).thenReturn(Optional.of(membership));
+        when(membership.getMembershipType()).thenReturn(mockMembershipType);
 
         Reservation reservation = new Reservation();
         when(reservationRepository.store(any(Reservation.class))).thenReturn(reservation);

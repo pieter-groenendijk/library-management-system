@@ -4,6 +4,7 @@ import com.github.pieter_groenendijk.exception.EntityNotFoundException;
 import com.github.pieter_groenendijk.model.Loan;
 import com.github.pieter_groenendijk.model.LoanStatus;
 import com.github.pieter_groenendijk.model.Reservation;
+import com.github.pieter_groenendijk.repository.IMembershipTypeRepository;
 import com.github.pieter_groenendijk.repository.loan.ILoanRepository;
 import com.github.pieter_groenendijk.repository.IMembershipRepository;
 import com.github.pieter_groenendijk.repository.IProductRepository;
@@ -31,6 +32,7 @@ class LoanServiceTest {
     private IMembershipRepository mockMembershipRepository;
     private IReservationService mockReservationService;
     private IProductRepository mockProductRepository;
+    private IMembershipTypeRepository mockMembershipTypeRepository;
     private Loan mockLoan;
 
     @BeforeEach
@@ -40,7 +42,8 @@ class LoanServiceTest {
         mockReservationService = mock(IReservationService.class);
         mockProductRepository = mock(IProductRepository.class);
         mockMembershipRepository = mock(IMembershipRepository.class);
-        loanService = new LoanService(mockLoanRepository, mockMembershipRepository,mockEventService, mockReservationService, mockProductRepository);
+        mockMembershipTypeRepository = mock(IMembershipTypeRepository.class);
+        loanService = new LoanService(mockLoanRepository, mockMembershipRepository,mockEventService, mockReservationService, mockProductRepository, mockMembershipTypeRepository);
         mockLoan = mock(Loan.class);
     }
 
