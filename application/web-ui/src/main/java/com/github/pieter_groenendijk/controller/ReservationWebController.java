@@ -5,6 +5,9 @@ import com.github.pieter_groenendijk.model.Reservation;
 import com.github.pieter_groenendijk.service.loan.ILoanService;
 import com.github.pieter_groenendijk.service.reservation.IReservationService;
 import jakarta.validation.Valid;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,9 +36,24 @@ public class ReservationWebController {
         if (result.hasErrors()) {
             return "create-reservation";
         }
-        reservationService.store(reservationDTO);
-        model.addAttribute("message", "Reservation created successfully!");
-        return "redirect:/reservations";
+
+        try {
+            String url = "http://localhost:8080/api/reservations";
+            HttpEntity<ReservationDTO> request = new HttpEntity<>(reservationDTO);
+            ResponseEntity<Void> response = restTemplate.postForEntity(url, request, Void.class);
+
+            if (response.getStatusCode() == HttpStatus.CREATED) {
+                model.addAttribute("message", "Reservation created successfully!");
+                return "redirect:/reservations"; //TODO Create reservations page
+            } else {
+                model.addAttribute("error", "Failed to create reservation");
+                return "create-reservation"; //TODO: Create error page
+            }
+        } catch (Exception e) {
+            System.out.println("Error creating reservation: " + e.getMessage());
+            model.addAttribute("error", "Error creating reservation");
+            return "error"; //TODO: Create error page
+        }
     }
 
 
