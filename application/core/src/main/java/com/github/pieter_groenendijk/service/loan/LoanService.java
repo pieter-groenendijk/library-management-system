@@ -240,7 +240,7 @@ public class LoanService implements ILoanService {
         int maxLendingsForGenre = membershipTypeRepository.retrieveLendingLimitByGenreAndMembershipType(membershipTypeId, genreId);
         int currentLendingsForGenre = loanRepository.retrieveCurrentGenreLoanCount(membershipId, genreId);
 
-        if (currentLendingsForGenre >= maxLendingsForGenre) {
+        if (currentLendingsForGenre >= maxLendingsForGenre && maxLendingsForGenre > 0) {
             throw new IllegalStateException("Loan would exceed limit for Genre");
         }
     }

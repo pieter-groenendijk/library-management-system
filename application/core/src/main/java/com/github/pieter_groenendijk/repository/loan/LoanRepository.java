@@ -106,7 +106,6 @@ public class LoanRepository implements ILoanRepository {
     }
 
     public int retrieveCurrentGenreLoanCount(long membershipId, long genreId) {
-        System.out.println("Test2");
         Session session = sessionFactory.openSession();
         Integer result = null;
 

@@ -5,8 +5,8 @@ import com.github.pieter_groenendijk.model.fine.Fine;
 import com.github.pieter_groenendijk.model.fine.FineBalance;
 import com.github.pieter_groenendijk.model.fine.FineType;
 import jakarta.persistence.Query;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
+import org.hibernate.*;
+
 
 import java.util.Optional;
 
@@ -37,5 +37,26 @@ public class FineRepository extends Repository implements IFineRepository {
     @Override
     public Optional<FineBalance> retrieveFineBalance(Account account) throws Exception {
         return super.get(FineBalance.class, account);
+    }
+
+    public void payDebt(long accountId) {
+        Session session = SESSION_FACTORY.openSession();
+        Transaction transaction = null;
+        try {
+            transaction = session.beginTransaction();
+            String hql = "UPDATE Fine f SET f.isPaid = true WHERE f.account.id = :account";
+            session.createQuery(hql)
+                    .setParameter("account", accountId)
+                    .executeUpdate();
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            System.out.println("Error in hibernate" + e.getMessage());
+            e.printStackTrace();
+        }finally {
+            session.close();
+        }
     }
 }

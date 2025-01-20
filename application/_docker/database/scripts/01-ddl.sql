@@ -179,6 +179,7 @@ CREATE TABLE "Fine" (
     "associationType" VARCHAR(50) NOT NULL,
     "declaredOn" TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     "paidBy" BIGINT,
+    "isPaid" BOOLEAN DEFAULT FALSE,
     PRIMARY KEY ("fineId"),
     FOREIGN KEY ("fineType") REFERENCES "FineType"("fineTypeId") ON UPDATE CASCADE ON DELETE RESTRICT,
     FOREIGN KEY ("account") REFERENCES "Account"("accountId") ON UPDATE CASCADE ON DELETE RESTRICT,

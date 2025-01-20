@@ -11,4 +11,5 @@ public interface IFineRepository {
     Optional<FineType> retrieveFineType(String title) throws Exception;
     void store(Fine fine) throws Exception;
     Optional<FineBalance> retrieveFineBalance(Account account) throws Exception;
+    void payDebt(long accountId);
 }
