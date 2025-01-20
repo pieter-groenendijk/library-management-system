@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management System</title>
+</head>
+
+<div th:fragment="nav">
+    <nav>
+        <a href="#" th:text="'Library Management System'">Library Management System</a>
+        <ul>
+            <li>
+                <a href="/" th:text="'Home'">Home</a>
+            </li>
+            <li>
+                <a href="/loan/" th:text="'Loans'">Loans</a>
+            </li>
+            <li>
+                <a href="/membership/" th:text="'Members'">Members</a>
+            </li>
+            <li>
+                <a href="/reservations/" th:text="'Reservations'">Reservations</a>
+            </li>
+            <li>
+                <a href="/account/" th:text="'Account'">Account</a>
+            </li>
+        </ul>
+    </nav>
+</div>
