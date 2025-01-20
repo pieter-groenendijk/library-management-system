@@ -70,15 +70,19 @@ class ReservationServiceTest {
         ProductCopy productCopy = new ProductCopy();
         productCopy.setProductCopyId(1L);
 
-        Membership membership = new Membership();
-        membership.setMembershipId(1L);
+        Membership mockMembership = mock(Membership.class);
+        
 
+        // Mock MembershipType behavior
         MembershipType mockMembershipType = mock(MembershipType.class);
+        when(mockMembership.getMembershipType()).thenReturn(mockMembershipType);
         when(mockMembershipType.getMaxLendings()).thenReturn(2);
+        ;
+
 
         when(productRepository.retrieveProductCopyById(1L)).thenReturn(Optional.of(productCopy));
-        when(membershipRepository.retrieveMembershipById(1L)).thenReturn(Optional.of(membership));
-        when(membership.getMembershipType()).thenReturn(mockMembershipType);
+        when(membershipRepository.retrieveMembershipById(1L)).thenReturn(Optional.of(mockMembership));
+
 
         Reservation reservation = new Reservation();
         when(reservationRepository.store(any(Reservation.class))).thenReturn(reservation);
