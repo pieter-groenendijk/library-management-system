@@ -49,10 +49,11 @@ INSERT INTO "Genre" ("description") VALUES
 ('Biography');
 
 INSERT INTO "LendingLimit" ("membershipTypeId", "genreId", "maxLendings") VALUES
-(1, 1, 3),
+(1, 1, 2),
 (1, 2, 5),
 (2, 3, 6),
 (2, 4, 7),
+(2, 2, 3),
 (4, 1, 12),
 (4, 5, 10),
 (5, 2, 15),
