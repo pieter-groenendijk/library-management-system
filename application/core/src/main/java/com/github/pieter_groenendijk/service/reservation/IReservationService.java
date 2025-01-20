@@ -10,7 +10,7 @@ import java.util.List;
 
 
 public interface IReservationService {
-    Reservation store(ReservationDTO reservation);
+    Reservation store(ReservationDTO reservation) throws Exception;
     Reservation retrieveReservationById(long reservationId);
     List<Reservation> reservation(long membershipId);
     Reservation updateReservation(Reservation reservation);

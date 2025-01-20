@@ -34,7 +34,7 @@ public class ReservationService implements IReservationService {
     }
 
     @Override
-    public Reservation store(ReservationDTO reservationDTO) {
+    public Reservation store(ReservationDTO reservationDTO) throws Exception {
         if (reservationDTO == null) {
             throw new IllegalArgumentException("Reservation cannot be null");
         }
@@ -43,7 +43,7 @@ public class ReservationService implements IReservationService {
                 .orElseThrow(() -> new EntityNotFoundException("ProductCopy not found"));
         Membership membership = membershipRepository.retrieveMembershipById(reservationDTO.getMembershipId())
                 .orElseThrow(() -> new EntityNotFoundException("Membership not found"));
-
+        checkIfAccountIsBlocked(membership);
 
         Reservation reservation = toEntity(reservationDTO, productCopy, membership);
 
@@ -53,6 +53,12 @@ public class ReservationService implements IReservationService {
 
         reservationRepository.store(reservation);
         return reservation;
+    }
+
+    private void checkIfAccountIsBlocked(Membership membership) throws Exception {
+        if (membership.isBlocked()) {
+            throw new IllegalStateException("The account is blocked and cannot make a loan.");
+        }
     }
 
     @Override
