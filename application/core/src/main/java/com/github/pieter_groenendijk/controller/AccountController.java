@@ -79,4 +79,6 @@ public class AccountController {
         accountService.softDeleteAccount(id);
         return ResponseEntity.status(HttpStatus.ACCEPTED).build();
     }
+
+    @Operation(summary = )
 }

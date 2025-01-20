@@ -57,6 +57,9 @@ public abstract class Fine { // With abstract, we enforce that it's an exclusive
     )
     private Payment paidBy;
 
+    @Column(name = "isPaid", nullable = false)
+    private boolean isPaid;
+
     public Long getFineId() {
         return fineId;
     }
@@ -104,4 +107,8 @@ public abstract class Fine { // With abstract, we enforce that it's an exclusive
     public void setPaidBy(Payment paidBy) {
         this.paidBy = paidBy;
     }
+
+    public boolean isPaid() {return this.isPaid; }
+
+    public void setPaid(boolean isPaid) { this.isPaid = isPaid; }
 }
