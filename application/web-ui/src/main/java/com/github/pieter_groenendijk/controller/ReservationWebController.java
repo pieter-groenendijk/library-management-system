@@ -6,6 +6,7 @@ import com.github.pieter_groenendijk.service.loan.ILoanService;
 import com.github.pieter_groenendijk.service.reservation.IReservationService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
@@ -27,7 +28,7 @@ public class ReservationWebController {
     @GetMapping("/create")
     public String showCreateReservationForm(Model model) {
         model.addAttribute("reservationDTO", new ReservationDTO());
-        return "create-reservation";
+        return "create-reservation"; //TODO: Maybe just a Reservation page with the form on it?
     }
 
     @PostMapping("/create")
@@ -60,38 +61,64 @@ public class ReservationWebController {
 
     @GetMapping("/{reservationId}")
     public String viewReservationDetails(@PathVariable("reservationId") long reservationId, Model model) {
-        Reservation reservation = reservationService.retrieveReservationById(reservationId);
-        if (reservation == null) {
-            model.addAttribute("error", "Reservation not found");
-            return "error"; // View name for error page
+        try {
+            String url = "http://localhost:8080/api/reservations/" + reservationId; // Update with correct API URL
+            ResponseEntity<Reservation> response = restTemplate.getForEntity(url, Reservation.class);
+
+            if (response.getStatusCode().is2xxSuccessful()) {
+                model.addAttribute("reservation", response.getBody());
+                return "reservation-details";
+            } else {
+                model.addAttribute("error", "Reservation not found");
+                return "error";
+            }
+        } catch (Exception e) {
+            System.out.println("Error fetching reservation details: " + e.getMessage());
+            model.addAttribute("error", "Error fetching reservation details");
+            return "error";
         }
-        model.addAttribute("reservation", reservation);
-        return "reservation-details";
     }
 
 
     @GetMapping("/{reservationId}/cancel")
     public String cancelReservation(@PathVariable("reservationId") long reservationId, Model model) {
-        Reservation reservation = reservationService.retrieveReservationById(reservationId);
-        if (reservation == null) {
-            model.addAttribute("error", "Reservation not found");
+        try {
+            String url = "http://localhost:8080/api/reservations/" + reservationId + "/cancel"; // Update with correct API URL
+            HttpEntity<Void> request = new HttpEntity<>(null);
+            ResponseEntity<Void> response = restTemplate.exchange(url, HttpMethod.POST, request, Void.class);
+
+            if (response.getStatusCode() == HttpStatus.OK) {
+                model.addAttribute("message", "Reservation cancelled successfully!");
+                return "redirect:/reservations";
+            } else {
+                model.addAttribute("error", "Failed to cancel reservation");
+                return "error";
+            }
+        } catch (Exception e) {
+            System.out.println("Error cancelling reservation: " + e.getMessage());
+            model.addAttribute("error", "Error cancelling reservation");
             return "error";
         }
-        reservationService.cancelReservation(reservationId);
-        model.addAttribute("message", "Reservation cancelled successfully!");
-        return "redirect:/reservations";
     }
-
 
     @GetMapping("/{reservationId}/convertToLoan")
     public String convertReservationToLoan(@PathVariable("reservationId") long reservationId, Model model) {
-        Reservation reservation = reservationService.retrieveReservationById(reservationId);
-        if (reservation == null) {
-            model.addAttribute("error", "Reservation not found");
-            return "error"; //
+        try {
+            String url = "http://localhost:8080/api/reservations/" + reservationId + "/convertToLoan";
+            HttpEntity<Void> request = new HttpEntity<>(null);
+            ResponseEntity<Void> response = restTemplate.exchange(url, HttpMethod.POST, request, Void.class);
+
+            if (response.getStatusCode() == HttpStatus.OK) {
+                model.addAttribute("message", "Reservation converted to loan successfully!");
+                return "redirect:/reservations";
+            } else {
+                model.addAttribute("error", "Failed to convert reservation to loan");
+                return "error";
+            }
+        } catch (Exception e) {
+            System.out.println("Error converting reservation to loan: " + e.getMessage());
+            model.addAttribute("error", "Error converting reservation to loan");
+            return "error";
         }
-        loanService.convertReservationToLoan(reservation);
-        model.addAttribute("message", "Reservation converted to loan successfully!");
-        return "redirect:/reservations";
     }
 }
