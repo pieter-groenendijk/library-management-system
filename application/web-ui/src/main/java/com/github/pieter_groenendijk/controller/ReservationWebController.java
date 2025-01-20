@@ -1,9 +1,6 @@
 package com.github.pieter_groenendijk.controller;
-
 import com.github.pieter_groenendijk.model.DTO.ReservationDTO;
 import com.github.pieter_groenendijk.model.Reservation;
-import com.github.pieter_groenendijk.service.loan.ILoanService;
-import com.github.pieter_groenendijk.service.reservation.IReservationService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
@@ -62,7 +59,7 @@ public class ReservationWebController {
     @GetMapping("/{reservationId}")
     public String viewReservationDetails(@PathVariable("reservationId") long reservationId, Model model) {
         try {
-            String url = "http://localhost:8080/api/reservations/" + reservationId; // Update with correct API URL
+            String url = "http://localhost:8080/api/reservations/" + reservationId;
             ResponseEntity<Reservation> response = restTemplate.getForEntity(url, Reservation.class);
 
             if (response.getStatusCode().is2xxSuccessful()) {
@@ -83,7 +80,7 @@ public class ReservationWebController {
     @GetMapping("/{reservationId}/cancel")
     public String cancelReservation(@PathVariable("reservationId") long reservationId, Model model) {
         try {
-            String url = "http://localhost:8080/api/reservations/" + reservationId + "/cancel"; // Update with correct API URL
+            String url = "http://localhost:8080/api/reservations/" + reservationId + "/cancel";
             HttpEntity<Void> request = new HttpEntity<>(null);
             ResponseEntity<Void> response = restTemplate.exchange(url, HttpMethod.POST, request, Void.class);
 

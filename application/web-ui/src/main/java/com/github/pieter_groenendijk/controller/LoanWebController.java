@@ -1,8 +1,5 @@
 package com.github.pieter_groenendijk.controller;
-import com.github.pieter_groenendijk.controller.LoanController;
 import com.github.pieter_groenendijk.model.DTO.LoanRequestDTO;
-import com.github.pieter_groenendijk.repository.loan.ILoanRepository;
-import com.github.pieter_groenendijk.service.loan.ILoanService;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
