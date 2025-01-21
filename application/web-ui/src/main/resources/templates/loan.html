@@ -21,10 +21,10 @@
     <label for="productId">Product ID:</label>
     <input type="number" id="productId" th:field="*{productCopyId}" required>
   </div>
-  <div>
-    <label for="loanDate">Loan Date:</label>
-    <input type="date" id="loanDate" th:field="*{startDate}" th:value="${#dates.format(today, 'yyyy-MM-dd')}" required>
-  </div>
+<!--  <div>-->
+<!--    <label for="loanDate">Loan Date:</label>-->
+<!--    <input type="date" id="loanDate" th:field="*{startDate}" th:value="${#dates.format(today, 'yyyy-MM-dd')}" required>-->
+<!--  </div>-->
   <button type="submit">Create Loan</button>
 </form>
 <div>

@@ -22,7 +22,7 @@ public class LoanWebController {
     }
 
 
-    @GetMapping("/loan")
+    @GetMapping("/loan/")
     public String showLoanForm(Model model) {
         LoanRequestDTO loanRequestDTO = new LoanRequestDTO();
         loanRequestDTO.setStartDate(LocalDate.now()); //
@@ -33,7 +33,7 @@ public class LoanWebController {
         return "loan";
     }
 
-    @PostMapping("/loan")
+    @PostMapping("/loan/")
     public String processLoanForm(@ModelAttribute LoanRequestDTO loanRequestDTO) {
         System.out.println("Loan submitted: " + loanRequestDTO);
 
