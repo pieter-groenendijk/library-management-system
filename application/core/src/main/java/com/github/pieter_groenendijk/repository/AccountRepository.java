@@ -41,26 +41,6 @@ public class AccountRepository extends Repository implements IAccountRepository 
         return account != null;
     }
 
-//    public void store(Account account) {
-//        Session session = super.SESSION_FACTORY.openSession();
-//
-//        try {
-//            session.beginTransaction();
-//            session.persist(account);
-//            session.flush();
-//
-//            session.getTransaction().commit();
-//
-//        } catch (HibernateException e) {
-//            if (session.getTransaction() != null) {
-//                session.getTransaction().rollback();
-//            }
-//            e.printStackTrace();
-//        } finally {
-//            session.close();
-//        }
-//    }
-
     public void update(Account account) {
         Session session = super.SESSION_FACTORY.openSession();
 

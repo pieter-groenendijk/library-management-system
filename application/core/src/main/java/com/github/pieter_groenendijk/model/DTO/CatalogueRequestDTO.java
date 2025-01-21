@@ -4,16 +4,12 @@ import com.github.pieter_groenendijk.model.product.MediaType;
 
 public class CatalogueRequestDTO {
     private String searchString;
-    private String author;
     private long genreId;
     private boolean onlyAvailableProducts;
     private MediaType mediaType;
 
     public void setSearchString (String searchString) {this.searchString = searchString;}
     public String getSearchString () {return this.searchString;}
-
-    public void setAuthor (String author) {this.author = author;}
-    public String getAuthor () {return this.author;}
 
     public void setGenreId (long genreId) {this.genreId = genreId;}
     public long getGenreId () {return this.genreId;}
