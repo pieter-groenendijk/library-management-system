@@ -86,8 +86,8 @@ VALUES
     ('JavaScript: The Good Parts', 1, 2008, 'A book by Douglas Crockford on JavaScript', 18, 'BOOK'),
     ('The Catcher in the Rye', 4, 1951, 'A novel by J.D. Salinger', 18, 'BOOK'),
     ('The Road', 4, 2006, 'A novel by Cormac McCarthy', 18, 'BOOK'),
-    ('TIME', 7, 2024, 'November 2024', 12, 'MAGAZINE'),
-    ('National Geographic', 6, 2024, 'December 2024', 12, 'MAGAZINE');
+    ('TIME', 1, 2024, 'November 2024', 12, 'MAGAZINE'),
+    ('National Geographic', 1, 2024, 'December 2024', 12, 'MAGAZINE');
 
 INSERT INTO "DigitalProductTemplate" ("productId", "language")
 VALUES

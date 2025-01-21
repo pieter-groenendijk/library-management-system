@@ -60,7 +60,7 @@ class ReservationServiceTest {
     }
 
     @Test
-    void testStoreReservationDTO() {
+    void testStoreReservationDTO() throws Exception {
         ReservationDTO reservationDTO = new ReservationDTO();
         reservationDTO.setProductCopyId(1L);
         reservationDTO.setMembershipId(1L);
