@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${title}">Library Management System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" th:href="@{/css/home.css}">
+    <script defer th:src="@{/js/home.js}"></script>
+    <title>Create New Loan</title>
+</head>
+
+<body>
+<h1>Create New Reservation</h1>
+<form th:action="@{/reservation}" th:object="${reservation}" method="post">
+    <div>
+        <label for="membershipId">Member ID:</label>
+        <input type="number" id="membershipId" th:field="*{membershipId}" required>
+    </div>
+    <div>
+        <label for="productId">Product ID:</label>
+        <input type="number" id="productId" th:field="*{productCopyId}" required>
+    </div>
+    <button type="submit">Create Loan</button>
+</form>
+<div>
+
+    <button onclick="window.location.href='/reservation/membershipId/{membershipId}';">Convert a reservation to a loan</button>
+
+</div>
+</body>
+</html>
