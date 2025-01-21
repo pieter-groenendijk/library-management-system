@@ -2,10 +2,10 @@ package com.github.pieter_groenendijk.controller;
 
 import com.github.pieter_groenendijk.exception.EntityNotFoundException;
 import com.github.pieter_groenendijk.hibernate.SessionFactoryFactory;
-import com.github.pieter_groenendijk.model.DTO.LoanRequestDTO;
-import com.github.pieter_groenendijk.model.Loan;
+import com.github.pieter_groenendijk.dto.LoanRequestDTO;
+import com.github.pieter_groenendijk.entity.Loan;
 import com.github.pieter_groenendijk.repository.*;
-import com.github.pieter_groenendijk.model.event.Event;
+import com.github.pieter_groenendijk.entity.event.Event;
 import com.github.pieter_groenendijk.repository.loan.ILoanRepository;
 import com.github.pieter_groenendijk.repository.loan.LoanRepository;
 import com.github.pieter_groenendijk.repository.event.EventRepository;

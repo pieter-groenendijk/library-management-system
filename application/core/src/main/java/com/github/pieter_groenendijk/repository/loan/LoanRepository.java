@@ -1,7 +1,7 @@
 package com.github.pieter_groenendijk.repository.loan;
 
-import com.github.pieter_groenendijk.model.Loan;
-import com.github.pieter_groenendijk.model.LoanStatus;
+import com.github.pieter_groenendijk.entity.Loan;
+import com.github.pieter_groenendijk.entity.LoanStatus;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;

@@ -1,9 +1,9 @@
 package com.github.pieter_groenendijk.service.loan;
 
 import com.github.pieter_groenendijk.exception.EntityNotFoundException;
-import com.github.pieter_groenendijk.model.Loan;
-import com.github.pieter_groenendijk.model.LoanStatus;
-import com.github.pieter_groenendijk.model.Reservation;
+import com.github.pieter_groenendijk.entity.Loan;
+import com.github.pieter_groenendijk.entity.LoanStatus;
+import com.github.pieter_groenendijk.entity.Reservation;
 import com.github.pieter_groenendijk.repository.loan.ILoanRepository;
 import com.github.pieter_groenendijk.repository.IMembershipRepository;
 import com.github.pieter_groenendijk.repository.IProductRepository;
@@ -13,7 +13,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;

@@ -1,13 +1,11 @@
 package com.github.pieter_groenendijk.service.loan;
 
-import com.github.pieter_groenendijk.model.DTO.LoanRequestDTO;
-import com.github.pieter_groenendijk.model.Loan;
-import com.github.pieter_groenendijk.model.Reservation;
+import com.github.pieter_groenendijk.dto.LoanRequestDTO;
+import com.github.pieter_groenendijk.entity.Loan;
+import com.github.pieter_groenendijk.entity.Reservation;
 
 import java.time.LocalDate;
 import java.util.List;
-
-import static com.github.pieter_groenendijk.service.ServiceUtils.LOAN_LENGTH;
 
 
 public interface ILoanService {

@@ -1,8 +1,8 @@
 package com.github.pieter_groenendijk.service;
 
-import com.github.pieter_groenendijk.model.product.ProductCopy;
-import com.github.pieter_groenendijk.model.product.ProductTemplate;
-import com.github.pieter_groenendijk.model.product.Genre;
+import com.github.pieter_groenendijk.entity.product.ProductCopy;
+import com.github.pieter_groenendijk.entity.product.ProductTemplate;
+import com.github.pieter_groenendijk.entity.product.Genre;
 import java.util.List;
 import java.util.Optional;
 

@@ -1,6 +1,6 @@
 package com.github.pieter_groenendijk.service.loan.event;
 
-import com.github.pieter_groenendijk.model.Loan;
+import com.github.pieter_groenendijk.entity.Loan;
 import com.github.pieter_groenendijk.service.loan.event.scheduling.LoanEventScheduler;
 
 public class LoanEventService implements ILoanEventService {

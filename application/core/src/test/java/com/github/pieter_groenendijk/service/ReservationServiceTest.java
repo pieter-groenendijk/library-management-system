@@ -1,13 +1,12 @@
 package com.github.pieter_groenendijk.service;
 
 import com.github.pieter_groenendijk.exception.EntityNotFoundException;
-import com.github.pieter_groenendijk.model.Account;
-import com.github.pieter_groenendijk.model.DTO.ReservationDTO;
-import com.github.pieter_groenendijk.model.Membership;
-import com.github.pieter_groenendijk.model.Reservation;
-import com.github.pieter_groenendijk.model.ReservationStatus;
-import com.github.pieter_groenendijk.model.product.ProductCopy;
-import com.github.pieter_groenendijk.model.product.ProductCopyStatus;
+import com.github.pieter_groenendijk.dto.ReservationDTO;
+import com.github.pieter_groenendijk.entity.Membership;
+import com.github.pieter_groenendijk.entity.Reservation;
+import com.github.pieter_groenendijk.entity.ReservationStatus;
+import com.github.pieter_groenendijk.entity.product.ProductCopy;
+import com.github.pieter_groenendijk.entity.product.ProductCopyStatus;
 import com.github.pieter_groenendijk.repository.*;
 import com.github.pieter_groenendijk.service.reservation.ReservationService;
 import org.junit.jupiter.api.BeforeEach;
@@ -18,10 +17,8 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import java.time.LocalDate;
-import java.util.List;
 import java.util.Optional;
 
-import static com.github.pieter_groenendijk.service.ServiceUtils.PICKUP_DAYS;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 

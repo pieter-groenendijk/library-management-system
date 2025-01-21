@@ -1,7 +1,7 @@
 package com.github.pieter_groenendijk.repository;
 
-import com.github.pieter_groenendijk.model.product.ProductCopy;
-import com.github.pieter_groenendijk.model.product.ProductTemplate;
+import com.github.pieter_groenendijk.entity.product.ProductCopy;
+import com.github.pieter_groenendijk.entity.product.ProductTemplate;
 
 import java.util.Optional;
 

@@ -1,13 +1,13 @@
 package com.github.pieter_groenendijk.service.reservation;
 
 import com.github.pieter_groenendijk.exception.EntityNotFoundException;
-import com.github.pieter_groenendijk.model.Account;
-import com.github.pieter_groenendijk.model.DTO.ReservationDTO;
-import com.github.pieter_groenendijk.model.Membership;
-import com.github.pieter_groenendijk.model.Reservation;
-import com.github.pieter_groenendijk.model.ReservationStatus;
-import com.github.pieter_groenendijk.model.product.ProductCopy;
-import com.github.pieter_groenendijk.model.product.ProductCopyStatus;
+import com.github.pieter_groenendijk.entity.Account;
+import com.github.pieter_groenendijk.dto.ReservationDTO;
+import com.github.pieter_groenendijk.entity.Membership;
+import com.github.pieter_groenendijk.entity.Reservation;
+import com.github.pieter_groenendijk.entity.ReservationStatus;
+import com.github.pieter_groenendijk.entity.product.ProductCopy;
+import com.github.pieter_groenendijk.entity.product.ProductCopyStatus;
 import com.github.pieter_groenendijk.repository.IAccountRepository;
 import com.github.pieter_groenendijk.repository.IMembershipRepository;
 import com.github.pieter_groenendijk.repository.IProductRepository;

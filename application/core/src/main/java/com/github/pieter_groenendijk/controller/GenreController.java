@@ -8,7 +8,7 @@ import com.github.pieter_groenendijk.repository.genre.GenreRepository;
 import com.github.pieter_groenendijk.repository.genre.IGenreRepository;
 import com.github.pieter_groenendijk.repository.ProductRepository;
 import com.github.pieter_groenendijk.repository.IProductRepository;
-import com.github.pieter_groenendijk.model.product.Genre;
+import com.github.pieter_groenendijk.entity.product.Genre;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import com.github.pieter_groenendijk.hibernate.SessionFactoryFactory;

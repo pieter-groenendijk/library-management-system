@@ -1,7 +1,7 @@
 package com.github.pieter_groenendijk.service.notification.generators;
 
-import com.github.pieter_groenendijk.model.Account;
-import com.github.pieter_groenendijk.model.notification.Notification;
+import com.github.pieter_groenendijk.entity.Account;
+import com.github.pieter_groenendijk.entity.notification.Notification;
 import com.github.pieter_groenendijk.repository.notification.INotificationRepository;
 import com.github.pieter_groenendijk.scheduling.DetachedTask;
 import com.github.pieter_groenendijk.scheduling.TaskStorage;

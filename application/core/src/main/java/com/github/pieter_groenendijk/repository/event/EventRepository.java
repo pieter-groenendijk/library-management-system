@@ -1,8 +1,6 @@
 package com.github.pieter_groenendijk.repository.event;
 
-import com.github.pieter_groenendijk.model.event.Event;
-import com.github.pieter_groenendijk.model.event.LoanEvent;
-import com.github.pieter_groenendijk.model.event.ReservationEvent;
+import com.github.pieter_groenendijk.entity.event.Event;
 import com.github.pieter_groenendijk.repository.scheduling.TaskRepository;
 import org.hibernate.SessionFactory;
 

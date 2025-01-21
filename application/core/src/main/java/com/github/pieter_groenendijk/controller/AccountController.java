@@ -11,8 +11,8 @@ import com.github.pieter_groenendijk.repository.MembershipRepository;
 import com.github.pieter_groenendijk.repository.IAccountRepository;
 import com.github.pieter_groenendijk.repository.IMembershipTypeRepository;
 import com.github.pieter_groenendijk.repository.IMembershipRepository;
-import com.github.pieter_groenendijk.model.Account;
-import com.github.pieter_groenendijk.model.DTO.AccountRequestDTO;
+import com.github.pieter_groenendijk.entity.Account;
+import com.github.pieter_groenendijk.dto.AccountRequestDTO;
 
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
