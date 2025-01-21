@@ -1,5 +1,6 @@
 package com.github.pieter_groenendijk.controller;
 
+import com.github.pieter_groenendijk.DTO.ReservationDTO;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
@@ -24,17 +25,17 @@ public class ReservationWebController {
         this.restTemplate = restTemplate;
     }
 
-    @GetMapping("/create")
+    @GetMapping("/")
     public String showCreateReservationForm(Model model) {
         model.addAttribute("ReservationDTO", new ReservationDTO());
-        return "create-reservation"; //TODO: Maybe just a Reservation page with the form on it?
+        return "store"; //TODO: Maybe just a Reservation page with the form on it?
     }
 
     @PostMapping("/")
     public String createReservation(@Valid @ModelAttribute("ReservationDTO") ReservationDTO reservationDTO, Model model) {
-                                    String apiUrl = "http://localhost:8080/api/reservation";
+                                    String apiUrl = "http://localhost:8081/api/reservation";
     try {
-        ResponseEntity<ReservationDTO> response = restTemplate.postForEntity(apiUrl, reservationDTO, ReservationDTO.class);
+        ReservationDTO response = restTemplate.postForObject(apiUrl, reservationDTO, ReservationDTO.class);
         model.addAttribute("reservation");
         return "reservationDetails";
     } catch (
@@ -44,7 +45,7 @@ public class ReservationWebController {
     }
 }
 
-
+/*
     @GetMapping("/{reservationId}")
     public String viewReservationDetails(@PathVariable("reservationId") long reservationId, Model model) {
         try {
@@ -63,7 +64,7 @@ public class ReservationWebController {
             model.addAttribute("error", "Error fetching reservation details");
             return "error";
         }
-    }
+    }*/
 
 
     @GetMapping("/{reservationId}/cancel")

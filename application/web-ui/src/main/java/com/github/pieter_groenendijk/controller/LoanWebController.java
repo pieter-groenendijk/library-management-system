@@ -1,5 +1,5 @@
 package com.github.pieter_groenendijk.controller;
-import com.github.pieter_groenendijk.model.DTO.LoanRequestDTO;
+import com.github.pieter_groenendijk.DTO.LoanRequestDTO;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,13 +20,12 @@ public class LoanWebController {
     }
 
 
-
     @GetMapping("/loan")
     public String showLoanForm(Model model) {
         LoanRequestDTO loanRequestDTO = new LoanRequestDTO();
         loanRequestDTO.setStartDate(LocalDate.now()); //
 
-        model.addAttribute("loan", loanRequestDTO);
+        model.addAttribute("loan");
         model.addAttribute("today", LocalDate.now());
 
         return "loan";
@@ -37,7 +36,7 @@ public class LoanWebController {
         System.out.println("Loan submitted: " + loanRequestDTO);
 
         try {
-            String url = "http://localhost:8080/api/loan";
+            String url = "http://localhost:8081/api/loan";
             HttpEntity<LoanRequestDTO> request = new HttpEntity<>(loanRequestDTO);
             ResponseEntity<Void> response = restTemplate.postForEntity(url, request, Void.class);
 
