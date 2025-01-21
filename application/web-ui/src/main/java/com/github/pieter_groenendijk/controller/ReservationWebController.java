@@ -25,46 +25,26 @@ public class ReservationWebController {
         this.restTemplate = restTemplate;
     }
 
-    @GetMapping("/reservation")
+    @GetMapping("/reservation/")
     public String showCreateReservationForm(Model model) {
         model.addAttribute("ReservationDTO", new ReservationDTO());
-        return "store"; //TODO: Maybe just a Reservation page with the form on it?
+        return "reservation";
     }
 
-    @PostMapping("/reservation")
+    @PostMapping("/reservation/")
     public String createReservation(@Valid @ModelAttribute("ReservationDTO") ReservationDTO reservationDTO, Model model) {
                                     String apiUrl = "http://localhost:8081/api/reservation";
     try {
         ReservationDTO response = restTemplate.postForObject(apiUrl, reservationDTO, ReservationDTO.class);
         model.addAttribute("reservation");
-        return "reservationDetails";
+        return "reservation";
     } catch (
     RestClientException e) {
         model.addAttribute("error", "Unable to create reservation. Please try again.");
-        return "create-reservation";
+        return "error";
     }
 }
 
-/*
-    @GetMapping("/{reservationId}")
-    public String viewReservationDetails(@PathVariable("reservationId") long reservationId, Model model) {
-        try {
-            String url = "http://localhost:8081/api/reservation/" + reservationId;
-            ResponseEntity<Reservation> response = restTemplate.getForEntity(url, Reservation.class);
-
-            if (response.getStatusCode().is2xxSuccessful()) {
-                model.addAttribute("reservation");
-                return "reservation-details";
-            } else {
-                model.addAttribute("error", "Reservation not found");
-                return "error";
-            }
-        } catch (Exception e) {
-            System.out.println("Error fetching reservation details: " + e.getMessage());
-            model.addAttribute("error", "Error fetching reservation details");
-            return "error";
-        }
-    }*/
 
 
     @GetMapping("/{reservationId}/cancel")
