@@ -6,6 +6,7 @@ import com.github.pieter_groenendijk.model.product.ProductCopy;
 import com.github.pieter_groenendijk.model.product.ProductTemplate;
 import com.github.pieter_groenendijk.repository.IProductRepository;
 import com.github.pieter_groenendijk.repository.genre.IGenreRepository;
+import com.github.pieter_groenendijk.model.DTO.CatalogueRequestDTO;
 
 import java.util.List;
 import java.util.Optional;
@@ -61,6 +62,15 @@ public class ProductService implements IProductService {
     public ProductCopy retrieveProductByCopyId(long productCopyId) {
     return productRepository.retrieveProductCopyById(productCopyId)
             .orElseThrow(() -> new EntityNotFoundException("Product with ID " + productCopyId + " not found."));
+    }
+
+    public List<ProductCopy> retrieveCatalogue(CatalogueRequestDTO catalogueRequestDTO) {
+        String searchString = catalogueRequestDTO.getSearchString();
+        String author = catalogueRequestDTO.getAuthor();
+        long genreId = catalogueRequestDTO.getGenreId();
+        boolean onlyAvailableProducts = catalogueRequestDTO.getOnlyAvailableProducts();
+
+        return productRepository.retrieveCatalogue
     }
 
 
