@@ -49,7 +49,7 @@ AS
     FROM
         "Fine"
     WHERE
-        "paidBy" is null
+        "isPaid" = false
     GROUP BY
         "account"
 );

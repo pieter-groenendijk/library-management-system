@@ -23,7 +23,7 @@ services:
             DATABASE_PASSWORD: ${DATABASE_PASSWORD}
             DATABASE_PORT: ${DATABASE_PORT}
         ports:
-            -   "8080:8080"
+            -   "8081:8080"
         restart: "no"
         develop:
             watch:
@@ -53,7 +53,7 @@ services:
                     action: sync+restart
                     target: "/app/src"
         ports:
-            -   "8081:8080"
+            -   "8082:8080"
     web-ui-tester:
         build:
             context: "."
@@ -65,3 +65,12 @@ services:
                 -   path: "web-ui/src"
                     action: sync+restart
                     target: "/app/src"
+    reverse-proxy:
+        build:
+            context: "."
+            dockerfile: "_docker/reverse-proxy/reverse-proxy.dockerfile"
+        depends_on:
+            -   web-ui
+        ports:
+            -   "8080:80"
+
