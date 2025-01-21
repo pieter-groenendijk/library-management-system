@@ -13,7 +13,7 @@ Onze project staat onder versiebeheer; _git_.
 
 - De aanpassingen van een (normale) _commit_ zou verwoord moeten kunnen worden met 1 zin. 
 De _commit message_.
-- De _main_ branch is beschermt. Er mogen geen losse _commits_ geplaatst worden hierop. Enkel via een
+- De _main_ branch is beschermd. Er mogen geen losse _commits_ geplaatst worden hierop. Enkel via een
 merge.
 - Het _rebasen_ is niet toegestaan. Er wordt enkel gebruik gemaakt van _merges_. Dit zorgt ervoor
 dat er nooit iets kwijtgeraakt kan worden. 
@@ -26,7 +26,7 @@ om deze te mogen mergen.
 
 
 ## Planning 
-Vanaf de design fase hebben we de keuze gemaakt _Github Projects_ te gaan gebruiken. Hiermee wordt
+Vanaf de designfase hebben we de keuze gemaakt _Github Projects_ te gaan gebruiken. Hiermee wordt
 een zachte/vrije vorm van _SCRUM_ gebruikt. 
 1. We delen de taken in globale modules. Zoals: "notificaties", "leningen" en "boetes".
 2. De modules worden verdeeld over de teamsleden.
@@ -41,6 +41,9 @@ verwachting, maar ook vertrouwen aan elkaar.
 ## Development omgeving
 Er is een _docker_/_docker-compose_ omgeving opgezet met meerdere services om zo soepel de applicatie
 te ontwikkelen. Deze services passen zich automatisch aan op veranderingen. 
+
+### Scripting
+Het beheren van de development omgeving is geautomatiseerd via scripting.
 
 ### Testen
 Zolang de omgeving draait wordt bij aanpassingen de passende service zijn unit tests opnieuw 

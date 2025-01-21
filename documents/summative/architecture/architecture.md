@@ -1,12 +1,14 @@
 # Architectuur
 ## Services
-In een productieomgeving zullen we drie duidelijke services hebben, namelijk:
+In een productieomgeving zullen we drie duidelijke services hebben [^1], namelijk:
 - **web-ui** service
 - **core** service
 - **database** service
 
 Door dit te splitsen van elkaar creëren we onder andere een betere schaalbaarheid.
  
+[^1]: In realiteit zijn er meer services runnende in zowel de development als productieomgeving. Echter, deze zeggen weinig
+over de architectuur van het project zelf; het zijn technische details.
 
 ### Web-ui service
 Hier komen de _requests_ binnen om een bepaalde _view_ te regelen. Het communiceert enkel met de _core_ service om alle
@@ -51,30 +53,3 @@ De persistentie van het gehele systeem.
 
 #### Technologieën
 - PostgreSQL (Relationele database)
-
-## Algemene tooling en infrastructuur
-### Versiebeheer
-Het project staat in zijn geheel (alle services) onder versiebeheer in één repo[^1]. Hiervoor wordt _git_ gebruikt.
-
-Deze repo wordt gehost op [_github_](https://github.com/pieter-groenendijk/oose-library-management-system).
-
-### Development Omgeving
-#### Containerisatie
-Met behulp van docker kunnen er een geïsoleerde omgevingen gemaakt worden om met consistentie de individuele services
-uit te voeren.
-
-Met behulp van docker kan er een geïsoleerde omgeving van elke individuele service aangemaakt worden op een consistente
-manier, los van het besturingssysteem[^3].
-
-#### Orchestratie
-Docker compose zorgt ervoor dat de individuele containers gemaakt met docker als één eenheid gereproduceerd kan worden
-met zijn eigen netwerk, configuratie, etc.
-
-#### Scripting
-Voor sommige doeleinden is er gebruik gemaakt van scripting. Hiervoor
-is _bash_ gebruikt[^2]. Hierdoor is het gemakkelijk om met één knop in de IDE de workflow met de development omgeving
-te automatiseren.
-
-[^1]: Dit zou potentieel in de toekomst opgesplitst kunnen worden.  
-[^2]: _Powershell_ zou respectievelijk een betere keuze kunnen zijn i.v.m. besturingsysteem _compatibility_.
-[^3]: In de praktijk is dit niet helemaal waar. Er zijn nog steeds kleine discrepanties.

@@ -18,7 +18,7 @@ module voor deze functionaliteit helpt ons op de volgende vlakken:
 - **Voorkomt duplicatie** van code.
 - **Hoge cohesie**, en daarmee **één doel**. **Volgt _single responsibility_ principe**
 
-![](../class-diagram/scheduling/scheduling-class-diagram.drawio.svg)
+![](../../design/class-diagram/scheduling/scheduling-class-diagram.drawio.svg)
 
 De module is zo gebouwd dat dit ook de andere letters van de _SOLID_ principes handhaaft, namelijk:
 - **Open/Closed principe**:. Andere modules binnen het systeem zoals _events_ en _notifications_ breiden uit op de 
@@ -40,13 +40,13 @@ het product _te laat_ is. Zowel notificaties en boetes zitten gekoppeld aan dit 
 
 Hieruit bleek dat er vraag is naar een aparte module voor het kunnen definiëren van deze momenten; _events_. 
 
-![](../class-diagram/events/events-class-diagram.drawio.svg)
+![](../../design/class-diagram/events/events-class-diagram.drawio.svg)
 
 Ook de _events_ structuur is in elkaar gezet met _SOLID_ in het achterhoofd.
 
 De volgende events, gebaseerd op leningen, zijn voor nu bedacht:
-![](../events/assets/loan-event-timeline.excalidraw.svg)
+![](../../design/events/assets/loan-event-timeline.excalidraw.svg)
 
 De events zorgen momenteel voor de volgende acties:
-![](../events/assets/loan-event-actions.excalidraw.svg)
+![](../../design/events/assets/loan-event-actions.excalidraw.svg)
 
