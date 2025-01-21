@@ -43,6 +43,8 @@ van de ingebouwde _fragments_ en andere functionaliteiten.
 ##### Data Access
 Communiceert met de core service.
 
+#### Data Transfer Object
+We gebruiken _dto_'s voor de aanroepingen naar de _core_ REST API efficiënt te maken. Zo wordt latency vermeden.
 
 #### Technologieën
 - Java 21 (Programmeertaal)
@@ -56,16 +58,40 @@ Communiceert met de core service.
 
 ### Core service
 Behandelt de domeinlogica. Het communiceert met de _database_ service. Deze service volgt een lagen architectuur:
-- **Presentatie laag**: REST API communiceert door middel van entiteiten en dto's.
-- **Business Logica Laag**: 
-  - Service laag: Geïmplementeerd met dunne _facade_'s
-- **Data Access Laag**: Communiceert met de database service.
-  - _Data Mapper_ patroon wordt bij ons gedaan bij het ORM.
-  - _Table Data Gateway_ om naar het ORM, stateless, te communiceren op _table_ niveau.
-  - _Layer Supertype_. In theorie wordt er gewerkt met een repository superklasse. [^2]
+
+#### Lagen
+##### Presentatie Laag
+Een REST API die communiceert met middel van entiteiten en dto's
+
+##### Business Logica Laag
+###### Service Laag
+Over het algemeen zijn de _service_ _classes_ dunne _facade_'s. De meeste echte business logica wordt dus naar andere _classes_
+gedelegeerd.
+
+Het gebruik van een service laag zorgt voor een handige modulariteit. Er is daarnaast een duidelijke coördinatie hoe een
+specifieke behoefte geregeld gaat worden.
+
+##### Data Access Laag
+###### Data Mapper
+Via _annotations_ geven wij aan ons ORM door hoe de relationele wereld met de objectwereld moet _gemapt_ worden. Onze repositories
+zorgen ervoor dat code uit van het framework deze met elkaar te mappen.
+
+Het originele patroon gebruikt dit om SQL-logica te isoleren van de applicatie logica. In feite gebeurt dat bij ons ook,
+alleen wordt de sql generatie gedelegeerd naar het ORM. In die zin betekent het meer: het scheiden van ORM-logica met 
+applicatie logica.
+
+Dit heeft als voordeel dat de entiteiten (_annotated_ _classes_) een onafhankelijke structuur kunnen hebben van de 
+daadwerkelijke database implementatie. Zo kan de applicatie met data op een object-georiënteerde manier werken. Bij complexere
+applicaties kunnen deze verschillen best groot worden. Daarom is het verstandig om dit patroon te gebruiken.
+
+###### Layer Supertype
+In theorie wordt er gewerkt met een repository superklasse [^2]. Zo wordt duplicatie vermeden.
 
 [^2]: In de praktijk bestaan er nog repositories die zelfstandig werken. Echter is er de intentie om deze in de toekomst
 te gaan verbinden.
+
+#### Data Transfer Objects
+We gebruiken _dto_'s om onze aanroepingen naar onze API efficiënt te maken. Zo wordt latency vermeden.
 
 #### Technologieën
 - Java 21 (Programmeertaal)
