@@ -4,12 +4,12 @@ import com.github.pieter_groenendijk.service.notification.notifiers.AppNotifier;
 import com.github.pieter_groenendijk.service.notification.notifiers.EmailNotifier;
 import com.github.pieter_groenendijk.service.notification.notifiers.SMSNotifier;
 
-public class NotificationSendStrategyFactory {
+public class NotificationSendStrategyAssembler {
     private final EmailNotifier EMAIL_NOTIFIER;
     private final SMSNotifier SMS_NOTIFIER;
     private final AppNotifier APP_NOTIFIER;
 
-    public NotificationSendStrategyFactory() {
+    public NotificationSendStrategyAssembler() {
         this(
             new EmailNotifier(),
             new SMSNotifier(),
@@ -17,7 +17,7 @@ public class NotificationSendStrategyFactory {
         );
     }
 
-    public NotificationSendStrategyFactory(EmailNotifier emailNotifier, SMSNotifier smsNotifier, AppNotifier appNotifier) {
+    public NotificationSendStrategyAssembler(EmailNotifier emailNotifier, SMSNotifier smsNotifier, AppNotifier appNotifier) {
         this.EMAIL_NOTIFIER = emailNotifier;
         this.SMS_NOTIFIER = smsNotifier;
         this.APP_NOTIFIER = appNotifier;

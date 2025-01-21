@@ -5,7 +5,7 @@ import com.github.pieter_groenendijk.repository.IAccountRepository;
 import com.github.pieter_groenendijk.repository.notification.INotificationRepository;
 import com.github.pieter_groenendijk.scheduling.TaskScheduler;
 import com.github.pieter_groenendijk.service.notification.scheduling.NotificationScheduler;
-import com.github.pieter_groenendijk.service.notification.sendstrategies.NotificationSendStrategyFactory;
+import com.github.pieter_groenendijk.service.notification.sendstrategies.NotificationSendStrategyAssembler;
 import com.github.pieter_groenendijk.service.notification.sendstrategies.registry.NotificationSendStrategyRegistry;
 import com.github.pieter_groenendijk.service.notification.task.DetachedNotificationFactory;
 
@@ -28,7 +28,7 @@ public class NotificationService {
             repository,
             scheduler,
             new NotificationSendStrategyRegistry(
-                new NotificationSendStrategyFactory()
+                new NotificationSendStrategyAssembler()
             )
         );
 
