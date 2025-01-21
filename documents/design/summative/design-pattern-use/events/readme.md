@@ -35,3 +35,9 @@ Deze techniek voorkomt gedupliceerde code, door middel van een _superclass_. Dat
 usecase zijn enkele stappen anders, niet allemaal.
 
 In tegendeel tot de _strategy_ pattern kan zo _static_ verschillende strategieën bedacht worden voor een algoritme.
+
+
+## Template Method Pattern
+Voor meer informatie zie _scheduling_ design patterns.
+### Waar?
+`EventScheduler` i.v.m. `LongTermTaskScheduler`
