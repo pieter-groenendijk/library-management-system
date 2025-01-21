@@ -19,6 +19,8 @@ presentatie kunnen worden gemaakt. Denk bijv. aan een android app.
 
 Deze service volgt een lagen architectuur:
 - **Presentatie laag**: Traditionele web server
+  - _Page Controller_ patroon. In theorie één module die een _request_ voor een pagina afhandelt.
+  - _Template View_ patroon. We gebruiken templates met markers in combinatie met _thymeleaf_ om onze html te generen.
 - **Data Access laag**: Communiceert met de core service.
 
 #### Technologieën
@@ -39,6 +41,10 @@ Behandelt de domeinlogica. Het communiceert met de _database_ service. Deze serv
 - **Data Access Laag**: Communiceert met de database service.
   - _Data Mapper_ patroon wordt bij ons gedaan bij het ORM.
   - _Table Data Gateway_ om naar het ORM, stateless, te communiceren op _table_ niveau.
+  - _Layer Supertype_. In theorie wordt er gewerkt met een repository superklasse. [^2]
+
+[^2]: In de praktijk bestaan er nog repositories die zelfstandig werken. Echter is er de intentie om deze in de toekomst
+te gaan verbinden.
 
 #### Technologieën
 - Java 21 (Programmeertaal)
