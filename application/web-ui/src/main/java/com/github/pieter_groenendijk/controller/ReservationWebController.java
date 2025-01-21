@@ -19,19 +19,19 @@ import org.springframework.web.client.RestTemplate;
 public class ReservationWebController {
 
     private final RestTemplate restTemplate;
-   ;
+
 
     public ReservationWebController(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }
 
-    @GetMapping("/")
+    @GetMapping("/reservation")
     public String showCreateReservationForm(Model model) {
         model.addAttribute("ReservationDTO", new ReservationDTO());
         return "store"; //TODO: Maybe just a Reservation page with the form on it?
     }
 
-    @PostMapping("/")
+    @PostMapping("/reservation")
     public String createReservation(@Valid @ModelAttribute("ReservationDTO") ReservationDTO reservationDTO, Model model) {
                                     String apiUrl = "http://localhost:8081/api/reservation";
     try {

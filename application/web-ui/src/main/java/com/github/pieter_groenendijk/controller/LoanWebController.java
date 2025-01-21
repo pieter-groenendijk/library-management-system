@@ -3,6 +3,7 @@ import com.github.pieter_groenendijk.DTO.LoanRequestDTO;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -11,6 +12,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.time.LocalDate;
 
+@Controller
 public class LoanWebController {
 
     private final RestTemplate restTemplate;
@@ -25,7 +27,7 @@ public class LoanWebController {
         LoanRequestDTO loanRequestDTO = new LoanRequestDTO();
         loanRequestDTO.setStartDate(LocalDate.now()); //
 
-        model.addAttribute("loan");
+        model.addAttribute("loan", loanRequestDTO);
         model.addAttribute("today", LocalDate.now());
 
         return "loan";
