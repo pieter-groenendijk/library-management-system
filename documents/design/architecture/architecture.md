@@ -78,12 +78,3 @@ te automatiseren.
 [^1]: Dit zou potentieel in de toekomst opgesplitst kunnen worden.  
 [^2]: _Powershell_ zou respectievelijk een betere keuze kunnen zijn i.v.m. besturingsysteem _compatibility_.
 [^3]: In de praktijk is dit niet helemaal waar. Er zijn nog steeds kleine discrepanties.
-
-## Tech Stack
-## Templates 
-- Thymeleaf (Templating engine voor server-side rendering)
-
-## Versiebeheer & projectmanagement
-- Git (Versiebeheer)
-- GitHub (Versiebeheer)
-- Github Projects (Projectmanagement)
