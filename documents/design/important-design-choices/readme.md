@@ -1,29 +1,4 @@
 # Belangrijke Design keuzes
-## TODOs
-MVC
-
-## Services
-In een productieomgeving zullen we drie duidelijke services hebben, namelijk:
-- **web-ui** service
-- **core** service
-- **database** service
-
-Door dit te splitsen van elkaar creëren we onder andere een betere schaalbaarheid. 
-
-### Web-ui service
-Hier komen de _requests_ binnen om een bepaalde _view_ te krijgen. Het communiceert enkel met de _core_ service om alle 
-domeinlogica te regelen.
-
-De scheiding tussen _core_ en _web-ui_ zorgt voor een grote flexibiliteit. Hierdoor zou in de toekomst ook een andere 
-presentatie kunnen worden gemaakt. Denk bijv. aan een android app.
-
-### Core service
-Behandelt de domeinlogica. Het communiceert met de _database_ service. Volgens het MVC
-
-### Database service
-De persistentie van het gehele systeem. Momenteel wordt er gebruik gemaakt van een _postgres_ relationele database.
-
-
 ## Entiteiten
 Onze entiteiten hebben bewust geen domeinlogica. Wij behoren domeinlogica de verantwoordelijkheid van de _service_ laag.
 Het enige gedrag op entiteiten zijn _getters_ en _setters_.
@@ -31,21 +6,6 @@ Het enige gedrag op entiteiten zijn _getters_ en _setters_.
 Data en gedrag is dus apart. Dit zorgt voor een grote flexibiliteit doordat de gegevens in verschillende contexten, met 
 verschillend gedrag, kunnen worden gebruikt. Nadeel is dat duplicatie van code makkelijker ontstaat. Daar moet dus opgelet
 worden.
-
-
-## Lagen structuur
-Voor het afhandelen van de binnenkomende _requests_ gebruiken we drie lagen, namelijk:
-- Controller laag
-- Service laag
-- Repository/Data access/Persistence laag
-
-Waarbij communicatie begint bij een _controller_; de ingang van de applicatie. Het definieert de API van de applicatie.
-Het regelt dat de bijgestuurde data wordt omgezet in een formaat waarmee de rest van de applicatie kan werken. 
-
-Vervolgens wordt het verzoek gedelegeerd naar de _service_ laag. Hier vindt de domeinlogica plaats. 
-
-Deze logica stuurt dan vaak uiteindelijk een _repository_ aan. Een repository communiceert met een gegevensbron. In ons
-geval een relationele database.
 
 
 ## Inplanning van taken
