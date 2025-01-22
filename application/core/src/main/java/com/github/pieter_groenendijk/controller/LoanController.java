@@ -93,8 +93,8 @@ public class LoanController {
             @ApiResponse(responseCode = "200", description = "Loan found"),
             @ApiResponse(responseCode = "404", description = "No loan found for the given loanId\"")
     })
-    @GetMapping("/{loanId}")
-    public ResponseEntity<Loan> retrieveLoanByLoanId(@PathVariable("loanId") long loanId) {
+    @GetMapping("/")
+    public ResponseEntity<?> retrieveLoanByLoanId(@RequestParam("loanId") long loanId) {
        try {
             Loan loan = loanService.retrieveLoanByLoanId(loanId);
             return ResponseEntity.ok(loan);

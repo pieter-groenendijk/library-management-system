@@ -10,7 +10,7 @@
 
 <body>
 <h1>Create New Loan</h1>
-<form th:action="@{/loan/}" th:object="${loanRequestDTO}" method="POST">
+<form th:action="@{/loan/store}" th:object="${loanRequestDTO}" method="POST">
   <div>
     <label for="membershipId">Member ID:</label>
     <input type="number" id="membershipId" th:field="*{membershipId}" required>
@@ -21,20 +21,33 @@
   </div>
   <button type="submit">Create Loan</button>
 </form>
+<div th:if="${error}">
+  <p th:text="${error}" style="color: red;"></p>
+</div>
 <br>
 <div>
-
-  <form action="/loan/loanId" method="get">
+  <form action="/loan/" method="get">
     <label for="loanIdInput">Enter Loan ID: </label>
     <input type="text" id="loanIdInput" name="loanId" required>
     <button type="submit">Retrieve a loan by LoanId</button>
   </form>
   <br>
-  <form action="/loan/membershipId" method="get">
+  <form action="/loan/{membershipId}" method="get">
     <label for="membershipIdInput">Enter Membership ID: </label>
     <input type="text" id="membershipIdInput" name="membershipId" required>
     <button type="submit">Retrieve a loan by MembershipID</button>
   </form>
+</div>
+<div th:if="${loan != null}">
+  <h3>Loan Details</h3>
+  <p><strong>Loan ID:</strong> <span th:text="${loan.loanId}"></span></p>
+  <p><strong>Start Date:</strong> <span th:text="${loan.startDate}"></span></p>
+  <p><strong>Return By:</strong> <span th:text="${loan.returnBy}"></span></p>
+  <p><strong>Extended Return By:</strong> <span th:text="${loan.extendedReturnBy}"></span></p>
+  <p><strong>Returned On:</strong> <span th:text="${loan.returnedOn}"></span></p>
+  <p><strong>Loan Status:</strong> <span th:text="${loan.loanStatus}"></span></p>
+  <p><strong>Membership ID:</strong> <span th:text="${loan.membership.membershipId}"></span></p>
+  <p><strong>Product Copy ID:</strong> <span th:text="${loan.productCopy}"></span></p>
 </div>
 </body>
 </html>
