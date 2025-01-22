@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${title}">Library Management System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer th:src="@{/js/home.js}"></script>
+    <title>Membershiptypes</title>
+</head>
+<body>
+<h1>Retrieve All Membership Types</h1>
+
+<form th:action="@{/membershiptype/getAll}" method="post">
+    <button type="submit">Retrieve Membership Types</button>
+</form>
+
+<div th:if="${error2}">
+    <p th:text="${error2}" style="color: red;"></p>
+</div>
+
+<div th:if="${membershipTypes}">
+    <h3>Membership Types</h3>
+    <table>
+        <thead>
+        <tr>
+            <th>Membership Type ID</th>
+            <th>Description</th>
+            <th>Digital Products</th>
+            <th>Physical Products</th>
+            <th>Max Lendings</th>
+            <th>Deleted</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="membershipType : ${membershipTypes}">
+            <td th:text="${membershipType.membershipTypeId}"></td>
+            <td th:text="${membershipType.description}"></td>
+            <td th:text="${membershipType.digitalProducts ? 'Yes' : 'No'}"></td>
+            <td th:text="${membershipType.physicalProducts ? 'Yes' : 'No'}"></td>
+            <td th:text="${membershipType.maxLendings}"></td>
+            <td th:text="${membershipType.isDeleted ? 'Yes' : 'No'}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
