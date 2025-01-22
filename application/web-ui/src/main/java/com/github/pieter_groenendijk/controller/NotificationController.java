@@ -18,7 +18,7 @@ public class NotificationController {
 
     @GetMapping("/notifications/{notificationId}")
     public String render(
-        @PathVariable("notificationId") String notificationId,
+        @PathVariable("notificationId") Long notificationId,
         Model model
     ) {
         model.addAttribute(
@@ -26,10 +26,12 @@ public class NotificationController {
             "Notification"
         );
 
-        model.addAttribute(
-            "notification",
-            this.REPOSITORY.retrieve(1L)
-        );
+        this.REPOSITORY.retrieve(notificationId).ifPresent(notification -> {
+            model.addAttribute(
+                "notification",
+                notification
+            );
+        });
 
         return "notification/index";
     }
