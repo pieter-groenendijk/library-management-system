@@ -23,10 +23,11 @@ public class NotificationsController {
             "Notifications"
         );
 
-//        this.REPOSITORY.retrieveRecent(1L)
-//            .ifPresent(() -> {
-//
-//            });
+        model.addAttribute(
+            "notifications",
+            this.REPOSITORY.retrieveRecent(1L)
+        );
+
 
         return "notifications/index";
     }
