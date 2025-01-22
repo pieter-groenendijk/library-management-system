@@ -8,10 +8,7 @@ import com.github.pieter_groenendijk.model.Reservation;
 import com.github.pieter_groenendijk.model.ReservationStatus;
 import com.github.pieter_groenendijk.model.product.ProductCopy;
 import com.github.pieter_groenendijk.model.product.ProductCopyStatus;
-import com.github.pieter_groenendijk.repository.IAccountRepository;
-import com.github.pieter_groenendijk.repository.IMembershipRepository;
-import com.github.pieter_groenendijk.repository.IProductRepository;
-import com.github.pieter_groenendijk.repository.IReservationRepository;
+import com.github.pieter_groenendijk.repository.*;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -24,13 +21,15 @@ public class ReservationService implements IReservationService {
     private final IReservationRepository reservationRepository;
     private final IMembershipRepository membershipRepository;
     private final IProductRepository productRepository;
+    private final IMembershipTypeRepository membershipTypeRepository;
 
 
-    public ReservationService(IReservationRepository reservationRepository, IMembershipRepository membershipRepository, IAccountRepository accountRepository, IProductRepository productRepository) {
+    public ReservationService(IReservationRepository reservationRepository, IMembershipRepository membershipRepository, IAccountRepository accountRepository, IProductRepository productRepository, IMembershipTypeRepository membershipTypeRepository) {
         this.reservationRepository = reservationRepository;
         this.membershipRepository = membershipRepository;
         this.accountRepository = accountRepository;
         this.productRepository = productRepository;
+        this.membershipTypeRepository = membershipTypeRepository;
     }
 
     @Override
@@ -43,7 +42,9 @@ public class ReservationService implements IReservationService {
                 .orElseThrow(() -> new EntityNotFoundException("ProductCopy not found"));
         Membership membership = membershipRepository.retrieveMembershipById(reservationDTO.getMembershipId())
                 .orElseThrow(() -> new EntityNotFoundException("Membership not found"));
+
         checkIfAccountIsBlocked(membership);
+        checkMaxLendings(membership);
 
         Reservation reservation = toEntity(reservationDTO, productCopy, membership);
 
@@ -179,6 +180,10 @@ public class ReservationService implements IReservationService {
         reservationRepository.updateReservation(reservation);
     }
 
-
+    private void checkMaxLendings(Membership membership) {
+        if (membership.getMembershipType().getMaxLendings() <= 0) {
+            throw new IllegalStateException("You have reached your lending limit.");
+        }
+    }
 
 }

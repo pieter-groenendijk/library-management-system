@@ -3,6 +3,7 @@ package com.github.pieter_groenendijk.service;
 import com.github.pieter_groenendijk.model.product.ProductCopy;
 import com.github.pieter_groenendijk.model.product.ProductTemplate;
 import com.github.pieter_groenendijk.model.product.Genre;
+import com.github.pieter_groenendijk.model.DTO.CatalogueRequestDTO;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,6 +17,8 @@ public interface IProductService {
     ProductCopy updateProductCopy(ProductCopy productCopy);
 
     ProductCopy retrieveProductByCopyId(long productCopyId);
+
+    List<ProductCopy> retrieveCatalogue(CatalogueRequestDTO catalogueRequestDTO);
 
     //Genre
     Genre retrieveGenreById(long id);
