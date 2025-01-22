@@ -12,6 +12,7 @@ import com.github.pieter_groenendijk.service.reservation.IReservationService;
 import com.github.pieter_groenendijk.service.loan.event.ILoanEventService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -32,7 +33,10 @@ class LoanServiceTest {
     private IMembershipRepository mockMembershipRepository;
     private IReservationService mockReservationService;
     private IProductRepository mockProductRepository;
+
+    @Mock
     private IMembershipTypeRepository mockMembershipTypeRepository;
+
     private Loan mockLoan;
 
     @BeforeEach

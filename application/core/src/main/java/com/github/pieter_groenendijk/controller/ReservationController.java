@@ -75,7 +75,7 @@ public class ReservationController {
         try {
             Reservation reservation = reservationService.store(reservationDTO);
             return ResponseEntity.status(HttpStatus.CREATED).build();
-        } catch (EntityNotFoundException e) {
+        } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }

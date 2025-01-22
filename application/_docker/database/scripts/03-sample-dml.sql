@@ -80,10 +80,12 @@ VALUES
     ('The Pragmatic Programmer', 1, 1999, 'A book by Andrew Hunt and David Thomas', 18, 'EBOOK'),
     ('Refactoring', 1, 1999, 'Improving the design of existing code by Martin Fowler', 18, 'EBOOK'),
     ('The Mythical Man-Month', 1, 1975, 'A collection of essays by Fred Brooks', 18, 'EBOOK'),
-    ('Design Patterns', 2, 1994, 'Elements of reusable object-oriented software', 18, 'EBOOK'),
-    ('JavaScript: The Good Parts', 2, 2008, 'A book by Douglas Crockford on JavaScript', 18, 'BOOK'),
-    ('The Catcher in the Rye', 2, 1951, 'A novel by J.D. Salinger', 18, 'BOOK'),
-    ('The Road', 2, 2006, 'A novel by Cormac McCarthy', 18, 'BOOK');
+    ('Design Patterns', 1, 1994, 'Elements of reusable object-oriented software', 18, 'EBOOK'),
+    ('JavaScript: The Good Parts', 1, 2008, 'A book by Douglas Crockford on JavaScript', 18, 'BOOK'),
+    ('The Catcher in the Rye', 4, 1951, 'A novel by J.D. Salinger', 18, 'BOOK'),
+    ('The Road', 4, 2006, 'A novel by Cormac McCarthy', 18, 'BOOK'),
+    ('TIME', 1, 2024, 'November 2024', 12, 'MAGAZINE'),
+    ('National Geographic', 1, 2024, 'December 2024', 12, 'MAGAZINE');
 
 INSERT INTO "DigitalProductTemplate" ("productId", "language")
 VALUES
@@ -111,7 +113,9 @@ VALUES
     (7, 'B6', 'Robert C. Martin'),
     (12, 'J5', 'Douglas Crockford'),
     (13, 'K6', 'J.D. Salinger'),
-    (14, 'L1', 'Cormac McCarthy');
+    (14, 'L1', 'Cormac McCarthy'),
+    (15, 'M1', 'National Geographic'),
+    (16, 'N2', 'TIME');
 
 INSERT INTO "PhysicalProduct" ("productId", "ISBN", "author")
 VALUES
@@ -123,7 +127,9 @@ VALUES
     (7, 1234567895, 'Robert C. Martin'),
     (12, 1234567896, 'Douglas Crockford'),
     (13, 1234567897, 'J.D. Salinger'),
-    (14, 1234567898, 'Cormac McCarthy');
+    (14, 1234567898, 'Cormac McCarthy'),
+    (15, 1234567899, 'National Geographic'),
+    (16, 1234567900, 'TIME');
 
 
 INSERT INTO "ProductCopy" ("productId", "availabilityStatus")
@@ -145,7 +151,13 @@ VALUES
     (13, 'AVAILABLE'),
     (14, 'AVAILABLE'),
     (14, 'AVAILABLE'),
-    (14, 'AVAILABLE');
+    (14, 'AVAILABLE'),
+    (15, 'AVAILABLE'),
+    (15, 'AVAILABLE'),
+    (15, 'AVAILABLE'),
+    (16, 'AVAILABLE'),
+    (16, 'AVAILABLE'),
+    (16, 'AVAILABLE');
 
 
 -- Insert data into Reservation table
