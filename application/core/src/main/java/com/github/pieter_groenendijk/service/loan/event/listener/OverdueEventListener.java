@@ -4,7 +4,7 @@ import com.github.pieter_groenendijk.model.Loan;
 import com.github.pieter_groenendijk.model.event.EventType;
 import com.github.pieter_groenendijk.service.event.listener.EventListener;
 import com.github.pieter_groenendijk.service.loan.event.scheduling.LoanEventScheduler;
-import com.github.pieter_groenendijk.service.notification.NotificationOrchestrator;
+import com.github.pieter_groenendijk.service.notification.orchestration.NotificationOrchestrator;
 
 class OverdueEventListener extends EventListener<Loan> {
     private final LoanEventScheduler LOAN_EVENT_SCHEDULER;

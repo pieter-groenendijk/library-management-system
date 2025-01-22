@@ -4,7 +4,7 @@ import com.github.pieter_groenendijk.service.event.emitting.EventEmitterPool;
 import com.github.pieter_groenendijk.service.event.listener.EventListener;
 import com.github.pieter_groenendijk.service.loan.event.scheduling.LoanEventScheduler;
 import com.github.pieter_groenendijk.service.loan.fine.LoanFineService;
-import com.github.pieter_groenendijk.service.notification.NotificationOrchestrator;
+import com.github.pieter_groenendijk.service.notification.orchestration.NotificationOrchestrator;
 import com.github.pieter_groenendijk.service.product.EventPoolListener;
 
 public class LoanCycleListener extends EventPoolListener {

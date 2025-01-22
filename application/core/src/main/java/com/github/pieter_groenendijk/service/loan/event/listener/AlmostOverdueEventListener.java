@@ -3,7 +3,7 @@ package com.github.pieter_groenendijk.service.loan.event.listener;
 import com.github.pieter_groenendijk.model.Loan;
 import com.github.pieter_groenendijk.model.event.EventType;
 import com.github.pieter_groenendijk.service.event.listener.EventListener;
-import com.github.pieter_groenendijk.service.notification.NotificationOrchestrator;
+import com.github.pieter_groenendijk.service.notification.orchestration.NotificationOrchestrator;
 
 class AlmostOverdueEventListener extends EventListener<Loan> {
     private final NotificationOrchestrator NOTIFICATION_SERVICE;
