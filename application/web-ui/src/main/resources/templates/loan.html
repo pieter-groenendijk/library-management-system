@@ -6,13 +6,11 @@
 
   <link rel="stylesheet" th:href="@{/css/home.css}">
   <script defer th:src="@{/js/home.js}"></script>
-  <title>Create New Loan</title>
 </head>
 
 <body>
-<p>Test content to verify template rendering.</p>
 <h1>Create New Loan</h1>
-<form th:action="@{/loan}" th:object="${loan}" method="post">
+<form th:action="@{/loan/}" th:object="${loanRequestDTO}" method="POST">
   <div>
     <label for="membershipId">Member ID:</label>
     <input type="number" id="membershipId" th:field="*{membershipId}" required>
@@ -21,10 +19,6 @@
     <label for="productId">Product ID:</label>
     <input type="number" id="productId" th:field="*{productCopyId}" required>
   </div>
-<!--  <div>-->
-<!--    <label for="loanDate">Loan Date:</label>-->
-<!--    <input type="date" id="loanDate" th:field="*{startDate}" th:value="${#dates.format(today, 'yyyy-MM-dd')}" required>-->
-<!--  </div>-->
   <button type="submit">Create Loan</button>
 </form>
 <div>

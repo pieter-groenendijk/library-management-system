@@ -57,7 +57,7 @@ public class LoanService implements ILoanService {
         validateLoanRequestDTO(loanRequestDTO);
 
         Loan loan = new Loan();
-        setLoanStatus(loan, loanRequestDTO);
+        loan.setLoanStatus(LoanStatus.ACTIVE);
         setLoanDates(loan);
 
 
@@ -213,17 +213,12 @@ public class LoanService implements ILoanService {
     private LocalDate getCurrentDate() {
         return LocalDate.now();
     }
-    private void setLoanStatus(Loan loan, LoanRequestDTO loanRequestDTO) {
-        LoanStatus loanStatus = Optional.ofNullable(loanRequestDTO.getLoanStatus())
-                .orElse(LoanStatus.ACTIVE);
-        loan.setLoanStatus(loanStatus);
-    }
+
 
     private void setLoanDates(Loan loan) {
         loan.setStartDate(LocalDate.now());
         loan.setReturnBy(getCurrentDate().plusDays(LOAN_LENGTH));
     }
-
 
 
     public void checkDoesLoanExceedLimitForMembership (Membership membership) {
@@ -250,4 +245,9 @@ public class LoanService implements ILoanService {
             throw new IllegalStateException("Loan would exceed limit for Genre");
         }
     }
+
+    private void setLoanStatus(Loan loan) {
+        loan.setLoanStatus(LoanStatus.ACTIVE);
+    }
+
 }
