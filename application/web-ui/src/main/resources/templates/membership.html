@@ -3,24 +3,23 @@
 <head>
     <title th:text="${title}">Library Management System</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" th:href="@{/css/home.css}">
     <script defer th:src="@{/js/home.js}"></script>
     <title>Membership</title>
 </head>
 <body>
+<h1>Retrieve existing memberships for an account</h1>
 <form th:action="@{/membership/account}" method="post">
     <label for="accountId">Account ID:</label>
     <input type="text" id="accountId" name="accountId" required>
     <button type="submit">Submit</button>
 </form>
 
-<div th:if="${error}">
-    <p th:text="${error}" style="color: red;"></p>
+<div th:if="${error1}">
+    <p th:text="${error1}" style="color: red;"></p>
 </div>
 
 <div th:if="${memberships}">
-    <h2>Memberships</h2>
+    <h3>Memberships</h3>
     <table>
         <thead>
         <tr>
@@ -48,5 +47,28 @@
         </tbody>
     </table>
 </div>
+
+<h1>Adding memberships</h1>
+
+<form th:action="@{/membership/add}" method="post">
+    <label for="account">Account ID:</label>
+    <input type="text" id="account" name="account" required>
+
+    <label for="membershipTypeId">Membership Type ID:</label>
+    <input type="text" id="membershipTypeId" name="membershipTypeId" required>
+
+    <button type="submit">Submit</button>
+</form>
+
+<!-- Display success or error message -->
+<div th:if="${success}">
+    <p th:text="'Membership successfully created!'"></p>
+</div>
+<div th:if="${error}">
+    <p th:text="${error}" style="color: red;"></p>
+</div>
+
+<h1>Deleting memberships</h1>
+
 </body>
 </html>
