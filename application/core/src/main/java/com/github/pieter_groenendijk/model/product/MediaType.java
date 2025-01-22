@@ -5,5 +5,6 @@ public enum MediaType {
     EBOOK,
     AUDIOBOOK,
     MAGAZINE,
-    DVD
+    DVD,
+    NONE
 }

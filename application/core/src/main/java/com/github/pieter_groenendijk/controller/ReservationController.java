@@ -61,7 +61,7 @@ public class ReservationController {
         IReservationRepository reservationRepository = new ReservationRepository(sessionFactory);
         IProductRepository productRepository = new ProductRepository(sessionFactory);
         ILoanRepository loanRepository = new LoanRepository(sessionFactory);
-        this.reservationService = new ReservationService(reservationRepository, membershipRepository, accountRepository, productRepository);
+        this.reservationService = new ReservationService(reservationRepository, membershipRepository, accountRepository, productRepository, membershipTypeRepository);
         this.loanService = new LoanService(loanRepository, membershipRepository, loanEventService, reservationService, productRepository, membershipTypeRepository);
     }
 
@@ -75,7 +75,7 @@ public class ReservationController {
         try {
             Reservation reservation = reservationService.store(reservationDTO);
             return ResponseEntity.status(HttpStatus.CREATED).build();
-        } catch (EntityNotFoundException e) {
+        } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
