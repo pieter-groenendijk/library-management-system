@@ -4,12 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.core.type.TypeReference;
+import org.springframework.http.HttpMethod;
 import java.util.List;
 import com.github.pieter_groenendijk.model.Membership;
 import com.github.pieter_groenendijk.DTO.MembershipRequestDTO;
@@ -70,14 +69,31 @@ public class MembershipWebController {
             if (response.getStatusCode().is2xxSuccessful()) {
                 model.addAttribute("success", true);
             } else {
-                model.addAttribute("error", "Failed to create membership." + response.getStatusCode());
+                model.addAttribute("error", "Failed to create membership.");
             }
         } catch (Exception e) {
-            model.addAttribute("error", "An error occurred: " + e.getMessage());
+            model.addAttribute("error", "An error occurred: ");
         }
-
         return "membership";
     }
 
+    @PostMapping("/membership/softdelete")
+    public String deleteMembership(@RequestParam("deleteId") Long membershipId, Model model) {
+        String url = "http://core:8080/membership/softdelete/" + membershipId;
 
+        try {
+            // Use PUT request to soft delete membership
+            ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.PUT, null, String.class);
+
+            if (response.getStatusCode().is2xxSuccessful()) {
+                model.addAttribute("success2", "Membership deleted successfully.");
+            } else {
+                model.addAttribute("error2", "Membership not deleted. Please check the Membership ID.");
+            }
+        } catch (Exception e) {
+            model.addAttribute("error2", "Something went wrong... Try again!");
+        }
+
+        return "membership"; // Return to the same page with an error message
+    }
 }

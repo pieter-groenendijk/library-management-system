@@ -69,6 +69,18 @@
 </div>
 
 <h1>Deleting memberships</h1>
+<form th:action="@{/membership/softdelete}" method="post"> <!-- Use POST instead of GET -->
+    <label for="deleteId">Membership ID:</label>
+    <input type="text" id="deleteId" name="deleteId" required>
+    <button type="submit">Submit</button>
+</form>
+
+<div th:if="${success2}">
+    <p th:text="${success2}" style="color: green;"></p>
+</div>
+<div th:if="${error2}">
+    <p th:text="${error2}" style="color: red;"></p>
+</div>
 
 </body>
 </html>
