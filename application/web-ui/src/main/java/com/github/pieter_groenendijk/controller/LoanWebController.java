@@ -66,7 +66,7 @@ public class LoanWebController {
         }
     }
 
-    @GetMapping("/loan/{loanId}")
+    @GetMapping("/loan/loanid")
     public String retrieveLoanByLoanId(@PathVariable("loanId") long loanId, Model model) {
         String url = "http://core:8080/loan/" + loanId;
 
@@ -85,6 +85,27 @@ public class LoanWebController {
 
         return "loan";
     }
+
+    /*
+    @PostMapping("/membership/loans")
+    public String getLoanByMembershipId(@RequestParam("membershipId") String membershipId, Model model) {
+        String url = "http://core:8080/membership/loans" + membershipId
+        ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
+
+        if (response.getStatusCode().is2xxSuccessful()) {
+            try {
+                List<Loan> Loans = objectMapper.readValue(response.getBody(), new TypeReference<List<Loan>>() {});
+                model.addAttribute("loans", loans);
+            } catch (Exception e) {
+                model.addAttribute("error", "Error Parsing the response");
+            }
+        } else {
+            model.addAttribute("membershipResponse", "Error fetching membership details.");
+        }
+
+        return "membership";
+    }
+*/
 }
 
 
