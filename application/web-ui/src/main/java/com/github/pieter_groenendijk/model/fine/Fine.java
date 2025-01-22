@@ -1,14 +1,14 @@
-package com.github.pieter_groenendijk.model.DTO;
+package com.github.pieter_groenendijk.model.fine;
 
 import java.time.LocalDateTime;
 
-public class FineDTO {
+public class Fine {
     private Long fineId;
     private String fineType;
     private Long amountInCents;
     private LocalDateTime declaredOn;
 
-    public FineDTO() {}
+    public Fine() {}
 
     public Long getFineId() {
         return fineId;
