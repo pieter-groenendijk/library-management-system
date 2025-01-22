@@ -15,10 +15,18 @@ public class NotificationsRepository extends Repository {
     }
 
     public Optional<Notification> retrieve(Long notificationId) {
-        return super.retrieve(
+        return super.retrieveSingle(
             BASE_PATH + "/{notificationId}",
             Notification.class,
             notificationId
         );
     }
+
+//    public List<Notification> retrieveRecent(Long accountId) {
+//        super.retrieve(
+//            BASE_PATH + "/{accountId}/recent",
+//            Notification[].class,
+//            accountId
+//        );
+//    }
 }
