@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${title}">Library Management System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" th:href="@{/css/home.css}">
+    <script defer th:src="@{/js/home.js}"></script>
+    <title>Membership</title>
+</head>
+<body>
+<form th:action="@{/membership/account}" method="post">
+    <label for="accountId">Account ID:</label>
+    <input type="text" id="accountId" name="accountId" required>
+    <button type="submit">Submit</button>
+</form>
+
+<div th:if="${accountResponse}">
+    <h3>Account Details</h3>
+    <p th:text="${accountResponse}"></p>
+</div>
+</body>
+</html>
