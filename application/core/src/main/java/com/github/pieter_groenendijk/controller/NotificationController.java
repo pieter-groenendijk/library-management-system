@@ -1,7 +1,11 @@
 package com.github.pieter_groenendijk.controller;
 
 import com.github.pieter_groenendijk.exception.InputValidationException;
+import com.github.pieter_groenendijk.hibernate.SessionFactoryFactory;
 import com.github.pieter_groenendijk.model.DTO.NotificationDTO;
+import com.github.pieter_groenendijk.repository.notification.NotificationRepository;
+import com.github.pieter_groenendijk.service.notification.INotificationService;
+import com.github.pieter_groenendijk.service.notification.NotificationService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -14,8 +18,12 @@ import java.util.List;
 @RestController
 @RequestMapping("/notifications")
 public class NotificationController {
-    public NotificationController() {
+    private final INotificationService SERVICE;
 
+    public NotificationController() {
+        this.SERVICE = new NotificationService(
+            new NotificationRepository(new SessionFactoryFactory().create()) // TODO: Dependency injection instead, not easily tested right now
+        );
     }
 
     @Operation(summary = "Retrieve the notifications the account should have received")
@@ -29,14 +37,16 @@ public class NotificationController {
     })
     @GetMapping("/{accountId}/recent")
     public ResponseEntity<List<NotificationDTO>> retrieveRecentReceivedNotifications(
-        @PathVariable Long accountId,
+        @PathVariable("accountId") Long accountId,
         @RequestParam(
             value = "maxAmount",
             defaultValue = "10"
         ) int maxAmount
-    ) {
+    ) throws Exception {
         return ResponseEntity
             .status(HttpStatus.OK)
-            .body(List.of());
+            .body(
+                this.SERVICE.retrieveRecentReceivedNotifications(accountId, maxAmount)
+            );
     }
 }
