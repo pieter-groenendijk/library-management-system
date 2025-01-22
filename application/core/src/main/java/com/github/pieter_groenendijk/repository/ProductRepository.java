@@ -3,9 +3,13 @@ import com.github.pieter_groenendijk.model.product.ProductCopy;
 import com.github.pieter_groenendijk.model.product.ProductTemplate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import java.util.List;
+import java.util.Collections;
+import com.github.pieter_groenendijk.model.product.MediaType;
 import org.springframework.stereotype.Repository;
 import org.hibernate.Transaction;
 import org.hibernate.Hibernate;
+import org.hibernate.query.Query;
 
 import java.util.Optional;
 
@@ -114,6 +118,49 @@ public class ProductRepository implements IProductRepository {
             session.close();
         }
         return productCopy;
+    }
+
+    public List<ProductCopy> retrieveCatalogue(String searchString,
+                                               long genreId,
+                                               boolean onlyAvailableProducts,
+                                               MediaType mediaType) {
+        List<ProductCopy> catalogue;
+        try (Session session = sessionFactory.openSession()) {
+            StringBuilder hql = new StringBuilder(
+                    "FROM ProductCopy pc " +
+                    "JOIN ProductTemplate pt ON pc.physicalProduct.productId = pt.productId " +
+                    "WHERE 1=1");
+
+            if (searchString != null && !searchString.isEmpty()) {
+                hql.append(" AND (pt.name LIKE :searchString OR pt.description LIKE :searchString)");
+            }
+            if (genreId > 0) {
+                hql.append(" AND pt.genre.id = :genreId");
+            }
+            if (onlyAvailableProducts) {
+                hql.append(" AND pc.availabilityStatus = 'AVAILABLE'");
+            }
+            if (mediaType != null && mediaType != MediaType.NONE) {
+                hql.append(" AND pt.mediaType = :mediaType");
+            }
+
+            Query<ProductCopy> query = session.createQuery(hql.toString(), ProductCopy.class);
+
+            if (searchString != null && !searchString.isEmpty()) {
+                query.setParameter("searchString", "%" + searchString + "%");
+            }
+            if (genreId > 0) {
+                query.setParameter("genreId", genreId);
+            }
+            if (mediaType != null && mediaType != MediaType.NONE) {
+                query.setParameter("mediaType", mediaType.name());
+            }
+
+            return catalogue = query.getResultList();
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            return Collections.emptyList();
+        }
     }
 
     public Optional<ProductCopy> retrieveProductCopyById(long id) {
