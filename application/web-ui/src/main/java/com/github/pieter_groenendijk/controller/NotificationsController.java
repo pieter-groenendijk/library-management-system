@@ -5,14 +5,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class HomeController {
-    @GetMapping("/")
+public class NotificationsController {
+    @GetMapping("/notifications")
     public String render(Model model) {
         model.addAttribute(
             "title",
-            "Home"
+            "Notifications"
         );
 
-        return "home";
+        return "notification-overview";
     }
 }
