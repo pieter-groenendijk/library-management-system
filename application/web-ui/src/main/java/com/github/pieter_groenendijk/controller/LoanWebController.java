@@ -66,8 +66,8 @@ public class LoanWebController {
         }
     }
 
-    @GetMapping("/loan/")
-    public String getLoanByLoanId(@RequestParam("loanId") long loanId, Model model) {
+    @GetMapping("/loan/{loanId}")
+    public String retrieveLoanByLoanId(@PathVariable("loanId") long loanId, Model model) {
         String url = "http://core:8080/loan/" + loanId;
 
         ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
@@ -75,7 +75,7 @@ public class LoanWebController {
         if (response.getStatusCode().is2xxSuccessful()) {
             try {
                 Loan loan = objectMapper.readValue(response.getBody(), Loan.class);
-                model.addAttribute("loan", loan);
+                model.addAttribute("loanId", loan);
             } catch (Exception e) {
                 model.addAttribute("error", "Error Parsing the response");
             }

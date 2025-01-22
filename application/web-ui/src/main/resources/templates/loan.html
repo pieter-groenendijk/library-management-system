@@ -28,13 +28,13 @@
 <div>
   <form action="/loan/" method="get">
     <label for="loanIdInput">Enter Loan ID: </label>
-    <input type="text" id="loanIdInput" name="loanId" required>
+    <input type="number" id="loanIdInput" name="loanId" required>
     <button type="submit">Retrieve a loan by LoanId</button>
   </form>
   <br>
   <form action="/loan/{membershipId}" method="get">
     <label for="membershipIdInput">Enter Membership ID: </label>
-    <input type="text" id="membershipIdInput" name="membershipId" required>
+    <input type="number" id="membershipIdInput" name="membershipId" required>
     <button type="submit">Retrieve a loan by MembershipID</button>
   </form>
 </div>
