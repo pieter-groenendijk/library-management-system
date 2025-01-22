@@ -4,10 +4,10 @@ import com.github.pieter_groenendijk.model.Account;
 import com.github.pieter_groenendijk.model.fine.Fine;
 import com.github.pieter_groenendijk.model.fine.FineBalance;
 import com.github.pieter_groenendijk.model.fine.FineType;
-import jakarta.persistence.Query;
 import org.hibernate.*;
 
 
+import java.util.List;
 import java.util.Optional;
 
 public class FineRepository extends Repository implements IFineRepository {
@@ -58,5 +58,22 @@ public class FineRepository extends Repository implements IFineRepository {
         }finally {
             session.close();
         }
+    }
+
+    @Override
+    public List<Fine> retrieveUnpaidFines(Long accountId) throws Exception {
+        return super.performAtomicOperationReturning(session -> {
+            return session.createQuery(
+               """
+                select f  
+                from Fine as f  
+                where f.isPaid = false and
+                f.account.id = :accountId
+                """,
+                Fine.class
+            )
+               .setParameter("accountId", accountId)
+               .getResultList();
+        });
     }
 }
