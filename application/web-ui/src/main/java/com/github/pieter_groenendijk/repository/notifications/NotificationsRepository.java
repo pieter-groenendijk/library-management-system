@@ -1,6 +1,6 @@
 package com.github.pieter_groenendijk.repository.notifications;
 
-import com.github.pieter_groenendijk.model.Notification;
+import com.github.pieter_groenendijk.model.notification.Notification;
 import com.github.pieter_groenendijk.repository.Repository;
 import org.springframework.web.client.RestTemplate;
 

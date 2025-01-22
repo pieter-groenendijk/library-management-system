@@ -1,4 +1,4 @@
-package com.github.pieter_groenendijk.controller;
+package com.github.pieter_groenendijk.controller.notifications;
 
 import com.github.pieter_groenendijk.repository.notifications.NotificationsRepository;
 import org.springframework.stereotype.Controller;
