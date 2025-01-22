@@ -17,6 +17,6 @@ public class NotificationController {
             "Notification"
         );
 
-        return "notification-single";
+        return "notification/index";
     }
 }

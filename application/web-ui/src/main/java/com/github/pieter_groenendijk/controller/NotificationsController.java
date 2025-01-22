@@ -13,6 +13,6 @@ public class NotificationsController {
             "Notifications"
         );
 
-        return "notification-overview";
+        return "notifications/index";
     }
 }
