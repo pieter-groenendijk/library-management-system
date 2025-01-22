@@ -1,5 +1,6 @@
 package com.github.pieter_groenendijk.service.notification;
 
+import com.github.pieter_groenendijk.exception.EntityNotFoundException;
 import com.github.pieter_groenendijk.model.DTO.NotificationDTO;
 import com.github.pieter_groenendijk.repository.notification.INotificationRepository;
 import com.github.pieter_groenendijk.service.notification.mapping.NotificationMapper;
@@ -28,6 +29,13 @@ public class NotificationService implements INotificationService {
                 accountId,
                 maxAmount
             )
+        );
+    }
+
+    @Override
+    public NotificationDTO retrieve(Long notificationId) throws Exception {
+        return this.MAPPER.toDTO(
+            this.REPOSITORY.retrieve(notificationId).orElseThrow(() -> new EntityNotFoundException("Notification not found"))
         );
     }
 

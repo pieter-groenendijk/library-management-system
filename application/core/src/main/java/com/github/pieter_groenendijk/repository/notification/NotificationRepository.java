@@ -7,6 +7,7 @@ import org.hibernate.SessionFactory;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 public class NotificationRepository extends TaskRepository<Notification> implements INotificationRepository {
     public NotificationRepository(SessionFactory sessionFactory) {
@@ -46,5 +47,10 @@ public class NotificationRepository extends TaskRepository<Notification> impleme
                 .setMaxResults(maxAmount)
                 .getResultList();
         }));
+    }
+
+    @Override
+    public Optional<Notification> retrieve(Long notificationId) throws Exception {
+        return super.get(Notification.class, notificationId);
     }
 }

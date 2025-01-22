@@ -1,8 +1,8 @@
 package com.github.pieter_groenendijk.controller;
 
-import com.github.pieter_groenendijk.exception.InputValidationException;
 import com.github.pieter_groenendijk.hibernate.SessionFactoryFactory;
 import com.github.pieter_groenendijk.model.DTO.NotificationDTO;
+import com.github.pieter_groenendijk.model.notification.Notification;
 import com.github.pieter_groenendijk.repository.notification.NotificationRepository;
 import com.github.pieter_groenendijk.service.notification.INotificationService;
 import com.github.pieter_groenendijk.service.notification.NotificationService;
@@ -27,7 +27,7 @@ public class NotificationController {
     }
 
     @Operation(summary = "Retrieve the notifications the account should have received")
-    @ApiResponses(value = {
+    @ApiResponses({
         @ApiResponse(
             responseCode = "200"
         ),
@@ -47,6 +47,22 @@ public class NotificationController {
             .status(HttpStatus.OK)
             .body(
                 this.SERVICE.retrieveRecentReceivedNotifications(accountId, maxAmount)
+            );
+    }
+
+    @Operation(summary = "Retrieve a notification")
+    @ApiResponses({
+        @ApiResponse(responseCode = "200"),
+        @ApiResponse(responseCode = "404")
+    })
+    @GetMapping("/{notificationId}")
+    public ResponseEntity<NotificationDTO> retrieve(
+        @PathVariable("notificationId") Long notificationId
+    ) throws Exception {
+        return ResponseEntity
+            .status(HttpStatus.OK)
+            .body(
+                this.SERVICE.retrieve(notificationId)
             );
     }
 }
