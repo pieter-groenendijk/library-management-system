@@ -3,13 +3,12 @@
 <head>
     <title th:text="${title}">Library Management System</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" th:href="@{/css/home.css}">
-    <script defer th:src="@{/js/home.js}"></script>
 </head>
 <body>
-<div th:insert="nav"></div>
-<h1>Notifications</h1>
-<div th:text="${notifications}"></div>
+    <div th:insert="nav"></div>
+
+    <th:block th:each="notification : ${notifications}">
+        <th:block th:replace="~{notifications/single :: single}"/>
+    </th:block>
 </body>
 </html>

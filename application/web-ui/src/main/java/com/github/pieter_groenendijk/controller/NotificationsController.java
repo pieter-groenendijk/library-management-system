@@ -28,6 +28,9 @@ public class NotificationsController {
             this.REPOSITORY.retrieveRecent(1L)
         );
 
+        System.out.println(
+            this.REPOSITORY.retrieveRecent(1L)
+        );
 
         return "notifications/index";
     }
