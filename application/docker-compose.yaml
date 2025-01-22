@@ -73,4 +73,7 @@ services:
             -   web-ui
         ports:
             -   "8080:80"
-
+        develop:
+            watch:
+                -   path: "web-ui/src"
+                    action: rebuild
