@@ -22,11 +22,6 @@ public class NotificationsController {
             "Notifications"
         );
 
-        model.addAttribute(
-            "notification",
-            this.REPOSITORY.retrieve(1L).orElseThrow()
-        );
-
         return "notifications/index";
     }
 }

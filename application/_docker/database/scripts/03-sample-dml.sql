@@ -193,3 +193,30 @@ VALUES
 	(1, 1, 80, 2, null, 'test'),
 	(2, 2, 60, 3, null, 'test'),
 	(2, 1, 200, 4, null, 'test');
+
+INSERT INTO "Notification" (
+    "account",
+    "title",
+    "message",
+    "scheduledAt",
+    "sendStrategy",
+    "loan",
+    "associationType",
+    "status"
+) VALUES
+(1, 'Payment Reminder', 'Your loan payment is due soon.', '2025-02-25 10:00:00', 'REMINDER', 1, 'loan', 'SCHEDULED'),
+(1, 'Overdue Payment Alert', 'Your loan payment is overdue.', '2024-12-20 14:30:00', 'ALERT', 1, 'loan', 'CANCELLED'),
+(1, 'Loan Disbursement Notice', 'Your loan has been successfully disbursed.', '2024-12-15 09:00:00', 'ALERT', 1, 'loan', 'COMPLETED'),
+(1, 'Reminder: Loan Payment Due', 'Your loan payment is due in 3 days.', '2025-03-01 12:00:00', 'REMINDER', 2, 'loan', 'SCHEDULED'),
+(1, 'Final Warning: Loan Overdue', 'Your loan payment is critically overdue. Immediate action required.', '2024-11-25 08:00:00', 'WARNING', 3, 'loan', 'CANCELLED'),
+(2, 'Loan Application Approved', 'Your loan application has been approved.', '2025-01-30 11:00:00', 'ALERT', 4, 'loan', 'COMPLETED'),
+(3, 'Reminder: Loan Payment Due', 'Your loan payment is due in 5 days.', '2025-02-05 16:00:00', 'REMINDER', 5, 'loan', 'SCHEDULED'),
+(1, 'Payment Reminder', 'Reminder: Loan payment due soon.', '2025-03-05 10:30:00', 'REMINDER', 1, 'loan', 'SCHEDULED'),
+(1, 'Loan Disbursement Notice', 'Your loan has been disbursed today.', '2025-01-20 08:45:00', 'ALERT', 2, 'loan', 'COMPLETED'),
+(1, 'Overdue Payment Alert', 'Your loan payment is now 3 days overdue.', '2024-12-22 14:00:00', 'ALERT', 3, 'loan', 'CANCELLED'),
+(1, 'Reminder: Loan Payment Due', 'Loan payment reminder, don''t forget to pay on time!', '2025-02-28 13:00:00', 'REMINDER', 4, 'loan', 'SCHEDULED'),
+(2, 'Overdue Payment Alert', 'Your loan payment is overdue. Please pay as soon as possible.', '2024-12-18 17:00:00', 'ALERT', 5, 'loan', 'CANCELLED'),
+(1, 'Loan Application Reminder', 'Reminder: Complete your loan application today.', '2025-02-10 09:30:00', 'REMINDER', 1, 'loan', 'SCHEDULED'),
+(1, 'Final Payment Reminder', 'Your final loan payment is due next week.', '2025-01-25 12:00:00', 'REMINDER', 2, 'loan', 'SCHEDULED'),
+(1, 'Loan Extension Approved', 'Your loan extension has been approved. New payment date is 2025-03-15.', '2025-01-22 14:45:00', 'ALERT', 3, 'loan', 'COMPLETED'),
+(1, 'Warning: Loan Overdue', 'Warning: Your loan payment is overdue by 7 days.', '2024-11-30 11:00:00', 'WARNING', 4, 'loan', 'CANCELLED');
