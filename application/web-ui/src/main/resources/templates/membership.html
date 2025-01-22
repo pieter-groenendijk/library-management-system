@@ -15,9 +15,38 @@
     <button type="submit">Submit</button>
 </form>
 
-<div th:if="${accountResponse}">
-    <h3>Account Details</h3>
-    <p th:text="${accountResponse}"></p>
+<div th:if="${error}">
+    <p th:text="${error}" style="color: red;"></p>
+</div>
+
+<div th:if="${memberships}">
+    <h2>Memberships</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Membership ID</th>
+            <th>Account ID</th>
+            <th>Email</th>
+            <th>Name</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Membership Type</th>
+            <th>Blocked</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="membership : ${memberships}">
+            <td th:text="${membership.membershipId}"></td>
+            <td th:text="${membership.account.accountId}"></td>
+            <td th:text="${membership.account.email}"></td>
+            <td th:text="${membership.account.firstName} + ' ' + ${membership.account.lastName}"></td>
+            <td th:text="${membership.startDate}"></td>
+            <td th:text="${membership.endDate}"></td>
+            <td th:text="${membership.membershipType.description}"></td>
+            <td th:text="${membership.blocked ? 'Yes' : 'No'}"></td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 </body>
 </html>
