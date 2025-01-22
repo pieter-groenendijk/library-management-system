@@ -12,6 +12,8 @@ import org.springframework.http.HttpMethod;
 import java.util.List;
 import com.github.pieter_groenendijk.model.Membership;
 import com.github.pieter_groenendijk.model.MembershipType;
+import com.github.pieter_groenendijk.model.LendingLimit;
+import com.github.pieter_groenendijk.model.Genre;
 import com.github.pieter_groenendijk.DTO.MembershipRequestDTO;
 import com.github.pieter_groenendijk.DTO.MembershipTypeRequestDTO;
 import org.springframework.http.HttpEntity;
@@ -37,8 +39,8 @@ public class MembershipTypeWebController {
     }
 
     @PostMapping("/membershiptype/getAll")
-    public String getAllMembershipTypes(Model model) {
-        String url = "http://core:8080/membershiptype/getAll";  // No parameter required
+    public String getAllMembershipTypes(@RequestParam("membershipTypeId") String membershipTypeId, Model model) {
+        String url = "http://core:8080/membershipType/getAll" + membershipTypeId;  // No parameter required
 
         try {
             ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
@@ -46,13 +48,34 @@ public class MembershipTypeWebController {
             if (response.getStatusCode().is2xxSuccessful()) {
                 // Deserialize the response to a list of MembershipType objects
                 List<MembershipType> membershipTypes = objectMapper.readValue(response.getBody(), new TypeReference<List<MembershipType>>() {});
-                model.addAttribute("membershipTypes", membershipTypes);
+                model.addAttribute("membershipTypes" +
+                        "", membershipTypes);
             } else {
                 model.addAttribute("error2", "Failed to retrieve membership types.");
             }
         } catch (Exception e) {
             model.addAttribute("error2", "Something went wrong... Try again!");
         }
-        return "membershipType"; // Return the page where you want to display membership types
+        return "membershiptype"; // Return the page where you want to display membership types
+    }
+
+    @PostMapping("/membershipType/lendingLimit/getAll")
+    public String getLendingLimitsForMembershipType(@RequestParam("membershipTypeId") long membershipTypeId, Model model) {
+        String url = "http://core:8080/membershipType/lendingLimit/getAll/" + membershipTypeId;
+
+        try {
+            ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
+
+            if (response.getStatusCode().is2xxSuccessful()) {
+                List<LendingLimit> lendingLimits = objectMapper.readValue(response.getBody(), new TypeReference<List<LendingLimit>>() {});
+                model.addAttribute("lendingLimits", lendingLimits);
+            } else {
+                model.addAttribute("error3", "Failed to retrieve lending limits.");
+            }
+        } catch (Exception e) {
+            model.addAttribute("error3", "Something went wrong... Try again!");
+        }
+
+        return "membershiptype"; // Return to the page where you want to display the lending limits
     }
 }
