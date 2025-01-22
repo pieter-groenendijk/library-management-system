@@ -1,7 +1,9 @@
 package com.github.pieter_groenendijk.controller;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.pieter_groenendijk.DTO.LoanRequestDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -17,9 +19,12 @@ import java.time.LocalDate;
 public class LoanWebController {
 
     private final RestTemplate restTemplate;
+    private final ObjectMapper objectMapper;
 
-    public LoanWebController(RestTemplate restTemplate) {
+    @Autowired
+    public LoanWebController(RestTemplate restTemplate, ObjectMapper objectMapper) {
         this.restTemplate = restTemplate;
+        this.objectMapper = objectMapper;
     }
 
 
@@ -35,21 +40,28 @@ public class LoanWebController {
     }
 
     @PostMapping("/loan/")
-    public String processLoanForm(@ModelAttribute LoanRequestDTO loanRequestDTO) {
+    public String processLoanForm(@ModelAttribute LoanRequestDTO loanRequestDTO, Model model) {
         System.out.println("Loan submitted: " + loanRequestDTO);
 
+        String url = "http://core:8080/loan";
+        HttpEntity<LoanRequestDTO> request = new HttpEntity<>(loanRequestDTO);
+
         try {
-            String url = "http://core:8080/loan/store";
-            HttpEntity<LoanRequestDTO> request = new HttpEntity<>(loanRequestDTO);
-            ResponseEntity<Void> response = restTemplate.postForEntity(url, request, Void.class);
+            ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.POST, request, String.class);
 
             if (response.getStatusCode() == HttpStatus.CREATED) {
-                return "redirect:/loan/success";
+                LocalDate returnDate = LocalDate.now().plusDays(7);  // Calculate return date (7 days later)
+
+                model.addAttribute("message", "Loan successfully created!");
+                model.addAttribute("returnDate", returnDate);  // Add return date to the model
+                return "loan_success";
             } else {
+                model.addAttribute("message", "Error occurred while creating loan.");
                 return "redirect:/loan/failure";
             }
         } catch (Exception e) {
             System.out.println("Error processing loan: " + e.getMessage());
+            model.addAttribute("message", "Error processing loan: " + e.getMessage());
             return "redirect:/loan/failure";
         }
     }
