@@ -1,55 +1,45 @@
 package com.github.pieter_groenendijk.service.notification;
 
-import com.github.pieter_groenendijk.model.Loan;
-import com.github.pieter_groenendijk.repository.IAccountRepository;
+import com.github.pieter_groenendijk.exception.EntityNotFoundException;
+import com.github.pieter_groenendijk.model.DTO.NotificationDTO;
 import com.github.pieter_groenendijk.repository.notification.INotificationRepository;
-import com.github.pieter_groenendijk.scheduling.TaskScheduler;
-import com.github.pieter_groenendijk.service.notification.scheduling.NotificationScheduler;
-import com.github.pieter_groenendijk.service.notification.sendstrategies.NotificationSendStrategyFactory;
-import com.github.pieter_groenendijk.service.notification.sendstrategies.registry.NotificationSendStrategyRegistry;
-import com.github.pieter_groenendijk.service.notification.task.DetachedNotificationFactory;
+import com.github.pieter_groenendijk.service.notification.mapping.NotificationMapper;
 
-public class NotificationService {
-    private final DetachedNotificationFactory FACTORY;
-    private final NotificationScheduler SCHEDULER;
+import java.util.List;
 
-    private final IAccountRepository ACCOUNT_REPOSITORY;
+public class NotificationService implements INotificationService {
+    private final INotificationRepository REPOSITORY;
+    private final NotificationMapper MAPPER;
+
+    private final int ALLOWED_MAX_AMOUNT_THRESHOLD = 50;
 
     public NotificationService(
-        TaskScheduler scheduler,
-        INotificationRepository repository,
-        IAccountRepository accountRepository
+        INotificationRepository repository
     ) {
-        this.FACTORY = new DetachedNotificationFactory(
-            repository
-        );
-
-        this.SCHEDULER = new NotificationScheduler(
-            repository,
-            scheduler,
-            new NotificationSendStrategyRegistry(
-                new NotificationSendStrategyFactory()
-            )
-        );
-
-        this.ACCOUNT_REPOSITORY = accountRepository;
+        this.REPOSITORY = repository;
+        this.MAPPER = new NotificationMapper();
     }
 
-    public void scheduleOverdueLoanNotification(Loan loan) throws Exception {
-        this.SCHEDULER.schedule(
-            this.FACTORY.createOverdueLoanNotification(
-                this.ACCOUNT_REPOSITORY.retrieveAccountFromLoan(loan).orElseThrow(),
-                loan
+    @Override
+    public List<NotificationDTO> retrieveRecentReceivedNotifications(Long accountId, int maxAmount) throws Exception {
+        maxAmount = this.getEnforcedAllowedMaxAmount(maxAmount);
+
+        return this.MAPPER.toDTO(
+            this.REPOSITORY.retrieveRecentReceivedNotifications(
+                accountId,
+                maxAmount
             )
         );
     }
 
-    public void scheduleAlmostOverdueLoanNotification(Loan loan) throws Exception {
-        this.SCHEDULER.schedule(
-            this.FACTORY.createAlmostOverdueLoanNotification(
-                this.ACCOUNT_REPOSITORY.retrieveAccountFromLoan(loan).orElseThrow(),
-                loan
-            )
+    @Override
+    public NotificationDTO retrieve(Long notificationId) throws Exception {
+        return this.MAPPER.toDTO(
+            this.REPOSITORY.retrieve(notificationId).orElseThrow(() -> new EntityNotFoundException("Notification not found"))
         );
+    }
+
+    private int getEnforcedAllowedMaxAmount(int givenMaxAmount) {
+        return Math.min(givenMaxAmount, this.ALLOWED_MAX_AMOUNT_THRESHOLD);
     }
 }

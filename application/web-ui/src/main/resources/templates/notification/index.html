@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title th:text="${title}">Library Management System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div th:insert="nav"></div>
+
+    <th:block th:if="${notification}">
+        <h1 th:text="${notification.getTitle()}"></h1>
+        <p th:text="${notification.getMessage()}"></p>
+        <em th:text="${notification.getScheduledAt()}"></em>
+    </th:block>
+
+
+    <th:block th:unless="${notification}">
+        <p>No notification available.</p>
+    </th:block>
+</body>
+</html>
