@@ -9,13 +9,13 @@ import com.github.pieter_groenendijk.service.notification.sendstrategies.Notific
 import com.github.pieter_groenendijk.service.notification.sendstrategies.registry.NotificationSendStrategyRegistry;
 import com.github.pieter_groenendijk.service.notification.task.DetachedNotificationFactory;
 
-public class NotificationService {
+public class NotificationOrchestrator {
     private final DetachedNotificationFactory FACTORY;
     private final NotificationScheduler SCHEDULER;
 
     private final IAccountRepository ACCOUNT_REPOSITORY;
 
-    public NotificationService(
+    public NotificationOrchestrator(
         TaskScheduler scheduler,
         INotificationRepository repository,
         IAccountRepository accountRepository
