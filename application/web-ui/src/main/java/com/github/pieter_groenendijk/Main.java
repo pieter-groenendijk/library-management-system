@@ -3,7 +3,7 @@ package com.github.pieter_groenendijk;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "com.github.pieter_groenendijk")
 public class Main
 {
     public static void main( String[] args )

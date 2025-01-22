@@ -101,7 +101,7 @@ public class ReservationController {
             @ApiResponse(responseCode = "200", description = "Ready for pickup status retrieved"),
             @ApiResponse(responseCode = "404", description = "Reservation not found")
     })
-    @GetMapping("/{reservationId}/ready")
+    @GetMapping("/ready/{reservationId}/")
     public ResponseEntity<Boolean> readyForPickup(@PathVariable("reservationId") long reservationId) {
         boolean isReady = reservationService.readyForPickup(reservationId);
         return new ResponseEntity<>(isReady, HttpStatus.OK);
@@ -113,7 +113,7 @@ public class ReservationController {
             @ApiResponse(responseCode = "200", description = "Reservation converted to loan successfully"),
             @ApiResponse(responseCode = "404", description = "Reservation not found")
     })
-    @PutMapping("/{reservationId}/convertToLoan")
+    @PutMapping("/convertToLoan/{reservationId}")
     public ResponseEntity<String> markReservationAsLoaned(@PathVariable("reservationId") long reservationId) {
         try {
             Reservation reservation = reservationService.retrieveReservationById(reservationId);
