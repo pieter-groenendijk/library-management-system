@@ -52,7 +52,8 @@ public class LoanController {
             new ReservationRepository(sessionFactory),
             membershipRepository,
             new AccountRepository(sessionFactory),
-            productRepository
+            productRepository,
+                new MembershipTypeRepository(sessionFactory)
         );
 
         // TODO: Make this mess work with beans or dependency injection!!!!
