@@ -39,7 +39,7 @@ public class LoanWebController {
         System.out.println("Loan submitted: " + loanRequestDTO);
 
         try {
-            String url = "http://localhost:8081/api/loan";
+            String url = "http://core:8080/loan/store";
             HttpEntity<LoanRequestDTO> request = new HttpEntity<>(loanRequestDTO);
             ResponseEntity<Void> response = restTemplate.postForEntity(url, request, Void.class);
 
