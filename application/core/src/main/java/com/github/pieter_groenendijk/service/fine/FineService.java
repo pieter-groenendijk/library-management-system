@@ -1,7 +1,7 @@
 package com.github.pieter_groenendijk.service.fine;
 
-import com.github.pieter_groenendijk.model.DTO.FineDTO;
-import com.github.pieter_groenendijk.model.DTO.FineSummaryDTO;
+import com.github.pieter_groenendijk.dto.FineDTO;
+import com.github.pieter_groenendijk.dto.FineSummaryDTO;
 import com.github.pieter_groenendijk.repository.fine.IFineRepository;
 
 import java.util.List;

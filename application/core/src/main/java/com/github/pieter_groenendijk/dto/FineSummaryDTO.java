@@ -1,4 +1,4 @@
-package com.github.pieter_groenendijk.model.DTO;
+package com.github.pieter_groenendijk.dto;
 
 import java.util.List;
 
