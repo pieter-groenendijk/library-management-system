@@ -20,6 +20,9 @@ moeten lijken. Dit betekent dat de objectstructuur een hoge koppeling heeft aan 
 Daarnaast zou door de complexiteit van onze domeinlogica de entiteiten extreem veel verantwoordelijkheid krijgen. Het
 verliest dan een beetje aan het _Single Responsibility Principle_.
 
+Het zal ook lastiger worden om te testen, de domeinlaag en data-access laag. Doordat de verantwoordelijkheden mengen, 
+kun je ze moeilijk geïsoleerd testen.
+
 
 ## Inplanning van taken
 Taken binnen ons systeem hebben vaak een tijdsgebonden natuur. Enkele voorbeelden:
@@ -46,7 +49,15 @@ kunnen de afgeleide _classes_ gebruikt worden als de basis _classes_.
 In de praktijk betekent dit dat _classes_ afhankelijk zijn van abstracties, niet van concrete implementaties.
 Zo ontstaat er geen artificiële koppeling.
 
-## Centralisatie van _events_
+### Alternatief: Duplicatie
+Zowel de _notificatie_ als _boete_ implementeren hun eigen manier van taken inplannen. Hierdoor zijn ze meer ontkoppeld, 
+en zouden ze dus compleet onafhankelijk gebouwd kunnen worden.
+
+Nadeel is natuurlijk dat er duplicatie gaat optreden. Er is namelijk duidelijk terugkerende functionaliteit in de modules.
+Vaak is de koppeling die ontstaat door de externe module juist wat je wilt. Daardoor zal een verandering in het algoritme
+terugkomen automatisch in beide modules.
+
+## Centralisatie door _events_
 Zoals eerder besproken zijn er meerdere requirements die tijdsgebonden zijn. Deze momenten hebben vaak overlap tussen
 de verschillende requirements. Denk bijv. aan een situatie waarbij het leentermijn van een product is verlopen, en dus
 het product _te laat_ is. Zowel notificaties en boetes zitten gekoppeld aan dit moment.
@@ -63,3 +74,20 @@ De volgende events, gebaseerd op leningen, zijn voor nu bedacht:
 De events zorgen momenteel voor de volgende acties:
 ![](../../artifacts/events/assets/loan-event-actions.excalidraw.svg)
 
+### Alternatief: Directe koppeling
+Het is ook mogelijk om de _event_ stap over te slaan. Dan gebruiken we aanroepingen direct in de functie, i.p.v. dat we
+een _event_ laten _emitten_.
+
+Het voordeel hiervan is dat die gehele tussenstap van _events_ dus weggaat. Dat is een directe vermindering van
+complexiteit. 
+
+Toch denk ik niet dat dit het makkelijker maakt om mee te werken, van een developer's perspectief. Met 
+_events_ hoeft de developer niet na te denken over hoe of wanneer de _event_ wordt _emit_, het maakt hem alleen uit
+dat die wordt _emit_. Elk nieuwe functionaliteit die eigenlijk bij een _event_ zou horen, moet nu voor specifiek door de 
+code gespookt worden om te kijken waar het zou passen.
+
+Een ander voordeel is dat doordat er directe koppeling ontstaat error handling over een gehele situatie makkelijker wordt.
+Er kan simpelweg een try/catch omheen gezet worden.
+
+Een groot nadeel is de vermindering in flexibiliteit. Zoals de naam van dit alternatief noemt, er ontstaat directe 
+koppeling. Bij _events_ is er sprake van een _middleman_. 
