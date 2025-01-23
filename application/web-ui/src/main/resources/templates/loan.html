@@ -7,10 +7,13 @@
   <link rel="stylesheet" th:href="@{/css/home.css}">
   <script defer th:src="@{/js/home.js}"></script>
 </head>
-
 <body>
 <h1>Create New Loan</h1>
 <form th:action="@{/loan/store}" th:object="${loanRequestDTO}" method="POST">
+  <div>
+    <label for="startDate">Start Date:</label>
+    <input type="date" id="startDate" th:field="*{startDate}" required>
+  </div>
   <div>
     <label for="membershipId">Member ID:</label>
     <input type="number" id="membershipId" th:field="*{membershipId}" required>
@@ -21,33 +24,80 @@
   </div>
   <button type="submit">Create Loan</button>
 </form>
+
 <div th:if="${error}">
   <p th:text="${error}" style="color: red;"></p>
 </div>
 <br>
 <div>
-  <form action="/loan/" method="get">
+  <form action="/loan/loanid" method="post">
     <label for="loanIdInput">Enter Loan ID: </label>
     <input type="number" id="loanIdInput" name="loanId" required>
     <button type="submit">Retrieve a loan by LoanId</button>
   </form>
   <br>
-  <form action="/loan/{membershipId}" method="get">
+  <form action="/membership/loans" method="post">
     <label for="membershipIdInput">Enter Membership ID: </label>
     <input type="number" id="membershipIdInput" name="membershipId" required>
     <button type="submit">Retrieve a loan by MembershipID</button>
   </form>
 </div>
-<div th:if="${loan != null}">
-  <h3>Loan Details</h3>
-  <p><strong>Loan ID:</strong> <span th:text="${loan.loanId}"></span></p>
-  <p><strong>Start Date:</strong> <span th:text="${loan.startDate}"></span></p>
-  <p><strong>Return By:</strong> <span th:text="${loan.returnBy}"></span></p>
-  <p><strong>Extended Return By:</strong> <span th:text="${loan.extendedReturnBy}"></span></p>
-  <p><strong>Returned On:</strong> <span th:text="${loan.returnedOn}"></span></p>
-  <p><strong>Loan Status:</strong> <span th:text="${loan.loanStatus}"></span></p>
-  <p><strong>Membership ID:</strong> <span th:text="${loan.membership.membershipId}"></span></p>
-  <p><strong>Product Copy ID:</strong> <span th:text="${loan.productCopy}"></span></p>
+
+<!-- Display Loan by loanId -->
+<div th:if="${loan}">
+  <div th:if="${loan}">
+    <h2>Loan Details</h2>
+    <p>Loan ID: <span th:text="${loan.loanId}"></span></p>
+    <p>Start Date: <span th:text="${loan.startDate}"></span></p>
+    <p>Return By: <span th:text="${loan.returnBy}"></span></p>
+    <p>Extended Return By: <span th:text="${loan.extendedReturnBy}"></span></p>
+    <p>Returned On: <span th:text="${loan.returnedOn}"></span></p>
+    <p>Loan Status: <span th:text="${loan.loanStatus}"></span></p>
+    <p>Membership ID: <span th:text="${loan.membership.membershipId}"></span></p>
+
+    <!-- Membership Details -->
+    <h3>Membership Details</h3>
+    <p>Account ID: <span th:text="${loan.membership.account.accountId}"></span></p>
+    <p>First Name: <span th:text="${loan.membership.account.firstName}"></span></p>
+    <p>Last Name: <span th:text="${loan.membership.account.lastName}"></span></p>
+    <p>Email: <span th:text="${loan.membership.account.email}"></span></p>
+    <p>Membership Start Date: <span th:text="${loan.membership.startDate}"></span></p>
+    <p>Membership End Date: <span th:text="${loan.membership.endDate}"></span></p>
+    <p>Membership Type: <span th:text="${loan.membership.membershipType.description}"></span></p>
+    <p>Max Lendings: <span th:text="${loan.membership.membershipType.maxLendings}"></span></p>
+
+    <!-- Product Copy Details -->
+    <h3>Product Copy Details</h3>
+    <p>Product Copy ID: <span th:text="${loan.productCopy.productCopyId}"></span></p>
+    <p>Availability Status: <span th:text="${loan.productCopy.availabilityStatus}"></span></p>
+
+    <!-- Physical Product Details -->
+    <h3>Physical Product Details</h3>
+    <p>Product Name: <span th:text="${loan.productCopy.physicalProduct.name}"></span></p>
+    <p>Year of Release: <span th:text="${loan.productCopy.physicalProduct.yearOfRelease}"></span></p>
+    <p>Media Type: <span th:text="${loan.productCopy.physicalProduct.mediaType}"></span></p>
+    <p>Author: <span th:text="${loan.productCopy.physicalProductTemplate.author}"></span></p>
+    <p>Location: <span th:text="${loan.productCopy.physicalProductTemplate.location}"></span></p>
+    <p>Genre: <span th:text="${loan.productCopy.physicalProduct.genre.description}"></span></p>
+  </div>
+<!-- Display for multiple loans -->
+  <div th:if="${loans}">
+    <h2>Loan Details</h2>
+    <table>
+      <thead>
+      <tr>
+        <th>Membership ID</th>
+        <th>Loan ID</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="loan : ${loans}">
+        <td th:text="${loan.membershipId}"></td>
+        <td th:text="${loan.loanId}"></td>
+      </tr>
+      </tbody>
+    </table>
 </div>
+    </div>
 </body>
 </html>

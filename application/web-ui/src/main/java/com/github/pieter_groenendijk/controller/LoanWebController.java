@@ -47,7 +47,7 @@ public class LoanWebController {
 
 
         try {
-            String url = "http://core:8080/loan";
+            String url = "http://core:8080/loan/";
             HttpEntity<LoanRequestDTO> request = new HttpEntity<>(loanRequestDTO);
             ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.POST, request, String.class);
 
@@ -66,8 +66,8 @@ public class LoanWebController {
         }
     }
 
-    @GetMapping("/loan/loanid")
-    public String retrieveLoanByLoanId(@PathVariable("loanId") long loanId, Model model) {
+    @PostMapping("/loan/loanid/")
+    public String retrieveLoanByLoanId(@RequestParam("loanId") long loanId, Model model) {
         String url = "http://core:8080/loan/" + loanId;
 
         ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
@@ -86,15 +86,15 @@ public class LoanWebController {
         return "loan";
     }
 
-    /*
-    @PostMapping("/membership/loans")
+
+    @PostMapping("/membership/loans/")
     public String getLoanByMembershipId(@RequestParam("membershipId") String membershipId, Model model) {
-        String url = "http://core:8080/membership/loans" + membershipId
+        String url = "http://core:8080/loan/membership/" + membershipId;
         ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
 
         if (response.getStatusCode().is2xxSuccessful()) {
             try {
-                List<Loan> Loans = objectMapper.readValue(response.getBody(), new TypeReference<List<Loan>>() {});
+                List<Loan> loans = objectMapper.readValue(response.getBody(), new TypeReference<List<Loan>>() {});
                 model.addAttribute("loans", loans);
             } catch (Exception e) {
                 model.addAttribute("error", "Error Parsing the response");
@@ -103,9 +103,9 @@ public class LoanWebController {
             model.addAttribute("membershipResponse", "Error fetching membership details.");
         }
 
-        return "membership";
+        return "loan";
     }
-*/
+
 }
 
 

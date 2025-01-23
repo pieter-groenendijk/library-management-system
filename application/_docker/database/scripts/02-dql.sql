@@ -68,3 +68,11 @@ JOIN "ProductTemplate" pt ON p."productId" = pt."productId"
 JOIN "Genre" g ON pt."genreId" = g."genreId"
 WHERE l."loanStatus" IN ('ACTIVE', 'OVERDUE', 'EXTENDED')
 GROUP BY l."membershipId", m."accountId", g."genreId", g."description";
+
+CREATE VIEW "vw_Loans_Per_Membership" AS
+    SELECT
+        "membershipId",
+        "loanId"
+    FROM "Loan"
+    WHERE "loanStatus" IN ('ACTIVE', 'OVERDUE', 'EXTENDED')
+    GROUP BY "membershipId", "loanId";

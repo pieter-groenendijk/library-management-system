@@ -30,4 +30,8 @@ public class LoanRequestDTO {
     public long getMembershipId() {
         return membershipId;
     }
+
+    public void setMembershipId(long membershipId) {
+        this.membershipId = membershipId;
+    }
 }
