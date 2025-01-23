@@ -1,11 +1,8 @@
 package com.github.pieter_groenendijk.model;
 
-
 public class Genre {
 
     private long genreId;
-
-
     private String description;
 
     public long getGenreId() { return genreId; }

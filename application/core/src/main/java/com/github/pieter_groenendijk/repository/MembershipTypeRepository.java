@@ -186,7 +186,7 @@ public class MembershipTypeRepository implements IMembershipTypeRepository {
             CriteriaQuery<LendingLimit> cr = cb.createQuery(LendingLimit.class);
             Root<LendingLimit> root = cr.from(LendingLimit.class);
 
-            cr.select(root).where(cb.equal(root.get("membershiptype").get("id"), id));
+            cr.select(root).where(cb.equal(root.get("membershipType").get("id"), id));
 
             return session.createQuery(cr).getResultList();
         } catch (HibernateException e) {

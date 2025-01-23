@@ -37,7 +37,12 @@ public class MembershipRepository implements IMembershipRepository{
 			CriteriaQuery<Membership> cr = cb.createQuery(Membership.class);
 			Root<Membership> root = cr.from(Membership.class);
 
-			cr.select(root).where(cb.equal(root.get("account").get("id"), accountId));
+			cr.select(root).where(
+					cb.and(
+							cb.equal(root.get("account").get("id"), accountId),
+							cb.isFalse(root.get("isDeleted"))
+					)
+			);
 
 			return session.createQuery(cr).getResultList();
 		} catch (HibernateException e) {

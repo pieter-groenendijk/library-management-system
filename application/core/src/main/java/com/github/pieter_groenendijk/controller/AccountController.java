@@ -82,11 +82,4 @@ public class AccountController {
         accountService.softDeleteAccount(id);
         return ResponseEntity.status(HttpStatus.ACCEPTED).build();
     }
-
-    @Operation(summary = "Pay debs", description = "Pay debets")
-    @PostMapping("/payDebts/{id}")
-    public ResponseEntity<?> payDebt(@PathVariable("id") long id) {
-        accountService.payDebt(id);
-        return ResponseEntity.status(HttpStatus.ACCEPTED).build();
-    }
 }

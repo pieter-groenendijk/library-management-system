@@ -1,4 +1,4 @@
-package com.github.pieter_groenendijk.model;
+package com.github.pieter_groenendijk.model.notification;
 
 import java.time.LocalDateTime;
 
