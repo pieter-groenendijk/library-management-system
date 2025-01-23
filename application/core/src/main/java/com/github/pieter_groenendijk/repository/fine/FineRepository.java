@@ -39,6 +39,7 @@ public class FineRepository extends Repository implements IFineRepository {
         return super.get(FineBalance.class, account);
     }
 
+    @Override
     public void payUnpaidFines(long accountId) throws Exception {
         super.performAtomicOperation((session -> {
             session.createMutationQuery(

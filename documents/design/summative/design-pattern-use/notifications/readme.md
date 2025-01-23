@@ -49,10 +49,21 @@ In dit voorbeeld geldt dat dan voor de methodes:
 
 ## Facade Pattern
 ### Waar?
+`NotificationOrchestrator`
+
+### Waarom?
+Het creëert een nieuwe interface om met alle notificatie subsystemen te communiceren, zonder alle details te weten. Zo
+hoeven buitenstaanders van deze module vooral naar deze _facade_ kijken om te weten hoe ze op de notificatie module 
+kunnen aansluiten. Zo kan er effectief en efficiënt bekende workflows uitgevoerd worden zonder de gehele complexiteit
+van de subsystemen in detail in je hoofd te houden.
+
+## Facade Pattern
+### Waar?
 `NotificationService`
 
 ### Waarom?
 Het creëert een nieuwe interface om met alle notificatie subsystemen te communiceren, zonder alle details te weten. Zo
-hoeven buitenstaanders van deze module vooral naar deze _service_ kijken om te weten hoe ze op de notificatie module 
+hoeven buitenstaanders van deze module vooral naar deze _service_ kijken om te weten hoe ze op de notificatie module
 kunnen aansluiten. Zo kan er effectief en efficiënt bekende workflows uitgevoerd worden zonder de gehele complexiteit
 van de subsystemen in detail in je hoofd te houden.
+
