@@ -17,19 +17,18 @@
         </tr>
         <tr>
             <td><strong>Cross References</strong></td>
-            <td>Requirement FR-008</td>
         </tr>
         <tr>
             <td><strong>Brief Description</strong></td>
-            <td>Als content beheerder wil ik nieuwe producten kunnen toevoegen aan de bibliotheekcatalogus.</td>
+            <td>Als beheerder wil ik nieuwe abonnementstypes kunnen toevoegen aan de bibliotheekcatalogus.</td>
         </tr>
         <tr>
             <td><strong>Preconditions</strong></td>
-            <td>1. De content beheerder is ingelogd in het bibliotheekbeheersysteem.</td>
+            <td>1. De beheerder is ingelogd in het bibliotheekbeheersysteem.</td>
         </tr>
         <tr>
             <td><strong>Postconditions on Success</strong></td>
-            <td>1. Het product is toegevoegd aan de catalogus.<br>2. Het product is zichtbaar voor bezoekers van de bibliotheekcatalogus.</td>
+            <td>1. Het abonnementstype is toegevoegd.<br>2. Het abonnementstype kan toegevoegd worden aan een account.</td>
         </tr>
         <tr>
             <td><strong>Postconditions on Failure</strong></td>
@@ -48,15 +47,15 @@
                     <tbody>
                         <tr>
                     <td><br>
-                1. De editor navigeert naar de locatie voor het toevoegen van een nieuw product.<br></td> 
+                1. De beheerder navigeert naar de locatie voor het toevoegen van een nieuw abonnementstype.<br></td> 
                 <td>
-                2. Het systeem toont een formulier met velden zoals titel, auteur, ISBN, beschrijving en producttype.</td>
+                2. Het systeem toont een formulier met velden zoals naam, prijs en of het voor fysieke en/of digitale producten geschikt is.</td>
                 <tr><td>
-                3. De editor vult de velden voor het nieuwe product.<br>
-                4. De editor bevestigd de invoer.</td>
+                3. De beheerder vult de velden voor het nieuwe product.<br>
+                4. De beheerder bevestigt de invoer.</td>
                 <td>
                     5. Het systeem valideert de invoer (bijvoorbeeld verplichte velden zijn ingevuld).<br>
-                    6. Het systeem voegt het product toe aan de catalogus.<br>
+                    6. Het systeem voegt het abonnementstype toe.<br>
                     7. Het systeem toont een bevestiging van de toevoeging.</td>
                 </tr>
                     </tbody>
@@ -89,7 +88,7 @@
                     <tbody> 
                         <tr>
                             <td></td><td>
-           6.B Het systeem heeft geeft een melding dat dit product al aanwezig is in de catalogus. → Verder naar stap 3.
+           6.B Het systeem heeft geeft een melding dat er al een abonnementstype met deze naam bestaat. → Verder naar stap 3.
                             </td> 
                         </tr>
                     </tbody></table>
@@ -106,8 +105,8 @@
                     <tbody> 
                         <tr>
                             <td>
-                         3.A  De editor annuleert de invoer. </td> 
-<td>4.A Het systeem annuleert de invoer en keert terug naar de catalogus zonder het product toe te voegen.</td>
+                         3.A  De beheerder annuleert de invoer. </td> 
+<td>4.A Het systeem annuleert de invoer en keert terug naar het menu.</td>
                         </tr>
     </tbody></table>
 </table></table>

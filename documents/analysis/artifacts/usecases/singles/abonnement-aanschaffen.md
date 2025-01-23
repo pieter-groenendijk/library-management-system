@@ -50,30 +50,19 @@
                         <tr>
                             <td>
                                 1. Lid verzoekt een abonnement aan te schaffen.<br>
-                                2. Lid selecteert abonnementstype.<br>
+                                2. Lid vraagt lijst met abonnementstypes op.<br>
                             </td>
                             <td>
-                                3. Systeem toont de prijs en details van het abonnement.<br>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                4. Lid bevestigt keuze.<br>
-                            </td>
-                            <td>
-                                5. Systeem vraagt om de persoonsgegevens van de bezoeker.<br>
+                                3. Systeem toont een lijst met abonnementstypes.<br>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                6. Lid vult zijn persoonsgegevens in.<br>
-                                7. Lid bevestigt keuze.<br>
+                                4. Lid kiest abonnementstype en bevestigt.<br>
                             </td>
                             <td>
-                                8. Systeem valideert de opgegeven persoonsgegevens en abonnementstype keuze.<br>
-                                <em>Usecase 'Betalen' begint.</em><br>
-                                9. Systeem voegt het gekozen abonnement toe aan het account.<br>
-                                10. Systeem toont het abonnement successvol is aangeschaft.<br>
+                                5. Systeem valideert dat abonnementstype gekoppeld mag worden aan account.<br>
+                                6. Systeem koppelt terug dat abonnementstype toegevoegd is.
                             </td>
                         </tr>
                     </tbody>
@@ -95,9 +84,9 @@
                         <tr>
                             <td></td>
                             <td>
-                                8.A Systeem stelt foutieve persoonsgegevens en/of abonnementstype vast. <br>
-                                9.A Systeem communiceert fout.<br>
-                                <em>terug naar stap 2 of 6 (afhankelijk van fout)</em>
+                                5.A Systeem stelt foutief abonnementstype vast. <br>
+                                6.A Systeem communiceert fout.<br>
+                                <em>terug naar stap 4 </em>
                             </td>
                         </tr>
                     </tbody>
@@ -119,8 +108,8 @@
                         <tr>
                             <td></td>
                             <td>
-                                9.B Systeem kan gekozen abonnement niet toevoegen aan account.<br>
-                                10.B Systeem toont foutmelding: "Interne fout. Toevoegen abonnement gefaalt. Neem contact op."<br>
+                                5.B Systeem kan gekozen abonnement niet toevoegen aan account.<br>
+                                6.B Systeem toont foutmelding <br>
                             </td>
                         </tr>
                     </tbody>

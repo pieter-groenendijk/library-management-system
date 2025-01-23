@@ -90,12 +90,14 @@ public class MembershipTypeRepository implements IMembershipTypeRepository {
     public List<MembershipType> retrieveMembershipTypeList() {
             Session session = sessionFactory.openSession();
             try {
+                System.out.println("testtest");
                 CriteriaBuilder cb = session.getCriteriaBuilder();
                 CriteriaQuery<MembershipType> cr = cb.createQuery(MembershipType.class);
                 Root<MembershipType> root = cr.from(MembershipType.class);
                 cr.select(root);
                 return session.createQuery(cr).getResultList();
-            } catch (HibernateException e) {
+            } catch (Exception e) {
+                System.out.println("Error in hibernate" + e.getMessage());
                 if (session.getTransaction() != null) {
                     session.getTransaction().rollback();
                 }
