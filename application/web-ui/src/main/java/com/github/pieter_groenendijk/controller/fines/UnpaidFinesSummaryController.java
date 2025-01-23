@@ -30,11 +30,13 @@ public class UnpaidFinesSummaryController {
             );
         }));
 
-        return "unpaid-fines/unpaid-fines";
+        return "unpaid-fines/summary/unpaid-fines";
     }
 
     @PostMapping("/unpaid-fines/pay")
     public String payFines() {
-        return "redirect:/unpaid-fines";
+        this.REPOSITORY.payUnpaidFines(1L);
+
+        return "unpaid-fines/successful-payment/successful-payment";
     }
 }

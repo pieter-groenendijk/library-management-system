@@ -8,7 +8,7 @@
     </thead>
     <tbody>
         <th:block th:each="fine : ${summary.getFines()}">
-            <th:block th:replace="~{unpaid-fines/unpaid-fine-row}"/>
+            <th:block th:replace="~{unpaid-fines/summary/unpaid-fine-row}"/>
         </th:block>
     </tbody>
     <tfoot>
