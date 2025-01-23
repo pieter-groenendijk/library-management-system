@@ -1,6 +1,6 @@
 package com.github.pieter_groenendijk.service.notification;
 
-import com.github.pieter_groenendijk.model.DTO.NotificationDTO;
+import com.github.pieter_groenendijk.dto.NotificationDTO;
 
 import java.util.List;
 
