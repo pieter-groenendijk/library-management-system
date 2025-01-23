@@ -1,8 +1,8 @@
 package com.github.pieter_groenendijk.service.loan.fine.generator;
 
-import com.github.pieter_groenendijk.model.Loan;
-import com.github.pieter_groenendijk.model.fine.FineType;
-import com.github.pieter_groenendijk.model.fine.LoanFine;
+import com.github.pieter_groenendijk.entity.Loan;
+import com.github.pieter_groenendijk.entity.fine.FineType;
+import com.github.pieter_groenendijk.entity.fine.LoanFine;
 import com.github.pieter_groenendijk.service.fine.generator.FineGenerator;
 
 public class LoanFineGenerator extends FineGenerator<Loan, LoanFine> {

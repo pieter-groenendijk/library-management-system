@@ -1,8 +1,8 @@
 package com.github.pieter_groenendijk.service.notification.orchestration;
 
-import com.github.pieter_groenendijk.model.Account;
-import com.github.pieter_groenendijk.model.Loan;
-import com.github.pieter_groenendijk.model.notification.LoanNotification;
+import com.github.pieter_groenendijk.entity.Account;
+import com.github.pieter_groenendijk.entity.Loan;
+import com.github.pieter_groenendijk.entity.notification.LoanNotification;
 import com.github.pieter_groenendijk.repository.notification.INotificationRepository;
 import com.github.pieter_groenendijk.scheduling.DetachedTask;
 import com.github.pieter_groenendijk.service.notification.generators.AlmostOverdueLoanNotificationGenerator;

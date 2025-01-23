@@ -9,7 +9,7 @@ public class NotificationSendStrategyRegistry {
     private final ReminderNotificationSendStrategy REMINDER_STRATEGY;
 
     public NotificationSendStrategyRegistry(
-        NotificationSendStrategyFactory factory
+        NotificationSendStrategyAssembler factory
     ) {
         this.ALERT_STRATEGY = factory.createAlertStrategy();
         this.WARNING_STRATEGY = factory.createWarningStrategy();

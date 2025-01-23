@@ -1,8 +1,8 @@
 package com.github.pieter_groenendijk.controller;
 
+import com.github.pieter_groenendijk.dto.CatalogueRequestDTO;
 import com.github.pieter_groenendijk.hibernate.SessionFactoryFactory;
-import com.github.pieter_groenendijk.model.Reservation;
-import com.github.pieter_groenendijk.model.product.ProductCopy;
+import com.github.pieter_groenendijk.entity.product.ProductCopy;
 import com.github.pieter_groenendijk.repository.IProductRepository;
 import com.github.pieter_groenendijk.repository.ProductRepository;
 import com.github.pieter_groenendijk.repository.genre.IGenreRepository;
@@ -18,7 +18,6 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import com.github.pieter_groenendijk.model.DTO.CatalogueRequestDTO;
 
 @RestController
 @RequestMapping("/product")

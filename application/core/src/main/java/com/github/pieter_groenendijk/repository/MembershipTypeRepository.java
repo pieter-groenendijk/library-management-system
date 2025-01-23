@@ -1,17 +1,16 @@
 package com.github.pieter_groenendijk.repository;
 
-import com.github.pieter_groenendijk.model.MembershipType;
+import com.github.pieter_groenendijk.entity.MembershipType;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import java.util.Optional;
-import com.github.pieter_groenendijk.model.DTO.MembershipRequestDTO;
 import java.util.List;
 import java.util.Collections;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
 import org.hibernate.HibernateException;
-import com.github.pieter_groenendijk.model.LendingLimit;
+import com.github.pieter_groenendijk.entity.LendingLimit;
 
 public class MembershipTypeRepository implements IMembershipTypeRepository {
 

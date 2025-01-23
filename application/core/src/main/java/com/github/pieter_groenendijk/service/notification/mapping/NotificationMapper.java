@@ -1,7 +1,7 @@
 package com.github.pieter_groenendijk.service.notification.mapping;
 
+import com.github.pieter_groenendijk.entity.notification.Notification;
 import com.github.pieter_groenendijk.model.DTO.NotificationDTO;
-import com.github.pieter_groenendijk.model.notification.Notification;
 
 import java.util.List;
 

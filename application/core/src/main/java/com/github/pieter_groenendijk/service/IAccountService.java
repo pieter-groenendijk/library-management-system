@@ -1,14 +1,14 @@
 package com.github.pieter_groenendijk.service;
 
-import com.github.pieter_groenendijk.model.Account;
-import com.github.pieter_groenendijk.model.DTO.MembershipTypeRequestDTO;
-import com.github.pieter_groenendijk.model.MembershipType;
-import com.github.pieter_groenendijk.model.Membership;
-import com.github.pieter_groenendijk.model.LendingLimit;
-import com.github.pieter_groenendijk.model.DTO.MembershipRequestDTO;
+import com.github.pieter_groenendijk.entity.Account;
+import com.github.pieter_groenendijk.dto.MembershipTypeRequestDTO;
+import com.github.pieter_groenendijk.entity.MembershipType;
+import com.github.pieter_groenendijk.entity.Membership;
+import com.github.pieter_groenendijk.entity.LendingLimit;
+import com.github.pieter_groenendijk.dto.MembershipRequestDTO;
 
 import java.util.List;
-import com.github.pieter_groenendijk.model.DTO.AccountRequestDTO;
+import com.github.pieter_groenendijk.dto.AccountRequestDTO;
 
 public interface IAccountService {
 

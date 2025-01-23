@@ -1,7 +1,7 @@
 package com.github.pieter_groenendijk.service.notification.scheduling;
 
 import com.github.pieter_groenendijk.repository.scheduling.ITaskRepository;
-import com.github.pieter_groenendijk.model.notification.Notification;
+import com.github.pieter_groenendijk.entity.notification.Notification;
 import com.github.pieter_groenendijk.scheduling.LongTermTaskScheduler;
 import com.github.pieter_groenendijk.scheduling.TaskScheduler;
 import com.github.pieter_groenendijk.service.notification.sendstrategies.registry.NotificationSendStrategyRegistry;
