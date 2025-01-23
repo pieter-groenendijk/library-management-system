@@ -9,5 +9,8 @@
     <div th:insert="nav"></div>
 
     <th:block th:replace="~{unpaid-fines/unpaid-fine-summary-table}"/>
+    <form th:action="@{/unpaid-fines/pay}" method="post">
+        <button type="submit">Pay</button>
+    </form>
 </body>
 </html>
