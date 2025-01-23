@@ -48,7 +48,7 @@
                     <tbody>
                         <tr>
                     <td><br>
-                1. De editor navigeerd naar de locatie voor het toevoegen van een nieuw product.<br></td> 
+                1. De editor navigeert naar de locatie voor het toevoegen van een nieuw product.<br></td> 
                 <td>
                 2. Het systeem toont een formulier met velden zoals titel, auteur, ISBN, beschrijving en producttype.</td>
                 <tr><td>
