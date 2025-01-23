@@ -3,7 +3,7 @@ package com.github.pieter_groenendijk.service.loan.fine;
 import com.github.pieter_groenendijk.model.Loan;
 import com.github.pieter_groenendijk.repository.IAccountRepository;
 import com.github.pieter_groenendijk.repository.fine.IFineRepository;
-import com.github.pieter_groenendijk.service.fine.FineProcessor;
+import com.github.pieter_groenendijk.service.fine.processor.FineProcessor;
 import com.github.pieter_groenendijk.service.fine.type.FineTypeRegistry;
 
 public class LoanFineService {

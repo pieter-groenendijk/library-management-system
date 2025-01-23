@@ -8,7 +8,6 @@ import com.github.pieter_groenendijk.repository.IAccountRepository;
 import com.github.pieter_groenendijk.repository.IMembershipTypeRepository;
 import com.github.pieter_groenendijk.repository.IMembershipRepository;
 import com.github.pieter_groenendijk.repository.fine.IFineRepository;
-import com.github.pieter_groenendijk.repository.fine.FineRepository;
 import com.github.pieter_groenendijk.exception.EntityNotFoundException;
 import com.github.pieter_groenendijk.exception.InputValidationException;
 import com.github.pieter_groenendijk.service.validator.EmailValidator;
@@ -305,11 +304,5 @@ public class AccountService implements IAccountService {
 
     public void softDeleteLendingLimit(long id){
         membershipTypeRepository.retrieveLendingLimitById(id);
-    }
-
-    //Fine
-
-    public void payDebt(long accountId) {
-        fineRepository.payDebt(accountId);
     }
 }

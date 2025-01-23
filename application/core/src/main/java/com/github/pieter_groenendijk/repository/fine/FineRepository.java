@@ -4,10 +4,10 @@ import com.github.pieter_groenendijk.model.Account;
 import com.github.pieter_groenendijk.model.fine.Fine;
 import com.github.pieter_groenendijk.model.fine.FineBalance;
 import com.github.pieter_groenendijk.model.fine.FineType;
-import jakarta.persistence.Query;
 import org.hibernate.*;
 
 
+import java.util.List;
 import java.util.Optional;
 
 public class FineRepository extends Repository implements IFineRepository {
@@ -39,24 +39,36 @@ public class FineRepository extends Repository implements IFineRepository {
         return super.get(FineBalance.class, account);
     }
 
-    public void payDebt(long accountId) {
-        Session session = SESSION_FACTORY.openSession();
-        Transaction transaction = null;
-        try {
-            transaction = session.beginTransaction();
-            String hql = "UPDATE Fine f SET f.isPaid = true WHERE f.account.id = :account";
-            session.createQuery(hql)
-                    .setParameter("account", accountId)
-                    .executeUpdate();
-            transaction.commit();
-        } catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
-            System.out.println("Error in hibernate" + e.getMessage());
-            e.printStackTrace();
-        }finally {
-            session.close();
-        }
+    public void payUnpaidFines(long accountId) throws Exception {
+        super.performAtomicOperation((session -> {
+            session.createMutationQuery(
+                """
+                update Fine f 
+                set f.isPaid = true
+                where 
+                    f.account.id = :accountId and
+                    f.isPaid = false
+                """
+            )
+                .setParameter("accountId", accountId)
+                .executeUpdate();
+        }));
+    }
+
+    @Override
+    public List<Fine> retrieveUnpaidFines(Long accountId) throws Exception {
+        return super.performAtomicOperationReturning(session -> {
+            return session.createQuery(
+               """
+                select f  
+                from Fine as f  
+                where f.isPaid = false and
+                f.account.id = :accountId
+                """,
+                Fine.class
+            )
+               .setParameter("accountId", accountId)
+               .getResultList();
+        });
     }
 }
