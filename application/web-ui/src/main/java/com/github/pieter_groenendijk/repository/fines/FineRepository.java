@@ -15,9 +15,16 @@ public class FineRepository extends Repository {
     }
 
     public Optional<FineSummary> retrieveUnpaidFinesSummary(Long accountId) {
-        return super.retrieveSingle(
+        return super.getSingle(
             this.BASE_PATH + "/unpaid-summary",
             FineSummary.class,
+            accountId
+        );
+    }
+
+    public void payUnpaidFines(Long accountId) {
+        super.postSingle(
+            this.BASE_PATH + "/pay",
             accountId
         );
     }

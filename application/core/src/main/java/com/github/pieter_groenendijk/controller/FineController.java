@@ -5,10 +5,10 @@ import com.github.pieter_groenendijk.model.DTO.FineSummaryDTO;
 import com.github.pieter_groenendijk.repository.fine.FineRepository;
 import com.github.pieter_groenendijk.service.fine.FineService;
 import com.github.pieter_groenendijk.service.fine.IFineService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import io.swagger.v3.oas.annotations.Operation;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/account/{accountId}/fines")
@@ -22,9 +22,19 @@ public class FineController {
     }
 
     @GetMapping("/unpaid-summary")
-    public FineSummaryDTO retrieveUnpaidFinesSummary(
+    public FineSummaryDTO retrieveUnpaidSummary(
         @PathVariable("accountId") Long accountId
     ) throws Exception {
-        return this.SERVICE.retrieveUnpaidFinesSummary(accountId);
+        return this.SERVICE.retrieveUnpaidSummary(accountId);
+    }
+
+    @Operation(summary = "Pay debs", description = "Pay fine debts")
+    @PostMapping("/pay")
+    public ResponseEntity<?> payUnpaid(
+        @PathVariable("accountId") Long accountId
+    ) {
+        return ResponseEntity
+            .status(HttpStatus.OK)
+            .build();
     }
 }

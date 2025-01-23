@@ -18,7 +18,7 @@ public class FineService implements IFineService {
     }
 
     @Override
-    public FineSummaryDTO retrieveUnpaidFinesSummary(Long accountId) throws Exception {
+    public FineSummaryDTO retrieveUnpaidSummary(Long accountId) throws Exception {
         FineSummaryDTO summary = new FineSummaryDTO();
 
         List<FineDTO> fines = this.MAPPER.toDTO(

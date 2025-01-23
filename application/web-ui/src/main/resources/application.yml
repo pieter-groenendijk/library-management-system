@@ -1,4 +1,4 @@
 server:
     forward-headers-strategy: native
-    port: 8080
     use-forward-headers: true
+    port: 8080
