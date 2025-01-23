@@ -7,6 +7,19 @@ Data en gedrag is dus apart. Dit zorgt voor een grote flexibiliteit doordat de g
 verschillend gedrag, kunnen worden gebruikt. Nadeel is dat duplicatie van code makkelijker ontstaat. Daar moet dus opgelet
 worden.
 
+### Alternatief: Active Record 
+We hadden ook gebruik kunnen maken van een _Active Record_ structuur. 
+
+Het voordeel hiervan is de verminderde complexiteit.
+De data en zijn gedrag zit grotendeels bij elkaar. Het is eenmaal makkelijker te bouwen. 
+
+Een nadeel ervan is dat, om je leven makkelijk te houden, de objectstructuur erg op de relationele structuur zal 
+moeten lijken. Dit betekent dat de objectstructuur een hoge koppeling heeft aan de relationele structuur. Je kan moeilijk
+één kant _refactoren_. 
+
+Daarnaast zou door de complexiteit van onze domeinlogica de entiteiten extreem veel verantwoordelijkheid krijgen. Het
+verliest dan een beetje aan het _Single Responsibility Principle_.
+
 
 ## Inplanning van taken
 Taken binnen ons systeem hebben vaak een tijdsgebonden natuur. Enkele voorbeelden:

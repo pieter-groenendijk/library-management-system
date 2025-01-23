@@ -25,7 +25,7 @@ Traditionele web server.
 
 De volgende patronen worden gebruikt:
 ###### Page Controller
-Een patroon dat lijk op het _MVC_-patroon. In theorie is er één module voor elk mogelijke pagina _request_. Deze module
+Een patroon dat lijkt op het _MVC_-patroon. In theorie is er één module voor elk mogelijke pagina _request_. Deze module
 pakt deze aanvraag dan zelfstandig aan [^3].
 
 [^3]: In de praktijk is er soms een kleine overlap. Soms in het dynamisch welke pagina je voor je gaat krijgen.
