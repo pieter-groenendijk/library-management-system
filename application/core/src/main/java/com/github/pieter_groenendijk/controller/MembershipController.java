@@ -15,6 +15,8 @@ import com.github.pieter_groenendijk.entity.Membership;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import com.github.pieter_groenendijk.hibernate.SessionFactoryFactory;
+import com.github.pieter_groenendijk.repository.fine.IFineRepository;
+import com.github.pieter_groenendijk.repository.fine.FineRepository;
 import org.hibernate.SessionFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,7 +34,8 @@ public class MembershipController{
 		IAccountRepository accountRepository = new AccountRepository(sessionFactory);
         IMembershipTypeRepository membershipTypeRepository = new MembershipTypeRepository(sessionFactory);
         IMembershipRepository membershipRepository = new MembershipRepository(sessionFactory);
-        accountService = new AccountService(accountRepository, membershipTypeRepository, membershipRepository);
+        IFineRepository fineRepository = new FineRepository(sessionFactory);
+        accountService = new AccountService(accountRepository, membershipTypeRepository, membershipRepository, fineRepository);
 	}
 
 	@Operation(summary = "Retrieve a membership", description = "Retrieve a membership by Id")

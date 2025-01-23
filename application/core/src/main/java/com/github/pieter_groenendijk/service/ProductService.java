@@ -1,5 +1,7 @@
 package com.github.pieter_groenendijk.service;
 
+import com.github.pieter_groenendijk.dto.CatalogueRequestDTO;
+import com.github.pieter_groenendijk.entity.product.MediaType;
 import com.github.pieter_groenendijk.exception.EntityNotFoundException;
 import com.github.pieter_groenendijk.entity.product.Genre;
 import com.github.pieter_groenendijk.entity.product.ProductCopy;
@@ -61,6 +63,14 @@ public class ProductService implements IProductService {
     public ProductCopy retrieveProductByCopyId(long productCopyId) {
     return productRepository.retrieveProductCopyById(productCopyId)
             .orElseThrow(() -> new EntityNotFoundException("Product with ID " + productCopyId + " not found."));
+    }
+
+    public List<ProductCopy> retrieveCatalogue(CatalogueRequestDTO catalogueRequestDTO) {
+        String searchString = catalogueRequestDTO.getSearchString();
+        long genreId = catalogueRequestDTO.getGenreId();
+        boolean onlyAvailableProducts = catalogueRequestDTO.getOnlyAvailableProducts();
+        MediaType mediaType = catalogueRequestDTO.getMediaType();
+        return productRepository.retrieveCatalogue(searchString, genreId, onlyAvailableProducts, mediaType);
     }
 
 

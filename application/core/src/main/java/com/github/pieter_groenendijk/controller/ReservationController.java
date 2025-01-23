@@ -57,11 +57,12 @@ public class ReservationController {
         ));
         IAccountRepository accountRepository = new AccountRepository(sessionFactory);
         IMembershipRepository membershipRepository = new MembershipRepository(sessionFactory);
+        IMembershipTypeRepository membershipTypeRepository = new MembershipTypeRepository(sessionFactory);
         IReservationRepository reservationRepository = new ReservationRepository(sessionFactory);
         IProductRepository productRepository = new ProductRepository(sessionFactory);
         ILoanRepository loanRepository = new LoanRepository(sessionFactory);
-        this.reservationService = new ReservationService(reservationRepository, membershipRepository, accountRepository, productRepository);
-        this.loanService = new LoanService(loanRepository, membershipRepository, loanEventService, reservationService, productRepository);
+        this.reservationService = new ReservationService(reservationRepository, membershipRepository, accountRepository, productRepository, membershipTypeRepository);
+        this.loanService = new LoanService(loanRepository, membershipRepository, loanEventService, reservationService, productRepository, membershipTypeRepository);
     }
 
     @Operation(summary = "Create a reservation", description = "Create a new reservation")
@@ -74,7 +75,7 @@ public class ReservationController {
         try {
             Reservation reservation = reservationService.store(reservationDTO);
             return ResponseEntity.status(HttpStatus.CREATED).build();
-        } catch (EntityNotFoundException e) {
+        } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
@@ -100,7 +101,7 @@ public class ReservationController {
             @ApiResponse(responseCode = "200", description = "Ready for pickup status retrieved"),
             @ApiResponse(responseCode = "404", description = "Reservation not found")
     })
-    @GetMapping("/{reservationId}/ready")
+    @GetMapping("/ready/{reservationId}/")
     public ResponseEntity<Boolean> readyForPickup(@PathVariable("reservationId") long reservationId) {
         boolean isReady = reservationService.readyForPickup(reservationId);
         return new ResponseEntity<>(isReady, HttpStatus.OK);
@@ -112,7 +113,7 @@ public class ReservationController {
             @ApiResponse(responseCode = "200", description = "Reservation converted to loan successfully"),
             @ApiResponse(responseCode = "404", description = "Reservation not found")
     })
-    @PutMapping("/{reservationId}/convertToLoan")
+    @PutMapping("/convertToLoan/{reservationId}")
     public ResponseEntity<String> markReservationAsLoaned(@PathVariable("reservationId") long reservationId) {
         try {
             Reservation reservation = reservationService.retrieveReservationById(reservationId);

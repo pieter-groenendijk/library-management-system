@@ -1,4 +1,4 @@
-package com.github.pieter_groenendijk.service.notification.task;
+package com.github.pieter_groenendijk.service.notification.orchestration;
 
 import com.github.pieter_groenendijk.entity.Account;
 import com.github.pieter_groenendijk.entity.Loan;

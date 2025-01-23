@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${title}">Library Management System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer th:src="@{/js/home.js}"></script>
+    <title>Membership</title>
+</head>
+<body>
+<h1>Retrieve existing memberships for an account</h1>
+<form th:action="@{/membership/account}" method="post">
+    <label for="accountId">Account ID:</label>
+    <input type="text" id="accountId" name="accountId" required>
+    <button type="submit">Submit</button>
+</form>
+
+<div th:if="${error1}">
+    <p th:text="${error1}" style="color: red;"></p>
+</div>
+
+<div th:if="${memberships}">
+    <h3>Memberships</h3>
+    <table>
+        <thead>
+        <tr>
+            <th>Membership ID</th>
+            <th>Account ID</th>
+            <th>Email</th>
+            <th>Name</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Membership Type</th>
+            <th>Blocked</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="membership : ${memberships}">
+            <td th:text="${membership.membershipId}"></td>
+            <td th:text="${membership.account.accountId}"></td>
+            <td th:text="${membership.account.email}"></td>
+            <td th:text="${membership.account.firstName} + ' ' + ${membership.account.lastName}"></td>
+            <td th:text="${membership.startDate}"></td>
+            <td th:text="${membership.endDate}"></td>
+            <td th:text="${membership.membershipType.description}"></td>
+            <td th:text="${membership.blocked ? 'Yes' : 'No'}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<h1>Adding memberships</h1>
+
+<form th:action="@{/membership/add}" method="post">
+    <label for="account">Account ID:</label>
+    <input type="text" id="account" name="account" required>
+
+    <label for="membershipTypeId">Membership Type ID:</label>
+    <input type="text" id="membershipTypeId" name="membershipTypeId" required>
+
+    <button type="submit">Submit</button>
+</form>
+
+<!-- Display success or error message -->
+<div th:if="${success}">
+    <p th:text="'Membership successfully created!'"></p>
+</div>
+<div th:if="${error}">
+    <p th:text="${error}" style="color: red;"></p>
+</div>
+
+<h1>Deleting memberships</h1>
+<form th:action="@{/membership/softdelete}" method="post"> <!-- Use POST instead of GET -->
+    <label for="deleteId">Membership ID:</label>
+    <input type="text" id="deleteId" name="deleteId" required>
+    <button type="submit">Submit</button>
+</form>
+
+<div th:if="${success2}">
+    <p th:text="${success2}" style="color: green;"></p>
+</div>
+<div th:if="${error2}">
+    <p th:text="${error2}" style="color: red;"></p>
+</div>
+
+</body>
+</html>

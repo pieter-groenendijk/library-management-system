@@ -6,6 +6,8 @@ import com.github.pieter_groenendijk.entity.fine.FineBalance;
 import com.github.pieter_groenendijk.entity.fine.FineType;
 import org.hibernate.SessionFactory;
 
+
+import java.util.List;
 import java.util.Optional;
 
 public class FineRepository extends Repository implements IFineRepository {
@@ -35,5 +37,38 @@ public class FineRepository extends Repository implements IFineRepository {
     @Override
     public Optional<FineBalance> retrieveFineBalance(Account account) throws Exception {
         return super.get(FineBalance.class, account);
+    }
+
+    public void payUnpaidFines(long accountId) throws Exception {
+        super.performAtomicOperation((session -> {
+            session.createMutationQuery(
+                """
+                update Fine f 
+                set f.isPaid = true
+                where 
+                    f.account.id = :accountId and
+                    f.isPaid = false
+                """
+            )
+                .setParameter("accountId", accountId)
+                .executeUpdate();
+        }));
+    }
+
+    @Override
+    public List<Fine> retrieveUnpaidFines(Long accountId) throws Exception {
+        return super.performAtomicOperationReturning(session -> {
+            return session.createQuery(
+               """
+                select f  
+                from Fine as f  
+                where f.isPaid = false and
+                f.account.id = :accountId
+                """,
+                Fine.class
+            )
+               .setParameter("accountId", accountId)
+               .getResultList();
+        });
     }
 }

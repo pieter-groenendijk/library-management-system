@@ -1,0 +1,45 @@
+package com.github.pieter_groenendijk.service.fine;
+
+import com.github.pieter_groenendijk.model.DTO.FineDTO;
+import com.github.pieter_groenendijk.model.DTO.FineSummaryDTO;
+import com.github.pieter_groenendijk.repository.fine.IFineRepository;
+
+import java.util.List;
+
+public class FineService implements IFineService {
+    private final IFineRepository REPOSITORY;
+    private final FineMapper MAPPER;
+
+    public FineService(
+        IFineRepository repository
+    ) {
+        this.REPOSITORY = repository;
+        this.MAPPER = new FineMapper();
+    }
+
+    @Override
+    public FineSummaryDTO retrieveUnpaidSummary(Long accountId) throws Exception {
+        FineSummaryDTO summary = new FineSummaryDTO();
+
+        List<FineDTO> fines = this.MAPPER.toDTO(
+            this.REPOSITORY.retrieveUnpaidFines(
+                accountId
+            )
+        );
+
+        summary.setFines(fines);
+        summary.setTotal(
+            fines
+                .stream()
+                .mapToLong(FineDTO::getAmountInCents)
+                .sum()
+        );
+
+        return summary;
+    }
+
+    @Override
+    public void payUnpaid(Long accountId) throws Exception {
+        this.REPOSITORY.payUnpaidFines(accountId);
+    }
+}

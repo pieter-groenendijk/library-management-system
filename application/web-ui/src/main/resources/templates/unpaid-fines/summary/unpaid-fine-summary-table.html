@@ -1,0 +1,20 @@
+<table>
+    <thead>
+        <tr>
+            <th>Reden</th>
+            <th>Declareer datum</th>
+            <th>Bedrag</th>
+        </tr>
+    </thead>
+    <tbody>
+        <th:block th:each="fine : ${summary.getFines()}">
+            <th:block th:replace="~{unpaid-fines/summary/unpaid-fine-row}"/>
+        </th:block>
+    </tbody>
+    <tfoot>
+        <tr>
+            <th colspan="2">Totaal</th>
+            <td th:text="${summary.getTotal()}"></td>
+        </tr>
+    </tfoot>
+</table>

@@ -3,6 +3,7 @@ package com.github.pieter_groenendijk.service;
 import com.github.pieter_groenendijk.exception.EntityNotFoundException;
 import com.github.pieter_groenendijk.dto.ReservationDTO;
 import com.github.pieter_groenendijk.entity.Membership;
+import com.github.pieter_groenendijk.entity.MembershipType;
 import com.github.pieter_groenendijk.entity.Reservation;
 import com.github.pieter_groenendijk.entity.ReservationStatus;
 import com.github.pieter_groenendijk.entity.product.ProductCopy;
@@ -36,6 +37,9 @@ class ReservationServiceTest {
     @Mock
     private IProductRepository productRepository;
 
+    @Mock
+    private IMembershipTypeRepository mockMembershipTypeRepository;
+
     @InjectMocks
     private ReservationService reservationService;
 
@@ -57,7 +61,7 @@ class ReservationServiceTest {
     }
 
     @Test
-    void testStoreReservationDTO() {
+    void testStoreReservationDTO() throws Exception {
         ReservationDTO reservationDTO = new ReservationDTO();
         reservationDTO.setProductCopyId(1L);
         reservationDTO.setMembershipId(1L);
@@ -67,11 +71,19 @@ class ReservationServiceTest {
         ProductCopy productCopy = new ProductCopy();
         productCopy.setProductCopyId(1L);
 
-        Membership membership = new Membership();
-        membership.setMembershipId(1L);
+        Membership mockMembership = mock(Membership.class);
+
+
+        // Mock MembershipType behavior
+        MembershipType mockMembershipType = mock(MembershipType.class);
+        when(mockMembership.getMembershipType()).thenReturn(mockMembershipType);
+        when(mockMembershipType.getMaxLendings()).thenReturn(2);
+        ;
+
 
         when(productRepository.retrieveProductCopyById(1L)).thenReturn(Optional.of(productCopy));
-        when(membershipRepository.retrieveMembershipById(1L)).thenReturn(Optional.of(membership));
+        when(membershipRepository.retrieveMembershipById(1L)).thenReturn(Optional.of(mockMembership));
+
 
         Reservation reservation = new Reservation();
         when(reservationRepository.store(any(Reservation.class))).thenReturn(reservation);
@@ -126,7 +138,7 @@ class ReservationServiceTest {
         IAccountRepository mockAccountRepository = mock(IAccountRepository.class);
         IMembershipRepository mockMembershipRepository = mock(IMembershipRepository.class);
         IProductRepository mockProductRepository = mock(IProductRepository.class);
-        ReservationService reservationService = new ReservationService(mockReservationRepository, mockMembershipRepository, mockAccountRepository, mockProductRepository);
+        ReservationService reservationService = new ReservationService(mockReservationRepository, mockMembershipRepository, mockAccountRepository, mockProductRepository, mockMembershipTypeRepository);
 
         when(mockReservationRepository.retrieveReservationById(reservationId)).thenReturn(Optional.of(reservation));
 

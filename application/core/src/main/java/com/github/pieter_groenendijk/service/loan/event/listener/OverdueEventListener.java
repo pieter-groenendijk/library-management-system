@@ -4,22 +4,22 @@ import com.github.pieter_groenendijk.entity.Loan;
 import com.github.pieter_groenendijk.entity.event.EventType;
 import com.github.pieter_groenendijk.service.event.listener.EventListener;
 import com.github.pieter_groenendijk.service.loan.event.scheduling.LoanEventScheduler;
-import com.github.pieter_groenendijk.service.notification.NotificationService;
+import com.github.pieter_groenendijk.service.notification.orchestration.NotificationOrchestrator;
 
 class OverdueEventListener extends EventListener<Loan> {
     private final LoanEventScheduler LOAN_EVENT_SCHEDULER;
-    private final NotificationService NOTIFICATION_SERVICE;
+    private final NotificationOrchestrator NOTIFICATION_SERVICE;
 
     public OverdueEventListener(
         LoanEventScheduler scheduler,
-        NotificationService notificationService
+        NotificationOrchestrator notificationOrchestrator
     ) {
         super(
             EventType.OVERDUE_LOAN
         );
 
         this.LOAN_EVENT_SCHEDULER = scheduler;
-        this.NOTIFICATION_SERVICE = notificationService;
+        this.NOTIFICATION_SERVICE = notificationOrchestrator;
     }
 
     @Override

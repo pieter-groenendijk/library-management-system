@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
     length = 50
 )
 @Table(name = "Fine")
-public abstract class Fine { // With abstract, we enforce that it's an exclusive subtype.
+public class Fine { // With abstract, we enforce that it's an exclusive subtype.
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "fineId")
@@ -56,6 +56,9 @@ public abstract class Fine { // With abstract, we enforce that it's an exclusive
         nullable = true
     )
     private Payment paidBy;
+
+    @Column(name = "isPaid", nullable = false)
+    private boolean isPaid;
 
     public Long getFineId() {
         return fineId;
@@ -104,4 +107,8 @@ public abstract class Fine { // With abstract, we enforce that it's an exclusive
     public void setPaidBy(Payment paidBy) {
         this.paidBy = paidBy;
     }
+
+    public boolean isPaid() {return this.isPaid; }
+
+    public void setPaid(boolean isPaid) { this.isPaid = isPaid; }
 }

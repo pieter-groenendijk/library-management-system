@@ -1,6 +1,8 @@
 package com.github.pieter_groenendijk.controller;
 
 import com.github.pieter_groenendijk.exception.EntityNotFoundException;
+import com.github.pieter_groenendijk.repository.fine.FineRepository;
+import com.github.pieter_groenendijk.repository.fine.IFineRepository;
 import org.springframework.web.bind.annotation.*;
 import io.swagger.v3.oas.annotations.Operation;
 import com.github.pieter_groenendijk.service.AccountService;
@@ -35,7 +37,8 @@ public class AccountController {
         IAccountRepository accountRepository = new AccountRepository(sessionFactory);
         IMembershipTypeRepository membershipTypeRepository = new MembershipTypeRepository(sessionFactory);
         IMembershipRepository membershipRepository = new MembershipRepository(sessionFactory);
-        accountService = new AccountService(accountRepository, membershipTypeRepository, membershipRepository);
+        IFineRepository fineRepository = new FineRepository(sessionFactory);
+        accountService = new AccountService(accountRepository, membershipTypeRepository, membershipRepository, fineRepository);
     }
 
     @Operation(summary = "Retrieve an account", description = "Retrieve an account by Id")

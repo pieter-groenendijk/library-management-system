@@ -49,10 +49,11 @@ INSERT INTO "Genre" ("description") VALUES
 ('Biography');
 
 INSERT INTO "LendingLimit" ("membershipTypeId", "genreId", "maxLendings") VALUES
-(1, 1, 3),
+(1, 1, 2),
 (1, 2, 5),
 (2, 3, 6),
 (2, 4, 7),
+(2, 2, 3),
 (4, 1, 12),
 (4, 5, 10),
 (5, 2, 15),
@@ -64,8 +65,6 @@ INSERT INTO
 VALUES
     ('day-overdue-lending', 20),
     ('uncollected-reservation-pattern', 1000);
-
-
 -- endregion
 
 -- Insert a product in to database
@@ -84,7 +83,9 @@ VALUES
     ('Design Patterns', 1, 1994, 'Elements of reusable object-oriented software', 18, 'EBOOK'),
     ('JavaScript: The Good Parts', 1, 2008, 'A book by Douglas Crockford on JavaScript', 18, 'BOOK'),
     ('The Catcher in the Rye', 4, 1951, 'A novel by J.D. Salinger', 18, 'BOOK'),
-    ('The Road', 4, 2006, 'A novel by Cormac McCarthy', 18, 'BOOK');
+    ('The Road', 4, 2006, 'A novel by Cormac McCarthy', 18, 'BOOK'),
+    ('TIME', 1, 2024, 'November 2024', 12, 'MAGAZINE'),
+    ('National Geographic', 1, 2024, 'December 2024', 12, 'MAGAZINE');
 
 INSERT INTO "DigitalProductTemplate" ("productId", "language")
 VALUES
@@ -112,7 +113,9 @@ VALUES
     (7, 'B6', 'Robert C. Martin'),
     (12, 'J5', 'Douglas Crockford'),
     (13, 'K6', 'J.D. Salinger'),
-    (14, 'L1', 'Cormac McCarthy');
+    (14, 'L1', 'Cormac McCarthy'),
+    (15, 'M1', 'National Geographic'),
+    (16, 'N2', 'TIME');
 
 INSERT INTO "PhysicalProduct" ("productId", "ISBN", "author")
 VALUES
@@ -124,7 +127,9 @@ VALUES
     (7, 1234567895, 'Robert C. Martin'),
     (12, 1234567896, 'Douglas Crockford'),
     (13, 1234567897, 'J.D. Salinger'),
-    (14, 1234567898, 'Cormac McCarthy');
+    (14, 1234567898, 'Cormac McCarthy'),
+    (15, 1234567899, 'National Geographic'),
+    (16, 1234567900, 'TIME');
 
 
 INSERT INTO "ProductCopy" ("productId", "availabilityStatus")
@@ -146,7 +151,13 @@ VALUES
     (13, 'AVAILABLE'),
     (14, 'AVAILABLE'),
     (14, 'AVAILABLE'),
-    (14, 'AVAILABLE');
+    (14, 'AVAILABLE'),
+    (15, 'AVAILABLE'),
+    (15, 'AVAILABLE'),
+    (15, 'AVAILABLE'),
+    (16, 'AVAILABLE'),
+    (16, 'AVAILABLE'),
+    (16, 'AVAILABLE');
 
 
 -- Insert data into Reservation table
@@ -176,3 +187,36 @@ VALUES ('2024-01-01', '2024-01-15', '2024-01-12' , NULL, 'RETURNED', 1, 1),
        ('2024-01-20', '2024-02-03', NULL, NULL, 'ACTIVE', 3, 7),
        ('2024-01-25', '2024-02-08', NULL, NULL, 'ACTIVE', 4, 8);
 
+INSERT INTO "Fine" ("fineType", "account", "amountInCents", "loan", "reservation", "associationType")
+VALUES
+    (1, 1, 40, 5, null, 'test'),
+	(1, 1, 80, 2, null, 'test'),
+	(2, 2, 60, 3, null, 'test'),
+	(2, 1, 200, 4, null, 'test');
+
+INSERT INTO "Notification" (
+    "account",
+    "title",
+    "message",
+    "scheduledAt",
+    "sendStrategy",
+    "loan",
+    "associationType",
+    "status"
+) VALUES
+(1, 'Payment Reminder', 'Your loan payment is due soon.', '2025-02-25 10:00:00', 'REMINDER', 1, 'loan', 'SCHEDULED'),
+(1, 'Overdue Payment Alert', 'Your loan payment is overdue.', '2024-12-20 14:30:00', 'ALERT', 1, 'loan', 'CANCELLED'),
+(1, 'Loan Disbursement Notice', 'Your loan has been successfully disbursed.', '2024-12-15 09:00:00', 'ALERT', 1, 'loan', 'COMPLETED'),
+(1, 'Reminder: Loan Payment Due', 'Your loan payment is due in 3 days.', '2025-03-01 12:00:00', 'REMINDER', 2, 'loan', 'SCHEDULED'),
+(1, 'Final Warning: Loan Overdue', 'Your loan payment is critically overdue. Immediate action required.', '2024-11-25 08:00:00', 'WARNING', 3, 'loan', 'CANCELLED'),
+(2, 'Loan Application Approved', 'Your loan application has been approved.', '2025-01-30 11:00:00', 'ALERT', 4, 'loan', 'COMPLETED'),
+(3, 'Reminder: Loan Payment Due', 'Your loan payment is due in 5 days.', '2025-02-05 16:00:00', 'REMINDER', 5, 'loan', 'SCHEDULED'),
+(1, 'Payment Reminder', 'Reminder: Loan payment due soon.', '2025-03-05 10:30:00', 'REMINDER', 1, 'loan', 'SCHEDULED'),
+(1, 'Loan Disbursement Notice', 'Your loan has been disbursed today.', '2025-01-20 08:45:00', 'ALERT', 2, 'loan', 'COMPLETED'),
+(1, 'Overdue Payment Alert', 'Your loan payment is now 3 days overdue.', '2024-12-22 14:00:00', 'ALERT', 3, 'loan', 'CANCELLED'),
+(1, 'Reminder: Loan Payment Due', 'Loan payment reminder, don''t forget to pay on time!', '2025-02-28 13:00:00', 'REMINDER', 4, 'loan', 'SCHEDULED'),
+(2, 'Overdue Payment Alert', 'Your loan payment is overdue. Please pay as soon as possible.', '2024-12-18 17:00:00', 'ALERT', 5, 'loan', 'CANCELLED'),
+(1, 'Loan Application Reminder', 'Reminder: Complete your loan application today.', '2025-02-10 09:30:00', 'REMINDER', 1, 'loan', 'SCHEDULED'),
+(1, 'Final Payment Reminder', 'Your final loan payment is due next week.', '2025-01-25 12:00:00', 'REMINDER', 2, 'loan', 'SCHEDULED'),
+(1, 'Loan Extension Approved', 'Your loan extension has been approved. New payment date is 2025-03-15.', '2025-01-22 14:45:00', 'ALERT', 3, 'loan', 'COMPLETED'),
+(1, 'Warning: Loan Overdue', 'Warning: Your loan payment is overdue by 7 days.', '2024-11-30 11:00:00', 'WARNING', 4, 'loan', 'CANCELLED');

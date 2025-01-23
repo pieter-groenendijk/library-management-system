@@ -27,4 +27,6 @@ public class LendingLimit {
     public void setMembershipType(MembershipType membershipType) {this.membershipType = membershipType;}
     public Genre getGenre() {return genre;}
     public void setGenre(Genre genre) {this.genre = genre;}
+    public void setMaxLendings(int maxLendings) {this.maxLendings = maxLendings;}
+    public int getMaxLendings(){return this.maxLendings;}
 }

@@ -24,7 +24,9 @@ public abstract class Notification extends Task {
     )
     private Long notificationId;
 
-    @ManyToOne
+    @ManyToOne(
+        fetch = FetchType.LAZY
+    )
     @JoinColumn(
         name = "account",
         nullable = false

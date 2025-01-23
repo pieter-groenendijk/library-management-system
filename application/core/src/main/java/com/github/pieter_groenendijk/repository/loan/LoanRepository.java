@@ -3,12 +3,10 @@ package com.github.pieter_groenendijk.repository.loan;
 import com.github.pieter_groenendijk.entity.Loan;
 import com.github.pieter_groenendijk.entity.LoanStatus;
 import jakarta.persistence.criteria.CriteriaBuilder;
-import jakarta.persistence.criteria.CriteriaQuery;
-import jakarta.persistence.criteria.Root;
+import jakarta.persistence.criteria.*;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-
 import java.util.List;
 
 public class LoanRepository implements ILoanRepository {
@@ -42,10 +40,11 @@ public class LoanRepository implements ILoanRepository {
             CriteriaQuery<Loan> cr = cb.createQuery(Loan.class);
             Root<Loan> root = cr.from(Loan.class);
 
+            Predicate statusPredicate = root.get("loanStatus").in(LoanStatus.ACTIVE, LoanStatus.EXTENDED, LoanStatus.OVERDUE);
             cr.select(root)
                     .where(
                             cb.equal(root.get("membership").get("id"), membershipId),
-                            cb.equal(root.get("loanStatus"), LoanStatus.ACTIVE)
+                            statusPredicate
                     );
 
             return session.createQuery(cr).getResultList();
@@ -100,6 +99,25 @@ public class LoanRepository implements ILoanRepository {
             e.printStackTrace();
             throw new RuntimeException("Database query failed", e);
         }
+    }
+
+    public int retrieveCurrentGenreLoanCount(long membershipId, long genreId) {
+        Session session = sessionFactory.openSession();
+        Integer result = null;
+
+        try {
+            String hql = "SELECT vwl.loanCount FROM LoansPerGenrePerMembership vwl WHERE vwl.id.membershipId = :membershipId AND vwl.id.genreId = :genreId";
+            result = (Integer) session.createQuery(hql, Integer.class)
+                    .setParameter("membershipId", membershipId)
+                    .setParameter("genreId", genreId)
+                    .uniqueResult();
+        } catch (Exception e) {
+            System.out.println("Error in hibernate" + e.getMessage());
+            e.printStackTrace();
+        }finally {
+            session.close();
+        }
+        return result != null ? result : 0;
     }
 }
 

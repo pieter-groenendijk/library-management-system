@@ -1,5 +1,6 @@
 package com.github.pieter_groenendijk.controller;
 
+import com.github.pieter_groenendijk.dto.CatalogueRequestDTO;
 import com.github.pieter_groenendijk.hibernate.SessionFactoryFactory;
 import com.github.pieter_groenendijk.entity.product.ProductCopy;
 import com.github.pieter_groenendijk.repository.IProductRepository;
@@ -13,12 +14,10 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
+import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/product")
@@ -44,6 +43,21 @@ public class ProductController {
             return new ResponseEntity<>(productCopy, HttpStatus.OK);
         } catch (HibernateException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @Operation(summary = "Get (filtered) catalogue", description = "Get a filtered overview of all products")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "At least 1 product found"),
+            @ApiResponse(responseCode = "404", description = "No product found")
+    })
+    @PostMapping("/catalogue")
+    public ResponseEntity<?> retrieveCatalogue(@RequestBody CatalogueRequestDTO catalogueRequestDTO) {
+        List<ProductCopy> catalogue = productService.retrieveCatalogue(catalogueRequestDTO);
+        if (catalogue.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+        } else {
+            return ResponseEntity.ok(catalogue);
         }
     }
 }

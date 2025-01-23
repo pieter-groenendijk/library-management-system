@@ -1,8 +1,10 @@
 package com.github.pieter_groenendijk.repository;
 
+import com.github.pieter_groenendijk.entity.product.MediaType;
 import com.github.pieter_groenendijk.entity.product.ProductCopy;
 import com.github.pieter_groenendijk.entity.product.ProductTemplate;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface IProductRepository {
@@ -16,6 +18,7 @@ public interface IProductRepository {
 
     Optional<ProductCopy> retrieveProductCopyById(long productCopyId);
 
-
     ProductCopy updateProductCopy(ProductCopy productCopy);
+
+    List<ProductCopy> retrieveCatalogue(String searchString, long genreId, boolean onlyAvailableProducts, MediaType mediaType);
 }

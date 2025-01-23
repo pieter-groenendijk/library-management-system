@@ -7,6 +7,7 @@ import com.github.pieter_groenendijk.entity.Membership;
 import com.github.pieter_groenendijk.repository.IAccountRepository;
 import com.github.pieter_groenendijk.repository.IMembershipTypeRepository;
 import com.github.pieter_groenendijk.repository.IMembershipRepository;
+import com.github.pieter_groenendijk.repository.fine.IFineRepository;
 import com.github.pieter_groenendijk.exception.EntityNotFoundException;
 import com.github.pieter_groenendijk.exception.InputValidationException;
 import com.github.pieter_groenendijk.service.validator.EmailValidator;
@@ -23,11 +24,16 @@ public class AccountService implements IAccountService {
     private final IAccountRepository accountRepository;
     private final IMembershipTypeRepository membershipTypeRepository;
     private final IMembershipRepository membershipRepository;
+    private final IFineRepository fineRepository;
 
-    public AccountService(IAccountRepository accountRepository, IMembershipTypeRepository membershipTypeRepository, IMembershipRepository membershipRepository) {
+    public AccountService(  IAccountRepository accountRepository,
+                            IMembershipTypeRepository membershipTypeRepository,
+                            IMembershipRepository membershipRepository,
+                            IFineRepository fineRepository) {
         this.accountRepository = accountRepository;
         this.membershipTypeRepository = membershipTypeRepository;
         this.membershipRepository = membershipRepository;
+        this.fineRepository = fineRepository;
     }
 
     public Account retrieveAccountById(long id) throws Exception {

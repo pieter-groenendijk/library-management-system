@@ -1,15 +1,14 @@
 package com.github.pieter_groenendijk.entity.notification;
 
 import com.github.pieter_groenendijk.entity.Loan;
-import jakarta.persistence.DiscriminatorValue;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 
 @Entity
 @DiscriminatorValue(value = "loan")
 public class LoanNotification extends Notification {
-    @ManyToOne
+    @ManyToOne(
+        fetch = FetchType.LAZY
+    )
     @JoinColumn(
         name = "loan",
         nullable = false

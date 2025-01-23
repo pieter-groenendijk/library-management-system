@@ -1,4 +1,4 @@
-package com.github.pieter_groenendijk.service.fine;
+package com.github.pieter_groenendijk.service.fine.processor;
 
 import com.github.pieter_groenendijk.entity.Account;
 import com.github.pieter_groenendijk.entity.fine.Fine;
