@@ -67,7 +67,7 @@ public class LoanWebController {
     }
 
     @PostMapping("/loan/loanid/")
-    public String retrieveLoanByLoanId(@RequestParam("loanId") long loanId, Model model) {
+    public String retrieveLoanByLoanId(@RequestParam("loanId") String loanId, Model model) {
         String url = "http://core:8080/loan/" + loanId;
 
         ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
@@ -87,7 +87,7 @@ public class LoanWebController {
     }
 
 
-    @PostMapping("/membership/loans/")
+    @PostMapping("/loan/loans/")
     public String getLoanByMembershipId(@RequestParam("membershipId") String membershipId, Model model) {
         String url = "http://core:8080/loan/membership/" + membershipId;
         ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);

@@ -3,6 +3,7 @@
 --DROP VIEW IF EXISTS "vw_MembershipType";
 --DROP VIEW IF EXISTS "vw_Membership";
 --DROP VIEW IF EXISTS "vw_LoanHistory";
+--DROP VIEW IF EXISTS "vw_Loans_Per_Membership"
 
 -- View for Account table
 CREATE VIEW "vw_Account" AS 
