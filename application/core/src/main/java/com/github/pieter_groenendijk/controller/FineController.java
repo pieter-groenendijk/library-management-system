@@ -28,11 +28,13 @@ public class FineController {
         return this.SERVICE.retrieveUnpaidSummary(accountId);
     }
 
-    @Operation(summary = "Pay debs", description = "Pay fine debts")
+    @Operation(summary = "Pay debts", description = "Pay fine debts")
     @PostMapping("/pay")
     public ResponseEntity<?> payUnpaid(
         @PathVariable("accountId") Long accountId
-    ) {
+    ) throws Exception {
+        this.SERVICE.payUnpaid(accountId);
+
         return ResponseEntity
             .status(HttpStatus.OK)
             .build();

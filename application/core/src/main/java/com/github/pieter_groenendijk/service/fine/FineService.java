@@ -37,4 +37,9 @@ public class FineService implements IFineService {
 
         return summary;
     }
+
+    @Override
+    public void payUnpaid(Long accountId) throws Exception {
+        this.REPOSITORY.payUnpaidFines(accountId);
+    }
 }
