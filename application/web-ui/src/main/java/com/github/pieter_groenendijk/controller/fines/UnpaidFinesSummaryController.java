@@ -6,27 +6,29 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class FinesController {
+public class UnpaidFinesSummaryController {
     private final FineRepository REPOSITORY;
 
-    public FinesController(
+    public UnpaidFinesSummaryController(
         FineRepository repository
     ) {
         this.REPOSITORY = repository;
     }
 
-    @GetMapping("/fines")
+    @GetMapping("/unpaid-fines")
     public String render(Model model) {
         model.addAttribute(
             "title",
-            "Notifications"
+            "Unpaid Fines Summary"
         );
 
-//        model.addAttribute(
-//            "notifications",
-//            this.REPOSITORY.retrieveRecent(1L)
-//        );
+        this.REPOSITORY.retrieveUnpaidFinesSummary(1L).ifPresent((fineSummary -> {
+            model.addAttribute(
+                "summary",
+                fineSummary
+            );
+        }));
 
-        return "notifications/index";
+        return "unpaid-fines/unpaid-fines";
     }
 }
