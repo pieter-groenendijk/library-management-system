@@ -6,8 +6,8 @@ import com.github.pieter_groenendijk.domain.exception.EntityNotFoundException;
 import com.github.pieter_groenendijk.domain.entities.product.Genre;
 import com.github.pieter_groenendijk.domain.entities.product.ProductCopy;
 import com.github.pieter_groenendijk.domain.entities.product.ProductTemplate;
-import com.github.pieter_groenendijk.repositories.product.IProductRepository;
-import com.github.pieter_groenendijk.repositories.genre.IGenreRepository;
+import com.github.pieter_groenendijk.datasource.repositories.product.IProductRepository;
+import com.github.pieter_groenendijk.datasource.repositories.genre.IGenreRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

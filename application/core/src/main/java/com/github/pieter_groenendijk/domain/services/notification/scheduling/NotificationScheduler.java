@@ -1,6 +1,6 @@
 package com.github.pieter_groenendijk.domain.services.notification.scheduling;
 
-import com.github.pieter_groenendijk.repositories.scheduling.ITaskRepository;
+import com.github.pieter_groenendijk.datasource.repositories.scheduling.ITaskRepository;
 import com.github.pieter_groenendijk.domain.entities.notification.Notification;
 import com.github.pieter_groenendijk.domain.shared.scheduling.LongTermTaskScheduler;
 import com.github.pieter_groenendijk.domain.shared.scheduling.TaskScheduler;

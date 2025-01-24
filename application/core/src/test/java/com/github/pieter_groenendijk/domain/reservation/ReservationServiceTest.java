@@ -1,12 +1,12 @@
 package com.github.pieter_groenendijk.domain.reservation;
 
 import com.github.pieter_groenendijk.domain.exception.EntityNotFoundException;
-import com.github.pieter_groenendijk.repositories.account.IAccountRepository;
-import com.github.pieter_groenendijk.repositories.membership.IMembershipRepository;
-import com.github.pieter_groenendijk.repositories.membership.type.IMembershipTypeRepository;
-import com.github.pieter_groenendijk.repositories.product.IProductRepository;
-import com.github.pieter_groenendijk.repositories.reservation.IReservationRepository;
-import com.github.pieter_groenendijk.repositories.reservation.ReservationRepository;
+import com.github.pieter_groenendijk.datasource.repositories.account.IAccountRepository;
+import com.github.pieter_groenendijk.datasource.repositories.membership.IMembershipRepository;
+import com.github.pieter_groenendijk.datasource.repositories.membership.type.IMembershipTypeRepository;
+import com.github.pieter_groenendijk.datasource.repositories.product.IProductRepository;
+import com.github.pieter_groenendijk.datasource.repositories.reservation.IReservationRepository;
+import com.github.pieter_groenendijk.datasource.repositories.reservation.ReservationRepository;
 import com.github.pieter_groenendijk.shared.dto.reservation.ReservationDTO;
 import com.github.pieter_groenendijk.domain.entities.membership.Membership;
 import com.github.pieter_groenendijk.domain.entities.membership.MembershipType;

@@ -2,7 +2,7 @@ package com.github.pieter_groenendijk.domain.services.fine;
 
 import com.github.pieter_groenendijk.shared.dto.fine.FineDTO;
 import com.github.pieter_groenendijk.shared.dto.fine.FineSummaryDTO;
-import com.github.pieter_groenendijk.repositories.fine.IFineRepository;
+import com.github.pieter_groenendijk.datasource.repositories.fine.IFineRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

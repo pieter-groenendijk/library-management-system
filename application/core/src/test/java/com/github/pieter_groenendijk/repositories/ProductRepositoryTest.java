@@ -1,7 +1,7 @@
 package com.github.pieter_groenendijk.repositories;
 
 import com.github.pieter_groenendijk.domain.entities.product.ProductCopy;
-import com.github.pieter_groenendijk.repositories.product.ProductRepository;
+import com.github.pieter_groenendijk.datasource.repositories.product.ProductRepository;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;

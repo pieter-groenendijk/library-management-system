@@ -2,8 +2,8 @@ package com.github.pieter_groenendijk.domain.services.fine.processor;
 
 import com.github.pieter_groenendijk.domain.entities.account.Account;
 import com.github.pieter_groenendijk.domain.entities.fine.Fine;
-import com.github.pieter_groenendijk.repositories.account.IAccountRepository;
-import com.github.pieter_groenendijk.repositories.fine.IFineRepository;
+import com.github.pieter_groenendijk.datasource.repositories.account.IAccountRepository;
+import com.github.pieter_groenendijk.datasource.repositories.fine.IFineRepository;
 
 public class FineProcessor {
     private final IAccountRepository ACCOUNT_REPOSITORY;
