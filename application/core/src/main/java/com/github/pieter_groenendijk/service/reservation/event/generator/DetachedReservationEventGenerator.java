@@ -1,8 +1,8 @@
 package com.github.pieter_groenendijk.service.reservation.event.generator;
 
-import com.github.pieter_groenendijk.entity.Reservation;
-import com.github.pieter_groenendijk.entity.event.EventType;
-import com.github.pieter_groenendijk.entity.event.ReservationEvent;
+import com.github.pieter_groenendijk.domain.entities.Reservation;
+import com.github.pieter_groenendijk.domain.entities.event.EventType;
+import com.github.pieter_groenendijk.domain.entities.event.ReservationEvent;
 import com.github.pieter_groenendijk.repository.event.IEventRepository;
 import com.github.pieter_groenendijk.scheduling.TaskStorage;
 import com.github.pieter_groenendijk.service.event.generator.DetachedEventGenerator;

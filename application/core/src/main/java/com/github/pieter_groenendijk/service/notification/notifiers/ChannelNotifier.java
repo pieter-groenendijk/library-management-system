@@ -1,6 +1,6 @@
 package com.github.pieter_groenendijk.service.notification.notifiers;
 
-import com.github.pieter_groenendijk.entity.notification.Notification;
+import com.github.pieter_groenendijk.domain.entities.notification.Notification;
 
 public abstract class ChannelNotifier implements Notifier {
     private final byte MAXIMUM_AMOUNT_OF_ATTEMPTS;

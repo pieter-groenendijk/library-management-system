@@ -1,6 +1,6 @@
 package com.github.pieter_groenendijk.repository;
 
-import com.github.pieter_groenendijk.entity.Reservation;
+import com.github.pieter_groenendijk.domain.entities.Reservation;
 
 import java.util.List;
 import java.util.Optional;

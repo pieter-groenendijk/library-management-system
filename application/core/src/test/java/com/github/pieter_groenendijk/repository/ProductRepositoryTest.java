@@ -1,6 +1,6 @@
 package com.github.pieter_groenendijk.repository;
 
-import com.github.pieter_groenendijk.entity.product.ProductCopy;
+import com.github.pieter_groenendijk.domain.entities.product.ProductCopy;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;

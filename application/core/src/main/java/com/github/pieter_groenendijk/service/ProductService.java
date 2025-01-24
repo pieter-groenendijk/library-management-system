@@ -1,11 +1,11 @@
 package com.github.pieter_groenendijk.service;
 
 import com.github.pieter_groenendijk.dto.CatalogueRequestDTO;
-import com.github.pieter_groenendijk.entity.product.MediaType;
+import com.github.pieter_groenendijk.domain.entities.product.MediaType;
 import com.github.pieter_groenendijk.exception.EntityNotFoundException;
-import com.github.pieter_groenendijk.entity.product.Genre;
-import com.github.pieter_groenendijk.entity.product.ProductCopy;
-import com.github.pieter_groenendijk.entity.product.ProductTemplate;
+import com.github.pieter_groenendijk.domain.entities.product.Genre;
+import com.github.pieter_groenendijk.domain.entities.product.ProductCopy;
+import com.github.pieter_groenendijk.domain.entities.product.ProductTemplate;
 import com.github.pieter_groenendijk.repository.IProductRepository;
 import com.github.pieter_groenendijk.repository.genre.IGenreRepository;
 import org.springframework.stereotype.Service;

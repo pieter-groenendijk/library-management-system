@@ -1,13 +1,13 @@
 package com.github.pieter_groenendijk.service.reservation;
 
 import com.github.pieter_groenendijk.exception.EntityNotFoundException;
-import com.github.pieter_groenendijk.entity.Account;
+import com.github.pieter_groenendijk.domain.entities.Account;
 import com.github.pieter_groenendijk.dto.ReservationDTO;
-import com.github.pieter_groenendijk.entity.Membership;
-import com.github.pieter_groenendijk.entity.Reservation;
-import com.github.pieter_groenendijk.entity.ReservationStatus;
-import com.github.pieter_groenendijk.entity.product.ProductCopy;
-import com.github.pieter_groenendijk.entity.product.ProductCopyStatus;
+import com.github.pieter_groenendijk.domain.entities.Membership;
+import com.github.pieter_groenendijk.domain.entities.Reservation;
+import com.github.pieter_groenendijk.domain.entities.ReservationStatus;
+import com.github.pieter_groenendijk.domain.entities.product.ProductCopy;
+import com.github.pieter_groenendijk.domain.entities.product.ProductCopyStatus;
 import com.github.pieter_groenendijk.repository.*;
 import org.springframework.stereotype.Service;
 

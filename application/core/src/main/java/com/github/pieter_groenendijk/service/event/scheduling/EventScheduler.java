@@ -1,6 +1,6 @@
 package com.github.pieter_groenendijk.service.event.scheduling;
 
-import com.github.pieter_groenendijk.entity.event.Event;
+import com.github.pieter_groenendijk.domain.entities.event.Event;
 import com.github.pieter_groenendijk.repository.scheduling.ITaskRepository;
 import com.github.pieter_groenendijk.scheduling.LongTermTaskScheduler;
 import com.github.pieter_groenendijk.scheduling.TaskScheduler;

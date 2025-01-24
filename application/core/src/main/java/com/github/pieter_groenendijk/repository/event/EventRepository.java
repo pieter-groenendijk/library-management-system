@@ -1,6 +1,6 @@
 package com.github.pieter_groenendijk.repository.event;
 
-import com.github.pieter_groenendijk.entity.event.Event;
+import com.github.pieter_groenendijk.domain.entities.event.Event;
 import com.github.pieter_groenendijk.repository.scheduling.TaskRepository;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;

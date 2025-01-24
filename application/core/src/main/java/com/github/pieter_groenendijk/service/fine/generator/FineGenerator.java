@@ -1,8 +1,8 @@
 package com.github.pieter_groenendijk.service.fine.generator;
 
-import com.github.pieter_groenendijk.entity.Account;
-import com.github.pieter_groenendijk.entity.fine.Fine;
-import com.github.pieter_groenendijk.entity.fine.FineType;
+import com.github.pieter_groenendijk.domain.entities.Account;
+import com.github.pieter_groenendijk.domain.entities.fine.Fine;
+import com.github.pieter_groenendijk.domain.entities.fine.FineType;
 
 public abstract class FineGenerator<Association, AssociatedFine extends Fine> {
     private final FineType TYPE;

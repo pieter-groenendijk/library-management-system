@@ -1,7 +1,7 @@
 package com.github.pieter_groenendijk.repository;
 
-import com.github.pieter_groenendijk.entity.Account;
-import com.github.pieter_groenendijk.entity.Loan;
+import com.github.pieter_groenendijk.domain.entities.Account;
+import com.github.pieter_groenendijk.domain.entities.Loan;
 
 import java.util.Optional;
 

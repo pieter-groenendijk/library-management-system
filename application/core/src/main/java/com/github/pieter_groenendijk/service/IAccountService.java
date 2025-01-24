@@ -1,10 +1,10 @@
 package com.github.pieter_groenendijk.service;
 
-import com.github.pieter_groenendijk.entity.Account;
+import com.github.pieter_groenendijk.domain.entities.Account;
 import com.github.pieter_groenendijk.dto.MembershipTypeRequestDTO;
-import com.github.pieter_groenendijk.entity.MembershipType;
-import com.github.pieter_groenendijk.entity.Membership;
-import com.github.pieter_groenendijk.entity.LendingLimit;
+import com.github.pieter_groenendijk.domain.entities.MembershipType;
+import com.github.pieter_groenendijk.domain.entities.Membership;
+import com.github.pieter_groenendijk.domain.entities.LendingLimit;
 import com.github.pieter_groenendijk.dto.MembershipRequestDTO;
 
 import java.util.List;

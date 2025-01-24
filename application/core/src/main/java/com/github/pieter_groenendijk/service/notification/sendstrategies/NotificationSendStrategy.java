@@ -1,6 +1,6 @@
 package com.github.pieter_groenendijk.service.notification.sendstrategies;
 
-import com.github.pieter_groenendijk.entity.notification.Notification;
+import com.github.pieter_groenendijk.domain.entities.notification.Notification;
 import com.github.pieter_groenendijk.service.notification.notifiers.Notifier;
 
 public class NotificationSendStrategy implements Notifier {

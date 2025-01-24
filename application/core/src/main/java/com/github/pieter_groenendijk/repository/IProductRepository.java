@@ -1,8 +1,8 @@
 package com.github.pieter_groenendijk.repository;
 
-import com.github.pieter_groenendijk.entity.product.MediaType;
-import com.github.pieter_groenendijk.entity.product.ProductCopy;
-import com.github.pieter_groenendijk.entity.product.ProductTemplate;
+import com.github.pieter_groenendijk.domain.entities.product.MediaType;
+import com.github.pieter_groenendijk.domain.entities.product.ProductCopy;
+import com.github.pieter_groenendijk.domain.entities.product.ProductTemplate;
 
 import java.util.List;
 import java.util.Optional;

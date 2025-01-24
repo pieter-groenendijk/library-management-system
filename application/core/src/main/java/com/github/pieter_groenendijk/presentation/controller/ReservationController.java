@@ -3,8 +3,8 @@ package com.github.pieter_groenendijk.presentation.controller;
 
 import com.github.pieter_groenendijk.exception.EntityNotFoundException;
 import com.github.pieter_groenendijk.dto.ReservationDTO;
-import com.github.pieter_groenendijk.entity.Loan;
-import com.github.pieter_groenendijk.entity.Reservation;
+import com.github.pieter_groenendijk.domain.entities.Loan;
+import com.github.pieter_groenendijk.domain.entities.Reservation;
 import com.github.pieter_groenendijk.service.reservation.IReservationService;
 import com.github.pieter_groenendijk.service.loan.ILoanService;
 import io.swagger.v3.oas.annotations.Operation;

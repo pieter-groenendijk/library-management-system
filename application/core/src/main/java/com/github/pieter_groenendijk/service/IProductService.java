@@ -1,9 +1,9 @@
 package com.github.pieter_groenendijk.service;
 
 import com.github.pieter_groenendijk.dto.CatalogueRequestDTO;
-import com.github.pieter_groenendijk.entity.product.ProductCopy;
-import com.github.pieter_groenendijk.entity.product.ProductTemplate;
-import com.github.pieter_groenendijk.entity.product.Genre;
+import com.github.pieter_groenendijk.domain.entities.product.ProductCopy;
+import com.github.pieter_groenendijk.domain.entities.product.ProductTemplate;
+import com.github.pieter_groenendijk.domain.entities.product.Genre;
 import java.util.List;
 import java.util.Optional;
 

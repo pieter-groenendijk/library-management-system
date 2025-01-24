@@ -1,6 +1,6 @@
 package com.github.pieter_groenendijk.service.event.emitting;
 
-import com.github.pieter_groenendijk.entity.event.EventType;
+import com.github.pieter_groenendijk.domain.entities.event.EventType;
 import com.github.pieter_groenendijk.service.event.listener.IEventListener;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Component;

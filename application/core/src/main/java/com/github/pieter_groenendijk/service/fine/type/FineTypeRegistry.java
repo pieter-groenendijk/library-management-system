@@ -1,6 +1,6 @@
 package com.github.pieter_groenendijk.service.fine.type;
 
-import com.github.pieter_groenendijk.entity.fine.FineType;
+import com.github.pieter_groenendijk.domain.entities.fine.FineType;
 import com.github.pieter_groenendijk.repository.fine.IFineRepository;
 
 /**

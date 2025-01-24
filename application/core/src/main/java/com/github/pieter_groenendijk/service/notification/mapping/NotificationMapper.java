@@ -1,7 +1,7 @@
 package com.github.pieter_groenendijk.service.notification.mapping;
 
 import com.github.pieter_groenendijk.dto.NotificationDTO;
-import com.github.pieter_groenendijk.entity.notification.Notification;
+import com.github.pieter_groenendijk.domain.entities.notification.Notification;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

@@ -1,9 +1,9 @@
 package com.github.pieter_groenendijk.repository.fine;
 
-import com.github.pieter_groenendijk.entity.Account;
-import com.github.pieter_groenendijk.entity.fine.Fine;
-import com.github.pieter_groenendijk.entity.fine.FineBalance;
-import com.github.pieter_groenendijk.entity.fine.FineType;
+import com.github.pieter_groenendijk.domain.entities.Account;
+import com.github.pieter_groenendijk.domain.entities.fine.Fine;
+import com.github.pieter_groenendijk.domain.entities.fine.FineBalance;
+import com.github.pieter_groenendijk.domain.entities.fine.FineType;
 
 import java.util.List;
 import java.util.Optional;

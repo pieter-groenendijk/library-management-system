@@ -1,6 +1,6 @@
 package com.github.pieter_groenendijk.repository.genre;
 
-import com.github.pieter_groenendijk.entity.product.Genre;
+import com.github.pieter_groenendijk.domain.entities.product.Genre;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import java.util.Optional;

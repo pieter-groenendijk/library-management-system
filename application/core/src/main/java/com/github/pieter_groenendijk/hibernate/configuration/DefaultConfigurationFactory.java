@@ -1,15 +1,15 @@
 package com.github.pieter_groenendijk.hibernate.configuration;
 
-import com.github.pieter_groenendijk.entity.*;
-import com.github.pieter_groenendijk.entity.event.Event;
-import com.github.pieter_groenendijk.entity.event.LoanEvent;
-import com.github.pieter_groenendijk.entity.product.*;
-import com.github.pieter_groenendijk.entity.fine.Fine;
-import com.github.pieter_groenendijk.entity.fine.FineType;
-import com.github.pieter_groenendijk.entity.notification.LoanNotification;
-import com.github.pieter_groenendijk.entity.notification.Notification;
-import com.github.pieter_groenendijk.entity.payment.Payment;
-import com.github.pieter_groenendijk.entity.payment.PaymentStatus;
+import com.github.pieter_groenendijk.domain.entities.*;
+import com.github.pieter_groenendijk.domain.entities.product.*;
+import com.github.pieter_groenendijk.domain.entities.event.Event;
+import com.github.pieter_groenendijk.domain.entities.event.LoanEvent;
+import com.github.pieter_groenendijk.domain.entities.fine.Fine;
+import com.github.pieter_groenendijk.domain.entities.fine.FineType;
+import com.github.pieter_groenendijk.domain.entities.notification.LoanNotification;
+import com.github.pieter_groenendijk.domain.entities.notification.Notification;
+import com.github.pieter_groenendijk.domain.entities.payment.Payment;
+import com.github.pieter_groenendijk.domain.entities.payment.PaymentStatus;
 import org.hibernate.cfg.Configuration;
 
 public class DefaultConfigurationFactory {

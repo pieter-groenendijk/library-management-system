@@ -1,7 +1,7 @@
 package com.github.pieter_groenendijk.service.fine.processor;
 
-import com.github.pieter_groenendijk.entity.Account;
-import com.github.pieter_groenendijk.entity.fine.Fine;
+import com.github.pieter_groenendijk.domain.entities.Account;
+import com.github.pieter_groenendijk.domain.entities.fine.Fine;
 import com.github.pieter_groenendijk.repository.IAccountRepository;
 import com.github.pieter_groenendijk.repository.fine.IFineRepository;
 

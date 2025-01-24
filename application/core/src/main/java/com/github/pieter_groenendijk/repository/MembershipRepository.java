@@ -1,6 +1,6 @@
 package com.github.pieter_groenendijk.repository;
 
-import com.github.pieter_groenendijk.entity.Membership;
+import com.github.pieter_groenendijk.domain.entities.Membership;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import java.util.Optional;

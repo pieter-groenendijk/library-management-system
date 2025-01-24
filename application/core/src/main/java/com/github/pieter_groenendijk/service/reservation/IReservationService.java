@@ -1,9 +1,9 @@
 package com.github.pieter_groenendijk.service.reservation;
 
 import com.github.pieter_groenendijk.dto.ReservationDTO;
-import com.github.pieter_groenendijk.entity.Membership;
-import com.github.pieter_groenendijk.entity.Reservation;
-import com.github.pieter_groenendijk.entity.product.ProductCopy;
+import com.github.pieter_groenendijk.domain.entities.Membership;
+import com.github.pieter_groenendijk.domain.entities.Reservation;
+import com.github.pieter_groenendijk.domain.entities.product.ProductCopy;
 
 import java.time.LocalDate;
 import java.util.List;

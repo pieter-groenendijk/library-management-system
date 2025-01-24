@@ -1,11 +1,11 @@
 package com.github.pieter_groenendijk.service.loan;
 
-import com.github.pieter_groenendijk.entity.*;
+import com.github.pieter_groenendijk.domain.entities.*;
 import com.github.pieter_groenendijk.exception.EntityNotFoundException;
 import com.github.pieter_groenendijk.dto.LoanRequestDTO;
 import com.github.pieter_groenendijk.repository.loan.ILoanRepository;
-import com.github.pieter_groenendijk.entity.product.ProductCopy;
-import com.github.pieter_groenendijk.entity.product.ProductCopyStatus;
+import com.github.pieter_groenendijk.domain.entities.product.ProductCopy;
+import com.github.pieter_groenendijk.domain.entities.product.ProductCopyStatus;
 import com.github.pieter_groenendijk.service.loan.event.ILoanEventService;
 
 import static com.github.pieter_groenendijk.service.ServiceUtils.LOAN_LENGTH;

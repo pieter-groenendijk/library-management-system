@@ -1,6 +1,6 @@
 package com.github.pieter_groenendijk.dto;
 
-import com.github.pieter_groenendijk.entity.product.MediaType;
+import com.github.pieter_groenendijk.domain.entities.product.MediaType;
 
 public class CatalogueRequestDTO {
     private String searchString;

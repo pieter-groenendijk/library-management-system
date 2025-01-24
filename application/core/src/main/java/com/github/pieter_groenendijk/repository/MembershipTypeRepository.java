@@ -1,6 +1,6 @@
 package com.github.pieter_groenendijk.repository;
 
-import com.github.pieter_groenendijk.entity.MembershipType;
+import com.github.pieter_groenendijk.domain.entities.MembershipType;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import java.util.Optional;
@@ -10,7 +10,7 @@ import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
 import org.hibernate.HibernateException;
-import com.github.pieter_groenendijk.entity.LendingLimit;
+import com.github.pieter_groenendijk.domain.entities.LendingLimit;
 import org.springframework.stereotype.Repository;
 
 @Repository

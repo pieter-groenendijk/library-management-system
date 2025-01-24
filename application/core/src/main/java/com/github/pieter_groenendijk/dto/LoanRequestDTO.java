@@ -1,7 +1,5 @@
 package com.github.pieter_groenendijk.dto;
 
-import com.github.pieter_groenendijk.entity.LoanStatus;
-
 import java.time.LocalDate;
 
 public class LoanRequestDTO {

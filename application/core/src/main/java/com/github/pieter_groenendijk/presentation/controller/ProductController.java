@@ -1,14 +1,13 @@
 package com.github.pieter_groenendijk.presentation.controller;
 
 import com.github.pieter_groenendijk.dto.CatalogueRequestDTO;
-import com.github.pieter_groenendijk.hibernate.SessionFactoryFactory;
-import com.github.pieter_groenendijk.entity.product.ProductCopy;
+import com.github.pieter_groenendijk.domain.entities.product.ProductCopy;
 import com.github.pieter_groenendijk.service.IProductService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.hibernate.HibernateException;
-import org.hibernate.SessionFactory;
+
 import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

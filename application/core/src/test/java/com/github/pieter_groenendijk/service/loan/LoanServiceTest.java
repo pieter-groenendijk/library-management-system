@@ -1,9 +1,9 @@
 package com.github.pieter_groenendijk.service.loan;
 
 import com.github.pieter_groenendijk.exception.EntityNotFoundException;
-import com.github.pieter_groenendijk.entity.Loan;
-import com.github.pieter_groenendijk.entity.LoanStatus;
-import com.github.pieter_groenendijk.entity.Reservation;
+import com.github.pieter_groenendijk.domain.entities.Loan;
+import com.github.pieter_groenendijk.domain.entities.LoanStatus;
+import com.github.pieter_groenendijk.domain.entities.Reservation;
 import com.github.pieter_groenendijk.repository.IMembershipTypeRepository;
 import com.github.pieter_groenendijk.repository.loan.ILoanRepository;
 import com.github.pieter_groenendijk.repository.IMembershipRepository;

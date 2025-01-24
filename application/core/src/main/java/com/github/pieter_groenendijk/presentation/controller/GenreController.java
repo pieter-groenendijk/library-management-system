@@ -3,7 +3,7 @@ package com.github.pieter_groenendijk.presentation.controller;
 import org.springframework.web.bind.annotation.*;
 import io.swagger.v3.oas.annotations.Operation;
 import com.github.pieter_groenendijk.service.IProductService;
-import com.github.pieter_groenendijk.entity.product.Genre;
+import com.github.pieter_groenendijk.domain.entities.product.Genre;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.http.HttpStatus;

@@ -1,9 +1,9 @@
 package com.github.pieter_groenendijk.repository;
 
-import com.github.pieter_groenendijk.entity.MembershipType;
+import com.github.pieter_groenendijk.domain.entities.MembershipType;
 import java.util.Optional;
 import java.util.List;
-import com.github.pieter_groenendijk.entity.LendingLimit;
+import com.github.pieter_groenendijk.domain.entities.LendingLimit;
 
 public interface IMembershipTypeRepository {
     Optional<MembershipType> retrieveMembershipTypeById(long id);
