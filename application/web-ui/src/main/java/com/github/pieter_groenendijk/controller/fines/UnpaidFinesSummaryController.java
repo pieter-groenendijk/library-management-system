@@ -1,6 +1,6 @@
 package com.github.pieter_groenendijk.controller.fines;
 
-import com.github.pieter_groenendijk.repository.fines.FineRepository;
+import com.github.pieter_groenendijk.repositories.fines.FineRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

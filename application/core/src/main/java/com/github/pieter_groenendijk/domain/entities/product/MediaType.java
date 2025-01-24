@@ -1,0 +1,10 @@
+package com.github.pieter_groenendijk.domain.entities.product;
+
+public enum MediaType {
+    BOOK,
+    EBOOK,
+    AUDIOBOOK,
+    MAGAZINE,
+    DVD,
+    NONE
+}

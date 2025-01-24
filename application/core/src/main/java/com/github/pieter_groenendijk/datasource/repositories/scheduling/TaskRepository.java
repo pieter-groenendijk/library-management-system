@@ -1,0 +1,19 @@
+package com.github.pieter_groenendijk.datasource.repositories.scheduling;
+
+import com.github.pieter_groenendijk.domain.entities.scheduling.Task;
+import com.github.pieter_groenendijk.datasource.repositories.fine.Repository;
+import com.github.pieter_groenendijk.domain.shared.scheduling.TaskStatus;
+import org.hibernate.SessionFactory;
+
+public abstract class TaskRepository<T extends Task> extends Repository implements ITaskRepository<T> {
+    public TaskRepository(SessionFactory sessionFactory) {
+        super(sessionFactory);
+    }
+
+    @Override
+    public void updateStatus(Task task, TaskStatus status) throws Exception {
+        task.setStatus(status);
+        super.merge(task);
+    }
+}
+

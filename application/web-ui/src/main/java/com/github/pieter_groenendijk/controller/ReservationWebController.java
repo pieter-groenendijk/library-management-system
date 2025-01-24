@@ -1,21 +1,10 @@
 package com.github.pieter_groenendijk.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.pieter_groenendijk.DTO.ReservationDTO;
-import com.github.pieter_groenendijk.model.Reservation;
-import com.github.pieter_groenendijk.repository.ReservationRepository;
-import jakarta.validation.Valid;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import com.github.pieter_groenendijk.repositories.ReservationRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
-
-import java.util.Optional;
 
 @Controller
 public class ReservationWebController {

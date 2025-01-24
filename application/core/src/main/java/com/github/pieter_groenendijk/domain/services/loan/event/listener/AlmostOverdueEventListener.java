@@ -1,0 +1,22 @@
+package com.github.pieter_groenendijk.domain.services.loan.event.listener;
+
+import com.github.pieter_groenendijk.domain.entities.loan.Loan;
+import com.github.pieter_groenendijk.domain.entities.event.EventType;
+import com.github.pieter_groenendijk.domain.services.event.listener.EventListener;
+import com.github.pieter_groenendijk.domain.services.notification.orchestration.NotificationOrchestrator;
+
+class AlmostOverdueEventListener extends EventListener<Loan> {
+    private final NotificationOrchestrator NOTIFICATION_SERVICE;
+
+    public AlmostOverdueEventListener(NotificationOrchestrator notificationOrchestrator) {
+        super(
+            EventType.ALMOST_OVERDUE_LOAN
+        );
+        this.NOTIFICATION_SERVICE = notificationOrchestrator;
+    }
+
+    @Override
+    public void tryReact(Loan loan) throws Exception {
+        this.NOTIFICATION_SERVICE.scheduleAlmostOverdueLoanNotification(loan);
+    }
+}
