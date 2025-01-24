@@ -9,6 +9,7 @@ import com.github.pieter_groenendijk.entity.ReservationStatus;
 import com.github.pieter_groenendijk.entity.product.ProductCopy;
 import com.github.pieter_groenendijk.entity.product.ProductCopyStatus;
 import com.github.pieter_groenendijk.repository.*;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -16,6 +17,7 @@ import java.util.List;
 import static com.github.pieter_groenendijk.service.ServiceUtils.PICKUP_DAYS;
 import static com.github.pieter_groenendijk.service.ServiceUtils.PICKUP_EXPIRY_DAYS;
 
+@Service
 public class ReservationService implements IReservationService {
     private final IAccountRepository accountRepository;
     private final IReservationRepository reservationRepository;
@@ -23,8 +25,13 @@ public class ReservationService implements IReservationService {
     private final IProductRepository productRepository;
     private final IMembershipTypeRepository membershipTypeRepository;
 
-
-    public ReservationService(IReservationRepository reservationRepository, IMembershipRepository membershipRepository, IAccountRepository accountRepository, IProductRepository productRepository, IMembershipTypeRepository membershipTypeRepository) {
+    public ReservationService(
+        IReservationRepository reservationRepository,
+        IMembershipRepository membershipRepository,
+        IAccountRepository accountRepository,
+        IProductRepository productRepository,
+        IMembershipTypeRepository membershipTypeRepository
+    ) {
         this.reservationRepository = reservationRepository;
         this.membershipRepository = membershipRepository;
         this.accountRepository = accountRepository;

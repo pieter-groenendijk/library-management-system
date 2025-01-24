@@ -11,7 +11,9 @@ import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
 import org.hibernate.HibernateException;
 import com.github.pieter_groenendijk.entity.LendingLimit;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class MembershipTypeRepository implements IMembershipTypeRepository {
 
     private SessionFactory sessionFactory;

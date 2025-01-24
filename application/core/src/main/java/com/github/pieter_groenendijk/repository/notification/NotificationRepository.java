@@ -4,13 +4,17 @@ import com.github.pieter_groenendijk.entity.notification.Notification;
 import com.github.pieter_groenendijk.repository.scheduling.TaskRepository;
 import com.github.pieter_groenendijk.scheduling.TaskStatus;
 import org.hibernate.SessionFactory;
+import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
+@Repository
 public class NotificationRepository extends TaskRepository<Notification> implements INotificationRepository {
-    public NotificationRepository(SessionFactory sessionFactory) {
+    public NotificationRepository(
+        SessionFactory sessionFactory
+    ) {
         super(sessionFactory);
     }
 

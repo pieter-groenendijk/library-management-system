@@ -20,11 +20,19 @@ public class ReservationEvent extends Event<Reservation> {
 
     @Override
     public Reservation getAssociation() {
-        return null;
+        return this.getReservation();
     }
 
     @Override
     public void setAssociation(Reservation reservation) {
+        this.setReservation(reservation);
+    }
 
+    public Reservation getReservation() {
+        return this.reservation;
+    }
+
+    public void setReservation(Reservation reservation) {
+        this.reservation = reservation;
     }
 }

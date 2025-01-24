@@ -20,11 +20,19 @@ public class LoanEvent extends Event<Loan> {
 
     @Override
     public Loan getAssociation() {
-        return this.loan;
+        return this.getLoan();
     }
 
     @Override
     public void setAssociation(Loan loan) {
+        this.setLoan(loan);
+    }
+
+    public Loan getLoan() {
+        return this.loan;
+    }
+
+    public void setLoan(Loan loan) {
         this.loan = loan;
     }
 }

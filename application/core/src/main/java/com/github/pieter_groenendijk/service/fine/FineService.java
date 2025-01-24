@@ -3,18 +3,21 @@ package com.github.pieter_groenendijk.service.fine;
 import com.github.pieter_groenendijk.dto.FineDTO;
 import com.github.pieter_groenendijk.dto.FineSummaryDTO;
 import com.github.pieter_groenendijk.repository.fine.IFineRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class FineService implements IFineService {
     private final IFineRepository REPOSITORY;
     private final FineMapper MAPPER;
 
     public FineService(
-        IFineRepository repository
+        IFineRepository repository,
+        FineMapper mapper
     ) {
         this.REPOSITORY = repository;
-        this.MAPPER = new FineMapper();
+        this.MAPPER = mapper;
     }
 
     @Override

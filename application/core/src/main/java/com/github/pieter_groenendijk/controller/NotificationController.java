@@ -19,10 +19,10 @@ import java.util.List;
 public class NotificationController {
     private final INotificationService SERVICE;
 
-    public NotificationController() {
-        this.SERVICE = new NotificationService(
-            new NotificationRepository(new SessionFactoryFactory().create()) // TODO: Dependency injection instead, not easily tested right now
-        );
+    public NotificationController(
+        INotificationService service
+    ) {
+        this.SERVICE = service;
     }
 
     @Operation(summary = "Retrieve the notifications the account should have received")

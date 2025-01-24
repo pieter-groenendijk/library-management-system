@@ -2,22 +2,11 @@ package com.github.pieter_groenendijk.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
-import com.github.pieter_groenendijk.service.AccountService;
 import com.github.pieter_groenendijk.service.IAccountService;
-import com.github.pieter_groenendijk.repository.AccountRepository;
-import com.github.pieter_groenendijk.repository.MembershipTypeRepository;
-import com.github.pieter_groenendijk.repository.MembershipRepository;
-import com.github.pieter_groenendijk.repository.IAccountRepository;
-import com.github.pieter_groenendijk.repository.IMembershipTypeRepository;
-import com.github.pieter_groenendijk.repository.IMembershipRepository;
 import com.github.pieter_groenendijk.dto.MembershipRequestDTO;
 import com.github.pieter_groenendijk.entity.Membership;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
-import com.github.pieter_groenendijk.hibernate.SessionFactoryFactory;
-import com.github.pieter_groenendijk.repository.fine.IFineRepository;
-import com.github.pieter_groenendijk.repository.fine.FineRepository;
-import org.hibernate.SessionFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import java.util.List;
@@ -25,17 +14,13 @@ import java.util.List;
 @RestController
 @RequestMapping("/membership")
 public class MembershipController{
+	private final IAccountService ACCOUNT_SERVICE;
 
-	private IAccountService accountService;
-	private SessionFactory sessionFactory = new SessionFactoryFactory().create();
-
-	public MembershipController()
+	public MembershipController(
+        IAccountService accountService
+    )
 	{
-		IAccountRepository accountRepository = new AccountRepository(sessionFactory);
-        IMembershipTypeRepository membershipTypeRepository = new MembershipTypeRepository(sessionFactory);
-        IMembershipRepository membershipRepository = new MembershipRepository(sessionFactory);
-        IFineRepository fineRepository = new FineRepository(sessionFactory);
-        accountService = new AccountService(accountRepository, membershipTypeRepository, membershipRepository, fineRepository);
+        this.ACCOUNT_SERVICE = accountService;
 	}
 
 	@Operation(summary = "Retrieve a membership", description = "Retrieve a membership by Id")
@@ -45,7 +30,7 @@ public class MembershipController{
     })
     @GetMapping("/{id}")
     public ResponseEntity<?> retrieveMembershipById(@PathVariable("id") long id) {
-        Membership membership = accountService.retrieveMembershipById(id);
+        Membership membership = ACCOUNT_SERVICE.retrieveMembershipById(id);
         return ResponseEntity.ok(membership);
     }
 
@@ -56,7 +41,7 @@ public class MembershipController{
     })
     @GetMapping("/account/{accountId}")
     public ResponseEntity<?> retrieveMembershipsByAccountId(@PathVariable("accountId") long accountId) {
-        List<Membership> memberships = accountService.retrieveMembershipsByAccountId(accountId);
+        List<Membership> memberships = ACCOUNT_SERVICE.retrieveMembershipsByAccountId(accountId);
         if (memberships.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
         } else {
@@ -67,21 +52,21 @@ public class MembershipController{
     @Operation(summary = "Create a membership", description = "Add a new membership to the database")
     @PostMapping
     public ResponseEntity<?> createMembership(@RequestBody MembershipRequestDTO request) throws Exception {
-        accountService.store(request);
+        ACCOUNT_SERVICE.store(request);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @Operation(summary = "Update a membership", description = "Update a membership in the database")
     @PutMapping("/{id}")
     public ResponseEntity<?> updateMembership(@PathVariable("id") long id, @RequestBody MembershipRequestDTO request){
-        accountService.update(id, request);
+        ACCOUNT_SERVICE.update(id, request);
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 
     @Operation(summary = "Softdelete a membership", description = "Softdelete an membership in the database")
     @PutMapping("/softdelete/{id}")
     public ResponseEntity<?> softDeleteMembership(@PathVariable("id") long id) {
-        accountService.softDeleteMembership(id);
+        ACCOUNT_SERVICE.softDeleteMembership(id);
         return ResponseEntity.status(HttpStatus.ACCEPTED).build();
     }
 }

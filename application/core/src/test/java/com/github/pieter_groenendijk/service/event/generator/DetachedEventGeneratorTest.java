@@ -134,7 +134,7 @@ public class DetachedEventGeneratorTest {
 
         this.generator.generate(association);
 
-        assertEquals(association, returnedLoanEvent.getAssociation());
+        assertEquals(association, returnedLoanEvent.getLoan());
     }
 
     // TODO: How to correctly test?

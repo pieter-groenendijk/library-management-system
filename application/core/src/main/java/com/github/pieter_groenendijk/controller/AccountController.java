@@ -1,18 +1,9 @@
 package com.github.pieter_groenendijk.controller;
 
 import com.github.pieter_groenendijk.exception.EntityNotFoundException;
-import com.github.pieter_groenendijk.repository.fine.FineRepository;
-import com.github.pieter_groenendijk.repository.fine.IFineRepository;
 import org.springframework.web.bind.annotation.*;
 import io.swagger.v3.oas.annotations.Operation;
-import com.github.pieter_groenendijk.service.AccountService;
 import com.github.pieter_groenendijk.service.IAccountService;
-import com.github.pieter_groenendijk.repository.AccountRepository;
-import com.github.pieter_groenendijk.repository.MembershipTypeRepository;
-import com.github.pieter_groenendijk.repository.MembershipRepository;
-import com.github.pieter_groenendijk.repository.IAccountRepository;
-import com.github.pieter_groenendijk.repository.IMembershipTypeRepository;
-import com.github.pieter_groenendijk.repository.IMembershipRepository;
 import com.github.pieter_groenendijk.entity.Account;
 import com.github.pieter_groenendijk.dto.AccountRequestDTO;
 
@@ -20,25 +11,18 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import com.github.pieter_groenendijk.hibernate.SessionFactoryFactory;
-import org.hibernate.SessionFactory;
 
 import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("/account") 
 public class AccountController {
+    private final IAccountService SERVICE;
 
-    private IAccountService accountService;
-    private SessionFactory sessionFactory = new SessionFactoryFactory().create();
-
-    private AccountController()
-    {
-        IAccountRepository accountRepository = new AccountRepository(sessionFactory);
-        IMembershipTypeRepository membershipTypeRepository = new MembershipTypeRepository(sessionFactory);
-        IMembershipRepository membershipRepository = new MembershipRepository(sessionFactory);
-        IFineRepository fineRepository = new FineRepository(sessionFactory);
-        accountService = new AccountService(accountRepository, membershipTypeRepository, membershipRepository, fineRepository);
+    private AccountController(
+        IAccountService service
+    ) {
+        this.SERVICE = service;
     }
 
     @Operation(summary = "Retrieve an account", description = "Retrieve an account by Id")
@@ -49,7 +33,7 @@ public class AccountController {
     @GetMapping("/{id}")
     public Account retrieveAccountById(@PathVariable("id") long id) throws Exception {
         try {
-            return accountService.retrieveAccountById(id);
+            return SERVICE.retrieveAccountById(id);
         } catch (NoSuchElementException e) {
             throw new EntityNotFoundException("");
         }
@@ -58,28 +42,28 @@ public class AccountController {
     @Operation(summary = "Create an account", description = "Add a new account to the database")
     @PostMapping
     public ResponseEntity<?> createAccount(@RequestBody AccountRequestDTO account) throws Exception {
-        accountService.store(account);
+        SERVICE.store(account);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @Operation(summary = "Update an account", description = "Update an account in the database")
     @PutMapping("/{id}")
     public ResponseEntity<?> updateAccount(@PathVariable("id") long id, @RequestBody AccountRequestDTO account) throws Exception {
-        accountService.update(id, account);
+        SERVICE.update(id, account);
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 
     @Operation(summary = "Set account blocked", description = "Set an account from blocked to unblocked and back")
     @PostMapping("/setBlocked/{id}/{blocked}")
     public ResponseEntity<?> setAccountBlocked(@PathVariable("id") long id, @PathVariable boolean newValue) throws Exception {
-        accountService.setIsBlocked(id, newValue);
+        SERVICE.setIsBlocked(id, newValue);
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 
     @Operation(summary = "Softdelete an account", description = "Softdelete an account in the database")
     @PutMapping("/softdelete/{id}")
     public ResponseEntity<?> softDeleteAccount(@PathVariable("id") long id) throws Exception {
-        accountService.softDeleteAccount(id);
+        SERVICE.softDeleteAccount(id);
         return ResponseEntity.status(HttpStatus.ACCEPTED).build();
     }
 }

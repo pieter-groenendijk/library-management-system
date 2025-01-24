@@ -29,6 +29,9 @@ public abstract class Event<Association> extends Task {
 
     public Event() {}
 
+    public abstract Association getAssociation();
+    public abstract void setAssociation(Association association);
+
     public EventType getType() {
         return type;
     }
@@ -36,8 +39,4 @@ public abstract class Event<Association> extends Task {
     public void setType(EventType type) {
         this.type = type;
     }
-
-    public abstract Association getAssociation();
-
-    public abstract void setAssociation(Association association);
 }
