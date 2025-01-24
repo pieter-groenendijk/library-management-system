@@ -127,4 +127,6 @@
     </tbody>
 </table>
 
+![SSD Reservering](../ssd/reservering.png)<br>
+![SD Reservering](../../../../design/artifacts/sequence-diagrams/reservation-store.svg)<br>
 
