@@ -1,4 +1,4 @@
-package com.github.pieter_groenendijk.datasource.repositories.fine;
+package com.github.pieter_groenendijk.datasource.repositories;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

@@ -2,7 +2,7 @@ package com.github.pieter_groenendijk.datasource.repositories.account;
 
 import com.github.pieter_groenendijk.domain.entities.account.Account;
 import com.github.pieter_groenendijk.domain.entities.loan.Loan;
-import com.github.pieter_groenendijk.datasource.repositories.fine.Repository;
+import com.github.pieter_groenendijk.datasource.repositories.Repository;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;

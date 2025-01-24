@@ -4,6 +4,7 @@ import com.github.pieter_groenendijk.shared.dto.notification.NotificationDTO;
 import com.github.pieter_groenendijk.domain.exception.EntityNotFoundException;
 import com.github.pieter_groenendijk.datasource.repositories.notification.INotificationRepository;
 import com.github.pieter_groenendijk.domain.services.notification.mapping.NotificationMapper;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,6 +25,7 @@ public class NotificationService implements INotificationService {
     }
 
     @Override
+    @Transactional
     public List<NotificationDTO> retrieveRecentReceivedNotifications(Long accountId, int maxAmount) throws Exception {
         maxAmount = this.getEnforcedAllowedMaxAmount(maxAmount);
 
@@ -36,6 +38,7 @@ public class NotificationService implements INotificationService {
     }
 
     @Override
+    @Transactional
     public NotificationDTO retrieve(Long notificationId) throws Exception {
         return this.MAPPER.toDTO(
             this.REPOSITORY.retrieve(notificationId).orElseThrow(() -> new EntityNotFoundException("Notification not found"))
