@@ -1,7 +1,6 @@
 package com.github.pieter_groenendijk.domain.services.loan;
 
-import com.github.pieter_groenendijk.domain.services.loan.LoanService;
-import com.github.pieter_groenendijk.exception.EntityNotFoundException;
+import com.github.pieter_groenendijk.domain.exception.EntityNotFoundException;
 import com.github.pieter_groenendijk.domain.entities.loan.Loan;
 import com.github.pieter_groenendijk.domain.entities.loan.LoanStatus;
 import com.github.pieter_groenendijk.domain.entities.reservation.Reservation;

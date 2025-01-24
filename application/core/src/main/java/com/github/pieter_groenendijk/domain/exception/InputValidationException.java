@@ -1,4 +1,4 @@
-package com.github.pieter_groenendijk.exception;
+package com.github.pieter_groenendijk.domain.exception;
 
 public class InputValidationException extends RuntimeException {
     

@@ -1,6 +1,6 @@
 package com.github.pieter_groenendijk.domain.entities.scheduling;
 
-import com.github.pieter_groenendijk.scheduling.TaskStatus;
+import com.github.pieter_groenendijk.domain.shared.scheduling.TaskStatus;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;

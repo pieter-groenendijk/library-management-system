@@ -2,7 +2,7 @@ package com.github.pieter_groenendijk.domain.services.product;
 
 import com.github.pieter_groenendijk.dto.CatalogueRequestDTO;
 import com.github.pieter_groenendijk.domain.entities.product.MediaType;
-import com.github.pieter_groenendijk.exception.EntityNotFoundException;
+import com.github.pieter_groenendijk.domain.exception.EntityNotFoundException;
 import com.github.pieter_groenendijk.domain.entities.product.Genre;
 import com.github.pieter_groenendijk.domain.entities.product.ProductCopy;
 import com.github.pieter_groenendijk.domain.entities.product.ProductTemplate;

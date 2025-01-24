@@ -1,6 +1,6 @@
 package com.github.pieter_groenendijk.presentation.controller;
 
-import com.github.pieter_groenendijk.exception.EntityNotFoundException;
+import com.github.pieter_groenendijk.domain.exception.EntityNotFoundException;
 import org.springframework.web.bind.annotation.*;
 import io.swagger.v3.oas.annotations.Operation;
 import com.github.pieter_groenendijk.domain.services.account.IAccountService;

@@ -3,7 +3,7 @@ package com.github.pieter_groenendijk.domain.services.notification.generators;
 import com.github.pieter_groenendijk.domain.entities.loan.Loan;
 import com.github.pieter_groenendijk.domain.entities.notification.LoanNotification;
 import com.github.pieter_groenendijk.repository.notification.INotificationRepository;
-import com.github.pieter_groenendijk.scheduling.TaskStorage;
+import com.github.pieter_groenendijk.domain.shared.scheduling.TaskStorage;
 import com.github.pieter_groenendijk.domain.services.notification.sendstrategies.registry.SendStrategyType;
 
 import java.time.LocalDateTime;

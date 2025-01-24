@@ -5,7 +5,7 @@ import com.github.pieter_groenendijk.domain.entities.loan.LoanStatus;
 import com.github.pieter_groenendijk.domain.entities.membership.Membership;
 import com.github.pieter_groenendijk.domain.entities.membership.MembershipType;
 import com.github.pieter_groenendijk.domain.entities.reservation.Reservation;
-import com.github.pieter_groenendijk.exception.EntityNotFoundException;
+import com.github.pieter_groenendijk.domain.exception.EntityNotFoundException;
 import com.github.pieter_groenendijk.dto.LoanRequestDTO;
 import com.github.pieter_groenendijk.repository.loan.ILoanRepository;
 import com.github.pieter_groenendijk.domain.entities.product.ProductCopy;

@@ -2,9 +2,8 @@ package com.github.pieter_groenendijk.domain.services.event.scheduling;
 
 import com.github.pieter_groenendijk.domain.entities.event.Event;
 import com.github.pieter_groenendijk.domain.entities.event.EventType;
-import com.github.pieter_groenendijk.domain.services.event.scheduling.EventScheduler;
 import com.github.pieter_groenendijk.repository.scheduling.ITaskRepository;
-import com.github.pieter_groenendijk.scheduling.TaskScheduler;
+import com.github.pieter_groenendijk.domain.shared.scheduling.TaskScheduler;
 import com.github.pieter_groenendijk.domain.services.event.emitting.EventEmitterPool;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

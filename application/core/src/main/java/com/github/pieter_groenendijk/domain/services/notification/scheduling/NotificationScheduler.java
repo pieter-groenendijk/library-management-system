@@ -2,8 +2,8 @@ package com.github.pieter_groenendijk.domain.services.notification.scheduling;
 
 import com.github.pieter_groenendijk.repository.scheduling.ITaskRepository;
 import com.github.pieter_groenendijk.domain.entities.notification.Notification;
-import com.github.pieter_groenendijk.scheduling.LongTermTaskScheduler;
-import com.github.pieter_groenendijk.scheduling.TaskScheduler;
+import com.github.pieter_groenendijk.domain.shared.scheduling.LongTermTaskScheduler;
+import com.github.pieter_groenendijk.domain.shared.scheduling.TaskScheduler;
 import com.github.pieter_groenendijk.domain.services.notification.sendstrategies.registry.NotificationSendStrategyRegistry;
 
 public class NotificationScheduler extends LongTermTaskScheduler<Notification> {

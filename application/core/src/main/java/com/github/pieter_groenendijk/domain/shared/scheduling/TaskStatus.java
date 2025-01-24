@@ -1,4 +1,4 @@
-package com.github.pieter_groenendijk.scheduling;
+package com.github.pieter_groenendijk.domain.shared.scheduling;
 
 public enum TaskStatus {
     SCHEDULED,

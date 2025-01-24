@@ -4,7 +4,7 @@ import com.github.pieter_groenendijk.domain.entities.loan.Loan;
 import com.github.pieter_groenendijk.domain.entities.event.Event;
 import com.github.pieter_groenendijk.domain.entities.event.EventType;
 import com.github.pieter_groenendijk.repository.fine.Repository;
-import com.github.pieter_groenendijk.scheduling.TaskStatus;
+import com.github.pieter_groenendijk.domain.shared.scheduling.TaskStatus;
 import jakarta.persistence.Query;
 import org.hibernate.SessionFactory;
 

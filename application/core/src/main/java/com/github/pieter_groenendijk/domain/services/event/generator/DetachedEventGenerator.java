@@ -3,8 +3,8 @@ package com.github.pieter_groenendijk.domain.services.event.generator;
 import com.github.pieter_groenendijk.domain.entities.event.Event;
 import com.github.pieter_groenendijk.domain.entities.event.EventType;
 import com.github.pieter_groenendijk.repository.event.IEventRepository;
-import com.github.pieter_groenendijk.scheduling.DetachedTask;
-import com.github.pieter_groenendijk.scheduling.TaskStorage;
+import com.github.pieter_groenendijk.domain.shared.scheduling.DetachedTask;
+import com.github.pieter_groenendijk.domain.shared.scheduling.TaskStorage;
 import org.jetbrains.annotations.NotNull;
 
 import java.time.LocalDateTime;

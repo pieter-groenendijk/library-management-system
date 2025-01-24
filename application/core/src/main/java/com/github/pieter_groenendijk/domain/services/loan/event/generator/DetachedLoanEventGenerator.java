@@ -4,7 +4,7 @@ import com.github.pieter_groenendijk.domain.entities.loan.Loan;
 import com.github.pieter_groenendijk.domain.entities.event.EventType;
 import com.github.pieter_groenendijk.domain.entities.event.LoanEvent;
 import com.github.pieter_groenendijk.repository.event.IEventRepository;
-import com.github.pieter_groenendijk.scheduling.TaskStorage;
+import com.github.pieter_groenendijk.domain.shared.scheduling.TaskStorage;
 import com.github.pieter_groenendijk.domain.services.event.generator.DetachedEventGenerator;
 
 import java.time.LocalDateTime;

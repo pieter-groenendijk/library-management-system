@@ -2,7 +2,7 @@ package com.github.pieter_groenendijk.repository.notification;
 
 import com.github.pieter_groenendijk.domain.entities.notification.Notification;
 import com.github.pieter_groenendijk.repository.scheduling.TaskRepository;
-import com.github.pieter_groenendijk.scheduling.TaskStatus;
+import com.github.pieter_groenendijk.domain.shared.scheduling.TaskStatus;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 

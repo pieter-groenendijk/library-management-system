@@ -3,7 +3,7 @@ package com.github.pieter_groenendijk.domain.services.notification.orchestration
 import com.github.pieter_groenendijk.domain.entities.loan.Loan;
 import com.github.pieter_groenendijk.repository.IAccountRepository;
 import com.github.pieter_groenendijk.repository.notification.INotificationRepository;
-import com.github.pieter_groenendijk.scheduling.TaskScheduler;
+import com.github.pieter_groenendijk.domain.shared.scheduling.TaskScheduler;
 import com.github.pieter_groenendijk.domain.services.notification.scheduling.NotificationScheduler;
 import com.github.pieter_groenendijk.domain.services.notification.sendstrategies.NotificationSendStrategyAssembler;
 import com.github.pieter_groenendijk.domain.services.notification.sendstrategies.registry.NotificationSendStrategyRegistry;

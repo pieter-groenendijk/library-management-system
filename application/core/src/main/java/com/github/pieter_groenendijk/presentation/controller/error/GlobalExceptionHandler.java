@@ -5,8 +5,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
-import com.github.pieter_groenendijk.exception.EntityNotFoundException;
-import com.github.pieter_groenendijk.exception.InputValidationException;
+import com.github.pieter_groenendijk.domain.exception.EntityNotFoundException;
+import com.github.pieter_groenendijk.domain.exception.InputValidationException;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
