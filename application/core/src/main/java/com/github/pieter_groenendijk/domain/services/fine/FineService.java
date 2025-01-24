@@ -1,7 +1,7 @@
 package com.github.pieter_groenendijk.domain.services.fine;
 
-import com.github.pieter_groenendijk.dto.FineDTO;
-import com.github.pieter_groenendijk.dto.FineSummaryDTO;
+import com.github.pieter_groenendijk.dto.fine.FineDTO;
+import com.github.pieter_groenendijk.dto.fine.FineSummaryDTO;
 import com.github.pieter_groenendijk.repository.fine.IFineRepository;
 import org.springframework.stereotype.Service;
 

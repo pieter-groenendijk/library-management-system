@@ -1,7 +1,7 @@
 package com.github.pieter_groenendijk.presentation.controller;
 
 import com.github.pieter_groenendijk.domain.exception.EntityNotFoundException;
-import com.github.pieter_groenendijk.dto.LoanDTO;
+import com.github.pieter_groenendijk.dto.loan.LoanDTO;
 import com.github.pieter_groenendijk.domain.entities.loan.Loan;
 import com.github.pieter_groenendijk.domain.services.loan.ILoanService;
 import io.swagger.v3.oas.annotations.Operation;

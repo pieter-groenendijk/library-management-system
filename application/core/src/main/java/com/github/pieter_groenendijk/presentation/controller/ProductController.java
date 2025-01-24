@@ -1,6 +1,6 @@
 package com.github.pieter_groenendijk.presentation.controller;
 
-import com.github.pieter_groenendijk.dto.CatalogueDTO;
+import com.github.pieter_groenendijk.dto.catalogue.CatalogueDTO;
 import com.github.pieter_groenendijk.domain.entities.product.ProductCopy;
 import com.github.pieter_groenendijk.domain.services.product.IProductService;
 import io.swagger.v3.oas.annotations.Operation;

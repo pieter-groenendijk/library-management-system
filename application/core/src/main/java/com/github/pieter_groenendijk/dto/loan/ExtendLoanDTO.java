@@ -1,4 +1,4 @@
-package com.github.pieter_groenendijk.dto;
+package com.github.pieter_groenendijk.dto.loan;
 
 import java.util.Date;
 

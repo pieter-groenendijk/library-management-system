@@ -1,6 +1,6 @@
 package com.github.pieter_groenendijk.presentation.controller;
 
-import com.github.pieter_groenendijk.dto.FineSummaryDTO;
+import com.github.pieter_groenendijk.dto.fine.FineSummaryDTO;
 import com.github.pieter_groenendijk.domain.services.fine.IFineService;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.http.HttpStatus;

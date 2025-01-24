@@ -1,4 +1,4 @@
-package com.github.pieter_groenendijk.dto;
+package com.github.pieter_groenendijk.dto.reservation;
 
 import com.github.pieter_groenendijk.domain.entities.reservation.ReservationStatus;
 

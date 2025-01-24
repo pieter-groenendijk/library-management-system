@@ -1,6 +1,6 @@
 package com.github.pieter_groenendijk.domain.services.reservation;
 
-import com.github.pieter_groenendijk.dto.ReservationDTO;
+import com.github.pieter_groenendijk.dto.reservation.ReservationDTO;
 import com.github.pieter_groenendijk.domain.entities.membership.Membership;
 import com.github.pieter_groenendijk.domain.entities.reservation.Reservation;
 import com.github.pieter_groenendijk.domain.entities.product.ProductCopy;

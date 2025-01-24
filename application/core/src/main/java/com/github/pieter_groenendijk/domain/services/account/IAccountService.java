@@ -2,13 +2,13 @@ package com.github.pieter_groenendijk.domain.services.account;
 
 import com.github.pieter_groenendijk.domain.entities.loan.LoanLimit;
 import com.github.pieter_groenendijk.domain.entities.account.Account;
-import com.github.pieter_groenendijk.dto.MembershipTypeDTO;
+import com.github.pieter_groenendijk.dto.membership.MembershipTypeDTO;
 import com.github.pieter_groenendijk.domain.entities.membership.MembershipType;
 import com.github.pieter_groenendijk.domain.entities.membership.Membership;
-import com.github.pieter_groenendijk.dto.MembershipDTO;
+import com.github.pieter_groenendijk.dto.membership.MembershipDTO;
 
 import java.util.List;
-import com.github.pieter_groenendijk.dto.AccountDTO;
+import com.github.pieter_groenendijk.dto.account.AccountDTO;
 
 public interface IAccountService {
 
