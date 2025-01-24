@@ -1,6 +1,6 @@
 package com.github.pieter_groenendijk.scheduling;
 
-import com.github.pieter_groenendijk.model.scheduling.Task;
+import com.github.pieter_groenendijk.entity.scheduling.Task;
 import com.github.pieter_groenendijk.repository.scheduling.ITaskRepository;
 
 import java.time.Duration;

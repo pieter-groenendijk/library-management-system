@@ -1,14 +1,12 @@
 package com.github.pieter_groenendijk.repository;
-import com.github.pieter_groenendijk.model.product.ProductCopy;
-import com.github.pieter_groenendijk.model.product.ProductTemplate;
+import com.github.pieter_groenendijk.entity.product.MediaType;
+import com.github.pieter_groenendijk.entity.product.ProductCopy;
+import com.github.pieter_groenendijk.entity.product.ProductTemplate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import java.util.List;
 import java.util.Collections;
-import com.github.pieter_groenendijk.model.product.MediaType;
-import org.springframework.stereotype.Repository;
 import org.hibernate.Transaction;
-import org.hibernate.Hibernate;
 import org.hibernate.query.Query;
 
 import java.util.Optional;

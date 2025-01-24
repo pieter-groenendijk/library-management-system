@@ -1,6 +1,6 @@
 package com.github.pieter_groenendijk.service.event.listener;
 
-import com.github.pieter_groenendijk.model.event.EventType;
+import com.github.pieter_groenendijk.entity.event.EventType;
 import com.github.pieter_groenendijk.service.event.emitting.EventEmitterPool;
 import org.jetbrains.annotations.NotNull;
 

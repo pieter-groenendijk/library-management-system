@@ -1,7 +1,7 @@
 package com.github.pieter_groenendijk.service.notification;
 
+import com.github.pieter_groenendijk.dto.NotificationDTO;
 import com.github.pieter_groenendijk.exception.EntityNotFoundException;
-import com.github.pieter_groenendijk.model.DTO.NotificationDTO;
 import com.github.pieter_groenendijk.repository.notification.INotificationRepository;
 import com.github.pieter_groenendijk.service.notification.mapping.NotificationMapper;
 

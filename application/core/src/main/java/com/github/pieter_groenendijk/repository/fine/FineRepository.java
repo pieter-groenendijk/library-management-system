@@ -1,10 +1,10 @@
 package com.github.pieter_groenendijk.repository.fine;
 
-import com.github.pieter_groenendijk.model.Account;
-import com.github.pieter_groenendijk.model.fine.Fine;
-import com.github.pieter_groenendijk.model.fine.FineBalance;
-import com.github.pieter_groenendijk.model.fine.FineType;
-import org.hibernate.*;
+import com.github.pieter_groenendijk.entity.Account;
+import com.github.pieter_groenendijk.entity.fine.Fine;
+import com.github.pieter_groenendijk.entity.fine.FineBalance;
+import com.github.pieter_groenendijk.entity.fine.FineType;
+import org.hibernate.SessionFactory;
 
 
 import java.util.List;
@@ -39,6 +39,7 @@ public class FineRepository extends Repository implements IFineRepository {
         return super.get(FineBalance.class, account);
     }
 
+    @Override
     public void payUnpaidFines(long accountId) throws Exception {
         super.performAtomicOperation((session -> {
             session.createMutationQuery(

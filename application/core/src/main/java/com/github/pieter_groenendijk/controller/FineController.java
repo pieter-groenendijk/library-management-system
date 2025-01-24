@@ -1,7 +1,7 @@
 package com.github.pieter_groenendijk.controller;
 
+import com.github.pieter_groenendijk.dto.FineSummaryDTO;
 import com.github.pieter_groenendijk.hibernate.SessionFactoryFactory;
-import com.github.pieter_groenendijk.model.DTO.FineSummaryDTO;
 import com.github.pieter_groenendijk.repository.fine.FineRepository;
 import com.github.pieter_groenendijk.service.fine.FineService;
 import com.github.pieter_groenendijk.service.fine.IFineService;

@@ -1,6 +1,6 @@
 package com.github.pieter_groenendijk.repository;
 
-import com.github.pieter_groenendijk.model.Membership;
+import com.github.pieter_groenendijk.entity.Membership;
 import java.util.Optional;
 import java.util.List;
 

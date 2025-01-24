@@ -1,6 +1,6 @@
 package com.github.pieter_groenendijk.repository;
 
-import com.github.pieter_groenendijk.model.Reservation;
+import com.github.pieter_groenendijk.entity.Reservation;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;

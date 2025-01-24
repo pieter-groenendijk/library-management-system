@@ -1,11 +1,11 @@
 package com.github.pieter_groenendijk.service.notification.orchestration;
 
-import com.github.pieter_groenendijk.model.Loan;
+import com.github.pieter_groenendijk.entity.Loan;
 import com.github.pieter_groenendijk.repository.IAccountRepository;
 import com.github.pieter_groenendijk.repository.notification.INotificationRepository;
 import com.github.pieter_groenendijk.scheduling.TaskScheduler;
 import com.github.pieter_groenendijk.service.notification.scheduling.NotificationScheduler;
-import com.github.pieter_groenendijk.service.notification.sendstrategies.NotificationSendStrategyFactory;
+import com.github.pieter_groenendijk.service.notification.sendstrategies.NotificationSendStrategyAssembler;
 import com.github.pieter_groenendijk.service.notification.sendstrategies.registry.NotificationSendStrategyRegistry;
 
 public class NotificationOrchestrator {
@@ -27,7 +27,7 @@ public class NotificationOrchestrator {
             repository,
             scheduler,
             new NotificationSendStrategyRegistry(
-                new NotificationSendStrategyFactory()
+                new NotificationSendStrategyAssembler()
             )
         );
 

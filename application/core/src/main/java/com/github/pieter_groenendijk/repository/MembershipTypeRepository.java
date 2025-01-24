@@ -1,17 +1,16 @@
 package com.github.pieter_groenendijk.repository;
 
-import com.github.pieter_groenendijk.model.MembershipType;
+import com.github.pieter_groenendijk.entity.MembershipType;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import java.util.Optional;
-import com.github.pieter_groenendijk.model.DTO.MembershipRequestDTO;
 import java.util.List;
 import java.util.Collections;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
 import org.hibernate.HibernateException;
-import com.github.pieter_groenendijk.model.LendingLimit;
+import com.github.pieter_groenendijk.entity.LendingLimit;
 
 public class MembershipTypeRepository implements IMembershipTypeRepository {
 
@@ -91,12 +90,14 @@ public class MembershipTypeRepository implements IMembershipTypeRepository {
     public List<MembershipType> retrieveMembershipTypeList() {
             Session session = sessionFactory.openSession();
             try {
+                System.out.println("testtest");
                 CriteriaBuilder cb = session.getCriteriaBuilder();
                 CriteriaQuery<MembershipType> cr = cb.createQuery(MembershipType.class);
                 Root<MembershipType> root = cr.from(MembershipType.class);
                 cr.select(root);
                 return session.createQuery(cr).getResultList();
-            } catch (HibernateException e) {
+            } catch (Exception e) {
+                System.out.println("Error in hibernate" + e.getMessage());
                 if (session.getTransaction() != null) {
                     session.getTransaction().rollback();
                 }
