@@ -2,9 +2,11 @@ package com.github.pieter_groenendijk.service.fine;
 
 import com.github.pieter_groenendijk.dto.FineDTO;
 import com.github.pieter_groenendijk.entity.fine.Fine;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class FineMapper {
     public FineDTO toDTO(Fine fine) {
         FineDTO dto = new FineDTO();

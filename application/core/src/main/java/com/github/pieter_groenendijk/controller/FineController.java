@@ -1,9 +1,6 @@
 package com.github.pieter_groenendijk.controller;
 
 import com.github.pieter_groenendijk.dto.FineSummaryDTO;
-import com.github.pieter_groenendijk.hibernate.SessionFactoryFactory;
-import com.github.pieter_groenendijk.repository.fine.FineRepository;
-import com.github.pieter_groenendijk.service.fine.FineService;
 import com.github.pieter_groenendijk.service.fine.IFineService;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.http.HttpStatus;
@@ -15,10 +12,10 @@ import org.springframework.web.bind.annotation.*;
 public class FineController {
     private final IFineService SERVICE;
 
-    public FineController() {
-        this.SERVICE = new FineService(
-            new FineRepository(new SessionFactoryFactory().create())
-        );
+    public FineController(
+        IFineService service
+    ) {
+        this.SERVICE = service;
     }
 
     @GetMapping("/unpaid-summary")

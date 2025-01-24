@@ -6,10 +6,10 @@ import com.github.pieter_groenendijk.entity.fine.FineBalance;
 import com.github.pieter_groenendijk.entity.fine.FineType;
 import org.hibernate.SessionFactory;
 
-
 import java.util.List;
 import java.util.Optional;
 
+@org.springframework.stereotype.Repository
 public class FineRepository extends Repository implements IFineRepository {
     public FineRepository(SessionFactory sessionFactory) {
         super(sessionFactory);
