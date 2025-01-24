@@ -1,10 +1,7 @@
 package com.github.pieter_groenendijk.presentation.controller;
 
 import com.github.pieter_groenendijk.dto.NotificationDTO;
-import com.github.pieter_groenendijk.hibernate.SessionFactoryFactory;
-import com.github.pieter_groenendijk.repository.notification.NotificationRepository;
 import com.github.pieter_groenendijk.service.notification.INotificationService;
-import com.github.pieter_groenendijk.service.notification.NotificationService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;

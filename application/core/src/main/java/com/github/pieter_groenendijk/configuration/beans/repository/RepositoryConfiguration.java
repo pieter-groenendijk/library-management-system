@@ -1,6 +1,6 @@
 package com.github.pieter_groenendijk.configuration.beans.repository;
 
-import com.github.pieter_groenendijk.hibernate.configuration.DefaultConfigurationFactory;
+import com.github.pieter_groenendijk.configuration.hibernate.DefaultConfigurationFactory;
 import org.hibernate.SessionFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

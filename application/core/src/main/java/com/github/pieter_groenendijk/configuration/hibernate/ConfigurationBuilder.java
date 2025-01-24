@@ -1,4 +1,4 @@
-package com.github.pieter_groenendijk.hibernate.configuration;
+package com.github.pieter_groenendijk.configuration.hibernate;
 
 import org.hibernate.cfg.Configuration;
 
