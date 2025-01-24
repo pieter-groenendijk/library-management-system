@@ -1,7 +1,7 @@
 package com.github.pieter_groenendijk.repository.loan;
 
-import com.github.pieter_groenendijk.domain.entities.Loan;
-import com.github.pieter_groenendijk.domain.entities.LoanStatus;
+import com.github.pieter_groenendijk.domain.entities.loan.Loan;
+import com.github.pieter_groenendijk.domain.entities.loan.LoanStatus;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.*;
 import org.hibernate.HibernateException;

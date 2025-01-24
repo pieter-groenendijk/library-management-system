@@ -1,7 +1,7 @@
 package com.github.pieter_groenendijk.repository;
 
-import com.github.pieter_groenendijk.domain.entities.Account;
-import com.github.pieter_groenendijk.domain.entities.Loan;
+import com.github.pieter_groenendijk.domain.entities.account.Account;
+import com.github.pieter_groenendijk.domain.entities.loan.Loan;
 import com.github.pieter_groenendijk.repository.fine.Repository;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

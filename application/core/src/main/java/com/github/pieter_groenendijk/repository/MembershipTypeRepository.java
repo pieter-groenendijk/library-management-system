@@ -1,6 +1,7 @@
 package com.github.pieter_groenendijk.repository;
 
-import com.github.pieter_groenendijk.domain.entities.MembershipType;
+import com.github.pieter_groenendijk.domain.entities.loan.LoanLimit;
+import com.github.pieter_groenendijk.domain.entities.membership.MembershipType;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import java.util.Optional;
@@ -10,7 +11,6 @@ import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
 import org.hibernate.HibernateException;
-import com.github.pieter_groenendijk.domain.entities.LendingLimit;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -110,16 +110,16 @@ public class MembershipTypeRepository implements IMembershipTypeRepository {
             }
     }
 
-    public Optional<LendingLimit> retrieveLendingLimitById(long id) {
+    public Optional<LoanLimit> retrieveLendingLimitById(long id) {
         Session session = sessionFactory.openSession();
-        LendingLimit lendingLimit;
+        LoanLimit loanLimit;
 
         try {
-            lendingLimit = session.get(LendingLimit.class, id);
+            loanLimit = session.get(LoanLimit.class, id);
         } finally {
             session.close();
         }
-        return Optional.ofNullable(lendingLimit);
+        return Optional.ofNullable(loanLimit);
     }
 
     public int retrieveLendingLimitByGenreAndMembershipType(long membershipTypeId, long genreId) {
@@ -127,7 +127,7 @@ public class MembershipTypeRepository implements IMembershipTypeRepository {
         Integer result = null;
 
         try {
-            String hql = "SELECT a.maxLendings FROM LendingLimit a WHERE a.membershipType.membershipTypeId = :membershipTypeId AND a.genre.genreId = :genreId";
+            String hql = "SELECT a.maxLendings FROM LoanLimit a WHERE a.membershipType.membershipTypeId = :membershipTypeId AND a.genre.genreId = :genreId";
             result = (Integer) session.createQuery(hql, Integer.class)
                     .setParameter("membershipTypeId", membershipTypeId)
                     .setParameter("genreId", genreId)
@@ -143,11 +143,11 @@ public class MembershipTypeRepository implements IMembershipTypeRepository {
         return result != null ? result : 0;
     }
 
-    public void store(LendingLimit lendingLimit){
+    public void store(LoanLimit loanLimit){
         Session session = sessionFactory.openSession();
         try {
             session.beginTransaction();
-            session.persist(lendingLimit);
+            session.persist(loanLimit);
             session.flush();
 
             session.getTransaction().commit();
@@ -162,12 +162,12 @@ public class MembershipTypeRepository implements IMembershipTypeRepository {
         }
     }
 
-    public void update(LendingLimit lendingLimit){
+    public void update(LoanLimit loanLimit){
         Session session = sessionFactory.openSession();
 
         try {
             session.beginTransaction();
-            session.merge(lendingLimit);
+            session.merge(loanLimit);
             session.flush();
 
             session.getTransaction().commit();
@@ -182,12 +182,12 @@ public class MembershipTypeRepository implements IMembershipTypeRepository {
         }
     }
 
-    public List<LendingLimit> retrieveLendingLimitList(long id){
+    public List<LoanLimit> retrieveLendingLimitList(long id){
         Session session = sessionFactory.openSession();
         try {
             CriteriaBuilder cb = session.getCriteriaBuilder();
-            CriteriaQuery<LendingLimit> cr = cb.createQuery(LendingLimit.class);
-            Root<LendingLimit> root = cr.from(LendingLimit.class);
+            CriteriaQuery<LoanLimit> cr = cb.createQuery(LoanLimit.class);
+            Root<LoanLimit> root = cr.from(LoanLimit.class);
 
             cr.select(root).where(cb.equal(root.get("membershipType").get("id"), id));
 

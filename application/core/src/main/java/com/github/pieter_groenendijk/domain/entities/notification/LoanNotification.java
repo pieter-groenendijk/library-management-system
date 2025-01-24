@@ -1,6 +1,6 @@
 package com.github.pieter_groenendijk.domain.entities.notification;
 
-import com.github.pieter_groenendijk.domain.entities.Loan;
+import com.github.pieter_groenendijk.domain.entities.loan.Loan;
 import jakarta.persistence.*;
 
 @Entity

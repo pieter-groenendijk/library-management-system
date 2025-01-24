@@ -4,7 +4,7 @@ import com.github.pieter_groenendijk.exception.EntityNotFoundException;
 import org.springframework.web.bind.annotation.*;
 import io.swagger.v3.oas.annotations.Operation;
 import com.github.pieter_groenendijk.service.IAccountService;
-import com.github.pieter_groenendijk.domain.entities.Account;
+import com.github.pieter_groenendijk.domain.entities.account.Account;
 import com.github.pieter_groenendijk.dto.AccountRequestDTO;
 
 import io.swagger.v3.oas.annotations.responses.ApiResponse;

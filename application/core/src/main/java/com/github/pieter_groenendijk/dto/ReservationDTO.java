@@ -1,6 +1,6 @@
 package com.github.pieter_groenendijk.dto;
 
-import com.github.pieter_groenendijk.domain.entities.ReservationStatus;
+import com.github.pieter_groenendijk.domain.entities.reservation.ReservationStatus;
 
 import java.time.LocalDate;
 

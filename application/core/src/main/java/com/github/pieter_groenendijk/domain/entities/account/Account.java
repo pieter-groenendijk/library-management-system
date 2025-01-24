@@ -1,4 +1,4 @@
-package com.github.pieter_groenendijk.domain.entities;
+package com.github.pieter_groenendijk.domain.entities.account;
 
 import jakarta.persistence.*;
 import java.util.Date;

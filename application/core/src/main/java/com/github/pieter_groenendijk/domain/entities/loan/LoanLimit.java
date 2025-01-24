@@ -1,11 +1,12 @@
-package com.github.pieter_groenendijk.domain.entities;
+package com.github.pieter_groenendijk.domain.entities.loan;
 
+import com.github.pieter_groenendijk.domain.entities.membership.MembershipType;
 import jakarta.persistence.*;
 import com.github.pieter_groenendijk.domain.entities.product.Genre;
 
 @Entity
 @Table(name = "LendingLimit")
-public class LendingLimit {
+public class LoanLimit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long lendingLimitId;

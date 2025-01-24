@@ -1,7 +1,7 @@
 package com.github.pieter_groenendijk.service.loan.fine;
 
-import com.github.pieter_groenendijk.domain.entities.Account;
-import com.github.pieter_groenendijk.domain.entities.Loan;
+import com.github.pieter_groenendijk.domain.entities.account.Account;
+import com.github.pieter_groenendijk.domain.entities.loan.Loan;
 import com.github.pieter_groenendijk.domain.entities.fine.LoanFine;
 import com.github.pieter_groenendijk.service.fine.type.FineTypeRegistry;
 import com.github.pieter_groenendijk.service.loan.fine.generator.DayOverdueLoanFineGenerator;

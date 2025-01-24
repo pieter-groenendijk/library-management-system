@@ -1,6 +1,6 @@
 package com.github.pieter_groenendijk.domain.entities.fine;
 
-import com.github.pieter_groenendijk.domain.entities.Account;
+import com.github.pieter_groenendijk.domain.entities.account.Account;
 import com.github.pieter_groenendijk.domain.entities.payment.Payment;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;

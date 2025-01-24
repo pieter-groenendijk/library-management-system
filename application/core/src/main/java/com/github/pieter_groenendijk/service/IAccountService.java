@@ -1,10 +1,10 @@
 package com.github.pieter_groenendijk.service;
 
-import com.github.pieter_groenendijk.domain.entities.Account;
+import com.github.pieter_groenendijk.domain.entities.loan.LoanLimit;
+import com.github.pieter_groenendijk.domain.entities.account.Account;
 import com.github.pieter_groenendijk.dto.MembershipTypeRequestDTO;
-import com.github.pieter_groenendijk.domain.entities.MembershipType;
-import com.github.pieter_groenendijk.domain.entities.Membership;
-import com.github.pieter_groenendijk.domain.entities.LendingLimit;
+import com.github.pieter_groenendijk.domain.entities.membership.MembershipType;
+import com.github.pieter_groenendijk.domain.entities.membership.Membership;
 import com.github.pieter_groenendijk.dto.MembershipRequestDTO;
 
 import java.util.List;
@@ -46,13 +46,13 @@ public interface IAccountService {
 
     void softDeleteMembershipType(long id);
 
-    LendingLimit retrieveLendingLimitById(long id);
+    LoanLimit retrieveLendingLimitById(long id);
 
-    void store(LendingLimit lendingLimit);
+    void store(LoanLimit loanLimit);
 
-    void update(long id, LendingLimit lendingLimit);
+    void update(long id, LoanLimit loanLimit);
 
-    List<LendingLimit> retrieveLendingLimitList(long id);
+    List<LoanLimit> retrieveLendingLimitList(long id);
 
     void softDeleteLendingLimit(long id);
 }

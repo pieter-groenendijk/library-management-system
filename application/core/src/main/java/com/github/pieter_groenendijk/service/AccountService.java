@@ -1,9 +1,9 @@
 package com.github.pieter_groenendijk.service;
 
-import com.github.pieter_groenendijk.domain.entities.Account;
-import com.github.pieter_groenendijk.domain.entities.LendingLimit;
-import com.github.pieter_groenendijk.domain.entities.MembershipType;
-import com.github.pieter_groenendijk.domain.entities.Membership;
+import com.github.pieter_groenendijk.domain.entities.account.Account;
+import com.github.pieter_groenendijk.domain.entities.loan.LoanLimit;
+import com.github.pieter_groenendijk.domain.entities.membership.MembershipType;
+import com.github.pieter_groenendijk.domain.entities.membership.Membership;
 import com.github.pieter_groenendijk.repository.IAccountRepository;
 import com.github.pieter_groenendijk.repository.IMembershipTypeRepository;
 import com.github.pieter_groenendijk.repository.IMembershipRepository;
@@ -289,22 +289,22 @@ public class AccountService implements IAccountService {
         }
     }
 
-    public LendingLimit retrieveLendingLimitById(long id){
+    public LoanLimit retrieveLendingLimitById(long id){
         return membershipTypeRepository.retrieveLendingLimitById(id)
                 .orElseThrow(() -> new EntityNotFoundException("LendingLimit with ID " + id + " not found."));
     }
 
-    public void store(LendingLimit lendingLimit){
-        membershipTypeRepository.store(lendingLimit);
+    public void store(LoanLimit loanLimit){
+        membershipTypeRepository.store(loanLimit);
     }
 
-    public void update(long id, LendingLimit lendingLimit){
-        membershipTypeRepository.update(lendingLimit);
+    public void update(long id, LoanLimit loanLimit){
+        membershipTypeRepository.update(loanLimit);
     }
 
-    public List<LendingLimit> retrieveLendingLimitList(long id){
-        List<LendingLimit> lendingLimitList = membershipTypeRepository.retrieveLendingLimitList(id);
-        return lendingLimitList;
+    public List<LoanLimit> retrieveLendingLimitList(long id){
+        List<LoanLimit> loanLimitList = membershipTypeRepository.retrieveLendingLimitList(id);
+        return loanLimitList;
     }
 
     public void softDeleteLendingLimit(long id){

@@ -1,6 +1,6 @@
 package com.github.pieter_groenendijk.service.notification.generators;
 
-import com.github.pieter_groenendijk.domain.entities.Loan;
+import com.github.pieter_groenendijk.domain.entities.loan.Loan;
 import com.github.pieter_groenendijk.domain.entities.notification.LoanNotification;
 import com.github.pieter_groenendijk.repository.notification.INotificationRepository;
 import com.github.pieter_groenendijk.scheduling.TaskStorage;

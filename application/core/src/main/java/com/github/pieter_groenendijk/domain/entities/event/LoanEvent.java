@@ -1,6 +1,6 @@
 package com.github.pieter_groenendijk.domain.entities.event;
 
-import com.github.pieter_groenendijk.domain.entities.Loan;
+import com.github.pieter_groenendijk.domain.entities.loan.Loan;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;

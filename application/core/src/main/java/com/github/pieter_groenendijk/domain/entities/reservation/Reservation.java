@@ -1,5 +1,6 @@
-package com.github.pieter_groenendijk.domain.entities;
+package com.github.pieter_groenendijk.domain.entities.reservation;
 
+import com.github.pieter_groenendijk.domain.entities.membership.Membership;
 import com.github.pieter_groenendijk.domain.entities.product.ProductCopy;
 import jakarta.persistence.*;
 import java.time.LocalDate;

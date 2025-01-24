@@ -1,4 +1,4 @@
-package com.github.pieter_groenendijk.domain.entities;
+package com.github.pieter_groenendijk.domain.entities.reservation;
 
 
 public enum ReservationStatus {

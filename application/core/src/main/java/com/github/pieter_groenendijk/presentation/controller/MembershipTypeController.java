@@ -1,10 +1,10 @@
 package com.github.pieter_groenendijk.presentation.controller;
 
+import com.github.pieter_groenendijk.domain.entities.loan.LoanLimit;
 import org.springframework.web.bind.annotation.*;
 import io.swagger.v3.oas.annotations.Operation;
 import com.github.pieter_groenendijk.service.IAccountService;
-import com.github.pieter_groenendijk.domain.entities.MembershipType;
-import com.github.pieter_groenendijk.domain.entities.LendingLimit;
+import com.github.pieter_groenendijk.domain.entities.membership.MembershipType;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import com.github.pieter_groenendijk.dto.MembershipTypeRequestDTO;
@@ -76,32 +76,32 @@ public class MembershipTypeController {
     })
     @GetMapping("/lendingLimit/{id}")
     public ResponseEntity<?> retrieveLendingLimitById(@PathVariable("id") long id ) {
-        LendingLimit lendingLimit = ACCOUNT_SERVICE.retrieveLendingLimitById(id);
-        return ResponseEntity.ok(lendingLimit);
+        LoanLimit loanLimit = ACCOUNT_SERVICE.retrieveLendingLimitById(id);
+        return ResponseEntity.ok(loanLimit);
     }
 
     @Operation(summary = "Create a lendingLimit", description = "Add a new lendingLimit to the database")
     @PostMapping("/lendingLimit")
-    public ResponseEntity<?> createLendingLimit(@RequestBody LendingLimit lendingLimit) {
-        ACCOUNT_SERVICE.store(lendingLimit);
+    public ResponseEntity<?> createLendingLimit(@RequestBody LoanLimit loanLimit) {
+        ACCOUNT_SERVICE.store(loanLimit);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @Operation(summary = "Update a lendingLimit", description = "Change a lendingLimit ")
     @PutMapping("/lendingLimit/{id}")
-    public ResponseEntity<?> updateLendingLimit(@PathVariable("id") long id, @RequestBody LendingLimit lendingLimit) {
-        ACCOUNT_SERVICE.update(id, lendingLimit);
+    public ResponseEntity<?> updateLendingLimit(@PathVariable("id") long id, @RequestBody LoanLimit loanLimit) {
+        ACCOUNT_SERVICE.update(id, loanLimit);
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 
     @Operation(summary = "Retrieve a list of lendingLimits", description = "Retrieve a list of lendinglimits for a membershipType")
     @GetMapping("/lendingLimit/getAll/{id}")
-    public ResponseEntity<List<LendingLimit>> retrieveGenreList(@PathVariable("id") long membershipTypeId) {
-        List<LendingLimit> lendingLimitList = ACCOUNT_SERVICE.retrieveLendingLimitList(membershipTypeId);
-        if (lendingLimitList.isEmpty()) {
+    public ResponseEntity<List<LoanLimit>> retrieveGenreList(@PathVariable("id") long membershipTypeId) {
+        List<LoanLimit> loanLimitList = ACCOUNT_SERVICE.retrieveLendingLimitList(membershipTypeId);
+        if (loanLimitList.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
         } else {
-            return ResponseEntity.ok(lendingLimitList);
+            return ResponseEntity.ok(loanLimitList);
         }
     }
 

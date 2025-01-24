@@ -1,6 +1,6 @@
 package com.github.pieter_groenendijk.repository.loan.event;
 
-import com.github.pieter_groenendijk.domain.entities.Loan;
+import com.github.pieter_groenendijk.domain.entities.loan.Loan;
 
 public interface ILoanEventRepostory {
     void cancelDuenessEventsForLoan(Loan loan) throws Exception;

@@ -1,4 +1,4 @@
-package com.github.pieter_groenendijk.domain.entities;
+package com.github.pieter_groenendijk.domain.entities.loan;
 
 import java.time.LocalDate;
 

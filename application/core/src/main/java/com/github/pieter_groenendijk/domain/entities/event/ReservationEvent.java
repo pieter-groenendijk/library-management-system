@@ -1,6 +1,6 @@
 package com.github.pieter_groenendijk.domain.entities.event;
 
-import com.github.pieter_groenendijk.domain.entities.Reservation;
+import com.github.pieter_groenendijk.domain.entities.reservation.Reservation;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;

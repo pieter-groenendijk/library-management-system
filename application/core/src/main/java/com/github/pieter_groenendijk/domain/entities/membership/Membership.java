@@ -1,5 +1,6 @@
-package com.github.pieter_groenendijk.domain.entities;
+package com.github.pieter_groenendijk.domain.entities.membership;
 
+import com.github.pieter_groenendijk.domain.entities.account.Account;
 import jakarta.persistence.*;
 
 import java.util.Date;

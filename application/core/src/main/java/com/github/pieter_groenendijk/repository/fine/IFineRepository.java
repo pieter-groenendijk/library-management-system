@@ -1,6 +1,6 @@
 package com.github.pieter_groenendijk.repository.fine;
 
-import com.github.pieter_groenendijk.domain.entities.Account;
+import com.github.pieter_groenendijk.domain.entities.account.Account;
 import com.github.pieter_groenendijk.domain.entities.fine.Fine;
 import com.github.pieter_groenendijk.domain.entities.fine.FineBalance;
 import com.github.pieter_groenendijk.domain.entities.fine.FineType;

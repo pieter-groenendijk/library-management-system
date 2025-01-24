@@ -1,9 +1,9 @@
 package com.github.pieter_groenendijk.repository;
 
-import com.github.pieter_groenendijk.domain.entities.MembershipType;
+import com.github.pieter_groenendijk.domain.entities.loan.LoanLimit;
+import com.github.pieter_groenendijk.domain.entities.membership.MembershipType;
 import java.util.Optional;
 import java.util.List;
-import com.github.pieter_groenendijk.domain.entities.LendingLimit;
 
 public interface IMembershipTypeRepository {
     Optional<MembershipType> retrieveMembershipTypeById(long id);
@@ -11,9 +11,9 @@ public interface IMembershipTypeRepository {
     boolean doesMembershipTypeExistByDescription(String description);
     void update(MembershipType membershipType);
     List<MembershipType> retrieveMembershipTypeList();
-    Optional<LendingLimit> retrieveLendingLimitById(long id);
-    void store(LendingLimit lendingLimit);
-    void update(LendingLimit lendingLimit);
-    List<LendingLimit> retrieveLendingLimitList(long id);
+    Optional<LoanLimit> retrieveLendingLimitById(long id);
+    void store(LoanLimit loanLimit);
+    void update(LoanLimit loanLimit);
+    List<LoanLimit> retrieveLendingLimitList(long id);
     int retrieveLendingLimitByGenreAndMembershipType(long membershipTypeId, long genreId);
 }

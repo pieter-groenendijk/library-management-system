@@ -1,6 +1,6 @@
 package com.github.pieter_groenendijk.service.loan.event.listener;
 
-import com.github.pieter_groenendijk.domain.entities.Loan;
+import com.github.pieter_groenendijk.domain.entities.loan.Loan;
 import com.github.pieter_groenendijk.domain.entities.event.EventType;
 import com.github.pieter_groenendijk.service.event.listener.EventListener;
 import com.github.pieter_groenendijk.service.notification.orchestration.NotificationOrchestrator;

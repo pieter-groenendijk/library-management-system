@@ -1,6 +1,6 @@
 package com.github.pieter_groenendijk.repository.loan;
 
-import com.github.pieter_groenendijk.domain.entities.Loan;
+import com.github.pieter_groenendijk.domain.entities.loan.Loan;
 
 import java.util.List;
 

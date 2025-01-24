@@ -1,6 +1,6 @@
 package com.github.pieter_groenendijk.domain.entities.fine;
 
-import com.github.pieter_groenendijk.domain.entities.Account;
+import com.github.pieter_groenendijk.domain.entities.account.Account;
 import jakarta.persistence.*;
 import org.hibernate.annotations.Immutable; // TODO: Perhaps bypass specific usage of hibernate, and prefer jpa.
 

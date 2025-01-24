@@ -1,6 +1,12 @@
 package com.github.pieter_groenendijk.hibernate.configuration;
 
-import com.github.pieter_groenendijk.domain.entities.*;
+import com.github.pieter_groenendijk.domain.entities.account.Account;
+import com.github.pieter_groenendijk.domain.entities.loan.Loan;
+import com.github.pieter_groenendijk.domain.entities.loan.LoanLimit;
+import com.github.pieter_groenendijk.domain.entities.loan.LoansPerGenrePerMembership;
+import com.github.pieter_groenendijk.domain.entities.loan.LoansPerGenrePerMembershipId;
+import com.github.pieter_groenendijk.domain.entities.membership.Membership;
+import com.github.pieter_groenendijk.domain.entities.membership.MembershipType;
 import com.github.pieter_groenendijk.domain.entities.product.*;
 import com.github.pieter_groenendijk.domain.entities.event.Event;
 import com.github.pieter_groenendijk.domain.entities.event.LoanEvent;
@@ -10,6 +16,7 @@ import com.github.pieter_groenendijk.domain.entities.notification.LoanNotificati
 import com.github.pieter_groenendijk.domain.entities.notification.Notification;
 import com.github.pieter_groenendijk.domain.entities.payment.Payment;
 import com.github.pieter_groenendijk.domain.entities.payment.PaymentStatus;
+import com.github.pieter_groenendijk.domain.entities.reservation.Reservation;
 import org.hibernate.cfg.Configuration;
 
 public class DefaultConfigurationFactory {
@@ -40,7 +47,7 @@ public class DefaultConfigurationFactory {
 //            .addAnnotatedClass(ReservationEvent.class)
             .addAnnotatedClass(LoanEvent.class)
             .addAnnotatedClass(Genre.class)
-            .addAnnotatedClass(LendingLimit.class)
+            .addAnnotatedClass(LoanLimit.class)
             .addAnnotatedClass(Notification.class)
             .addAnnotatedClass(LoanNotification.class)
             .addAnnotatedClass(FineType.class)

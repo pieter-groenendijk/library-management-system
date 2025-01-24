@@ -1,8 +1,8 @@
 package com.github.pieter_groenendijk.service.loan;
 
 import com.github.pieter_groenendijk.dto.LoanRequestDTO;
-import com.github.pieter_groenendijk.domain.entities.Loan;
-import com.github.pieter_groenendijk.domain.entities.Reservation;
+import com.github.pieter_groenendijk.domain.entities.loan.Loan;
+import com.github.pieter_groenendijk.domain.entities.reservation.Reservation;
 
 import java.time.LocalDate;
 import java.util.List;
