@@ -11,7 +11,7 @@ public class NotificationService implements INotificationService {
     private final INotificationRepository REPOSITORY;
     private final NotificationMapper MAPPER;
 
-    private final int ALLOWED_MAX_AMOUNT_THRESHOLD = 50;
+    private final int ALLOWED_MAX_AMOUNT_THRESHOLD = 50; // TODO: Could centralize this for certain retrievals.
 
     public NotificationService(
         INotificationRepository repository
