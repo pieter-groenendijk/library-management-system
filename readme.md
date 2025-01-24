@@ -2,7 +2,12 @@
 ## Hosting
 De repo is gehost op [github](https://github.com/pieter-groenendijk/oose-library-management-system).
 
-## Applicatie opstarten/afsluiten
+## Applicatie beheren
+Voor:
+- opstarten,
+- afsluiten,
+- toegangspunten
+
 Zie [hier](application/readme.md).
 
 ## Description
