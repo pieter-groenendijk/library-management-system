@@ -21,6 +21,13 @@ public class NotificationRepository extends TaskRepository<Notification> impleme
     // TODO: We could probably generalize this somehow
     @Override
     public List<Notification> retrieveUntil(LocalDateTime until) throws Exception {
+//        return super.SE.createQuery(
+//                "select n from Notification as n where scheduledAt <= :until",
+//                Notification.class
+//            )
+//            .setParameter("until", until)
+//            .getResultList();
+
         return super.performAtomicOperationReturning((session -> {
             return session.createQuery(
                     "select n from Notification as n where scheduledAt <= :until",

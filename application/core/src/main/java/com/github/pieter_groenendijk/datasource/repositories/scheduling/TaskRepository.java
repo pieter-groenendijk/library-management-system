@@ -1,7 +1,7 @@
 package com.github.pieter_groenendijk.datasource.repositories.scheduling;
 
 import com.github.pieter_groenendijk.domain.entities.scheduling.Task;
-import com.github.pieter_groenendijk.datasource.repositories.fine.Repository;
+import com.github.pieter_groenendijk.datasource.repositories.Repository;
 import com.github.pieter_groenendijk.domain.shared.scheduling.TaskStatus;
 import org.hibernate.SessionFactory;
 

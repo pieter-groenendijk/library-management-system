@@ -3,7 +3,7 @@ package com.github.pieter_groenendijk.datasource.repositories.loan.event;
 import com.github.pieter_groenendijk.domain.entities.loan.Loan;
 import com.github.pieter_groenendijk.domain.entities.event.Event;
 import com.github.pieter_groenendijk.domain.entities.event.EventType;
-import com.github.pieter_groenendijk.datasource.repositories.fine.Repository;
+import com.github.pieter_groenendijk.datasource.repositories.Repository;
 import com.github.pieter_groenendijk.domain.shared.scheduling.TaskStatus;
 import jakarta.persistence.Query;
 import org.hibernate.SessionFactory;
