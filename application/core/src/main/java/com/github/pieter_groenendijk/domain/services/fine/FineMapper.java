@@ -1,6 +1,6 @@
 package com.github.pieter_groenendijk.domain.services.fine;
 
-import com.github.pieter_groenendijk.dto.fine.FineDTO;
+import com.github.pieter_groenendijk.shared.dto.fine.FineDTO;
 import com.github.pieter_groenendijk.domain.entities.fine.Fine;
 import org.springframework.stereotype.Component;
 

@@ -1,6 +1,6 @@
 package com.github.pieter_groenendijk.presentation.controller;
 
-import com.github.pieter_groenendijk.dto.notification.NotificationDTO;
+import com.github.pieter_groenendijk.shared.dto.notification.NotificationDTO;
 import com.github.pieter_groenendijk.domain.services.notification.INotificationService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;

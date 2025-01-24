@@ -1,4 +1,4 @@
-package com.github.pieter_groenendijk.dto.notification;
+package com.github.pieter_groenendijk.shared.dto.notification;
 
 import java.time.LocalDateTime;
 

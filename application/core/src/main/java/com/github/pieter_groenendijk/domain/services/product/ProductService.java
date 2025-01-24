@@ -1,6 +1,6 @@
 package com.github.pieter_groenendijk.domain.services.product;
 
-import com.github.pieter_groenendijk.dto.catalogue.CatalogueDTO;
+import com.github.pieter_groenendijk.shared.dto.catalogue.CatalogueDTO;
 import com.github.pieter_groenendijk.domain.entities.product.MediaType;
 import com.github.pieter_groenendijk.domain.exception.EntityNotFoundException;
 import com.github.pieter_groenendijk.domain.entities.product.Genre;

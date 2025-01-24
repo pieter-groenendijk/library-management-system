@@ -2,7 +2,7 @@ package com.github.pieter_groenendijk.domain.services.reservation;
 
 import com.github.pieter_groenendijk.domain.exception.EntityNotFoundException;
 import com.github.pieter_groenendijk.domain.entities.account.Account;
-import com.github.pieter_groenendijk.dto.reservation.ReservationDTO;
+import com.github.pieter_groenendijk.shared.dto.reservation.ReservationDTO;
 import com.github.pieter_groenendijk.domain.entities.membership.Membership;
 import com.github.pieter_groenendijk.domain.entities.reservation.Reservation;
 import com.github.pieter_groenendijk.domain.entities.reservation.ReservationStatus;

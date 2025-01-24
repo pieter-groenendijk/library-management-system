@@ -1,6 +1,6 @@
 package com.github.pieter_groenendijk.domain.services.loan;
 
-import com.github.pieter_groenendijk.dto.loan.LoanDTO;
+import com.github.pieter_groenendijk.shared.dto.loan.LoanDTO;
 import com.github.pieter_groenendijk.domain.entities.loan.Loan;
 import com.github.pieter_groenendijk.domain.entities.reservation.Reservation;
 

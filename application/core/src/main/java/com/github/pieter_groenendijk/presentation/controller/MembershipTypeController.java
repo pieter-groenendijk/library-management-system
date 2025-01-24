@@ -7,7 +7,7 @@ import com.github.pieter_groenendijk.domain.services.account.IAccountService;
 import com.github.pieter_groenendijk.domain.entities.membership.MembershipType;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
-import com.github.pieter_groenendijk.dto.membership.MembershipTypeDTO;
+import com.github.pieter_groenendijk.shared.dto.membership.MembershipTypeDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import java.util.*;

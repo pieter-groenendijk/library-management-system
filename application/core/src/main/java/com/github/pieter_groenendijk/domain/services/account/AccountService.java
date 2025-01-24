@@ -12,9 +12,9 @@ import com.github.pieter_groenendijk.domain.exception.EntityNotFoundException;
 import com.github.pieter_groenendijk.domain.exception.InputValidationException;
 import com.github.pieter_groenendijk.domain.shared.validator.EmailValidator;
 import com.github.pieter_groenendijk.domain.shared.validator.GenderCheck;
-import com.github.pieter_groenendijk.dto.membership.MembershipDTO;
-import com.github.pieter_groenendijk.dto.membership.MembershipTypeDTO;
-import com.github.pieter_groenendijk.dto.account.AccountDTO;
+import com.github.pieter_groenendijk.shared.dto.membership.MembershipDTO;
+import com.github.pieter_groenendijk.shared.dto.membership.MembershipTypeDTO;
+import com.github.pieter_groenendijk.shared.dto.account.AccountDTO;
 import org.springframework.stereotype.Repository;
 
 import java.util.Date;

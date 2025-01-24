@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import io.swagger.v3.oas.annotations.Operation;
 import com.github.pieter_groenendijk.domain.services.account.IAccountService;
 import com.github.pieter_groenendijk.domain.entities.account.Account;
-import com.github.pieter_groenendijk.dto.account.AccountDTO;
+import com.github.pieter_groenendijk.shared.dto.account.AccountDTO;
 
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;

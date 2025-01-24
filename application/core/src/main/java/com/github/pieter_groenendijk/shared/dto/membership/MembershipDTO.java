@@ -1,4 +1,4 @@
-package com.github.pieter_groenendijk.dto.membership;
+package com.github.pieter_groenendijk.shared.dto.membership;
 
 public class MembershipDTO {
     private Long membershipTypeId;

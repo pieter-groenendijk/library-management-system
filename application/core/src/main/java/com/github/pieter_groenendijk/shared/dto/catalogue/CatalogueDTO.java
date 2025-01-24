@@ -1,4 +1,4 @@
-package com.github.pieter_groenendijk.dto.catalogue;
+package com.github.pieter_groenendijk.shared.dto.catalogue;
 
 import com.github.pieter_groenendijk.domain.entities.product.MediaType;
 

@@ -1,4 +1,4 @@
-package com.github.pieter_groenendijk.dto.account;
+package com.github.pieter_groenendijk.shared.dto.account;
 
 import java.util.Date;
 

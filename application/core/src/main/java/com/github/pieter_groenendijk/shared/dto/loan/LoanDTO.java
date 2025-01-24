@@ -1,4 +1,4 @@
-package com.github.pieter_groenendijk.dto.loan;
+package com.github.pieter_groenendijk.shared.dto.loan;
 
 import java.time.LocalDate;
 

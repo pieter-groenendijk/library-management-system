@@ -1,4 +1,4 @@
-package com.github.pieter_groenendijk.dto.fine;
+package com.github.pieter_groenendijk.shared.dto.fine;
 
 import java.time.LocalDateTime;
 
