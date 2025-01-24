@@ -104,6 +104,6 @@
     </tbody>
 </table>
 
-![SSD Lening](../ssd/lening.png)<br>
+![SSD Lening](../../system-sequence-diagrams/lening.png)<br>
 ![SD Lening](../../../../design/artifacts/sequence-diagrams/loan-store.svg)<br>
 
