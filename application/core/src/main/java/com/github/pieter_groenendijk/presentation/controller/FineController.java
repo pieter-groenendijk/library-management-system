@@ -1,4 +1,4 @@
-package com.github.pieter_groenendijk.controller;
+package com.github.pieter_groenendijk.presentation.controller;
 
 import com.github.pieter_groenendijk.dto.FineSummaryDTO;
 import com.github.pieter_groenendijk.service.fine.IFineService;

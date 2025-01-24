@@ -1,4 +1,4 @@
-package com.github.pieter_groenendijk.controller;
+package com.github.pieter_groenendijk.presentation.controller;
 
 import com.github.pieter_groenendijk.exception.EntityNotFoundException;
 import org.springframework.web.bind.annotation.*;

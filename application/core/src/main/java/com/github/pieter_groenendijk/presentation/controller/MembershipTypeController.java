@@ -1,4 +1,4 @@
-package com.github.pieter_groenendijk.controller;
+package com.github.pieter_groenendijk.presentation.controller;
 
 import org.springframework.web.bind.annotation.*;
 import io.swagger.v3.oas.annotations.Operation;

@@ -1,4 +1,4 @@
-package com.github.pieter_groenendijk.controller.error;
+package com.github.pieter_groenendijk.presentation.controller.error;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

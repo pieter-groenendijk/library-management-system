@@ -1,8 +1,8 @@
-package com.github.pieter_groenendijk.controller.error;
+package com.github.pieter_groenendijk.presentation.controller.error;
 
 import java.time.LocalDateTime;
 
-public class ErrorResponse {
+class ErrorResponse {
     private String message;
     private int status;
     private LocalDateTime timestamp;
