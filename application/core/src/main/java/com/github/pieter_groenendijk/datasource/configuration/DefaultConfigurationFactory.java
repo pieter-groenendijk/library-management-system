@@ -1,4 +1,4 @@
-package com.github.pieter_groenendijk.configuration.hibernate;
+package com.github.pieter_groenendijk.datasource.configuration;
 
 import com.github.pieter_groenendijk.domain.entities.account.Account;
 import com.github.pieter_groenendijk.domain.entities.loan.Loan;
