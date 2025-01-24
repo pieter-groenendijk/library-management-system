@@ -8,11 +8,12 @@ import java.util.List;
 import java.util.Collections;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
+@Repository
 public class ProductRepository implements IProductRepository {
-
     SessionFactory sessionFactory;
 
     public ProductRepository(SessionFactory sessionFactory) {

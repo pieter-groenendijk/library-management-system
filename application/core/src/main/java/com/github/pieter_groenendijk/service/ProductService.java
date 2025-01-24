@@ -8,14 +8,15 @@ import com.github.pieter_groenendijk.entity.product.ProductCopy;
 import com.github.pieter_groenendijk.entity.product.ProductTemplate;
 import com.github.pieter_groenendijk.repository.IProductRepository;
 import com.github.pieter_groenendijk.repository.genre.IGenreRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class ProductService implements IProductService {
     private final IProductRepository productRepository;
     private final IGenreRepository genreRepository;
-
 
     public ProductService(IProductRepository productRepository, IGenreRepository genreRepository) {
         this.productRepository = productRepository;

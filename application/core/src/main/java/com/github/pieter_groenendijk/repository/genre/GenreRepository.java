@@ -10,11 +10,15 @@ import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
 import org.hibernate.HibernateException;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class GenreRepository implements IGenreRepository {
     private SessionFactory sessionFactory;
 
-    public GenreRepository (SessionFactory sessionFactory) {this.sessionFactory = sessionFactory;}
+    public GenreRepository (SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
     public Optional<Genre> retrieveGenreById(long id) {
         Session session = sessionFactory.openSession();

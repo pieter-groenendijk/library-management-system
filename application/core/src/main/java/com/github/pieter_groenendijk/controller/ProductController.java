@@ -3,12 +3,7 @@ package com.github.pieter_groenendijk.controller;
 import com.github.pieter_groenendijk.dto.CatalogueRequestDTO;
 import com.github.pieter_groenendijk.hibernate.SessionFactoryFactory;
 import com.github.pieter_groenendijk.entity.product.ProductCopy;
-import com.github.pieter_groenendijk.repository.IProductRepository;
-import com.github.pieter_groenendijk.repository.ProductRepository;
-import com.github.pieter_groenendijk.repository.genre.IGenreRepository;
-import com.github.pieter_groenendijk.repository.genre.GenreRepository;
 import com.github.pieter_groenendijk.service.IProductService;
-import com.github.pieter_groenendijk.service.ProductService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -22,13 +17,12 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/product")
 public class ProductController {
-    private IProductService productService;
-    private SessionFactory sessionFactory = new SessionFactoryFactory().create();
+    private IProductService SERVICE;
 
-    private ProductController() {
-        IProductRepository productRepository = new ProductRepository(sessionFactory);
-        IGenreRepository genreRepository = new GenreRepository(sessionFactory);
-        productService = new ProductService(productRepository, genreRepository);
+    private ProductController(
+        IProductService service
+    ) {
+        this.SERVICE = service;
     }
 
     @Operation(summary = "Get all ProductCopy details by product", description = "Get product details by product")
@@ -39,7 +33,7 @@ public class ProductController {
     @GetMapping("/{productCopyId}")
     public ResponseEntity<ProductCopy> retrieveProductByCopyId(@PathVariable("productCopyId") long productCopyId) {
         try {
-            ProductCopy productCopy = productService.retrieveProductByCopyId(productCopyId);
+            ProductCopy productCopy = SERVICE.retrieveProductByCopyId(productCopyId);
             return new ResponseEntity<>(productCopy, HttpStatus.OK);
         } catch (HibernateException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -53,7 +47,7 @@ public class ProductController {
     })
     @PostMapping("/catalogue")
     public ResponseEntity<?> retrieveCatalogue(@RequestBody CatalogueRequestDTO catalogueRequestDTO) {
-        List<ProductCopy> catalogue = productService.retrieveCatalogue(catalogueRequestDTO);
+        List<ProductCopy> catalogue = SERVICE.retrieveCatalogue(catalogueRequestDTO);
         if (catalogue.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
         } else {

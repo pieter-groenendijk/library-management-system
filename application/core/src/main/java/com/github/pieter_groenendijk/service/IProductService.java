@@ -11,7 +11,7 @@ public interface IProductService {
     ProductTemplate store(ProductTemplate product);
     Optional<ProductTemplate> deleteProductById(long productId);
 
-    Optional <ProductTemplate> retrieveProductById(long productId);
+    Optional <ProductTemplate> retrieveProductById(long productId); // TODO: The fact that you categorized the interface says that it should ideally be split up (SRP, ISP).
     ProductTemplate updateProduct(ProductTemplate product);
 
     ProductCopy updateProductCopy(ProductCopy productCopy);
