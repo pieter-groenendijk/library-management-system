@@ -1,4 +1,9 @@
 # Library Management System
+## Hosting
+De repo is gehost op [github](https://github.com/pieter-groenendijk/oose-library-management-system).
+
+## Applicatie opstarten/afsluiten
+Zie [hier](application/readme.md).
 
 ## Description
 
@@ -16,11 +21,11 @@ There are additional functionalities the library requires the system to have, na
 - Give notices about fees for late returns
 
 
-## Desired functionality
+### Desired functionality
 
 The library would like the following functionality for now.
 
-### Administrative functionality
+#### Administrative functionality
 
 - **Management over several mediums**  
 The ability to add, remove and update the catalog. The amount of available copies of a book are kept up to date. 
@@ -31,7 +36,7 @@ The mediums include:
 - **Review of statistics**
   - Availability of catalog items
 
-### User functionality
+#### User functionality
 
 - **browsing (of the catalog)**  
 Additionally, a user may:
