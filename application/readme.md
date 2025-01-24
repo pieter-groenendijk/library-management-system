@@ -52,3 +52,9 @@ The following command will stop and remove the services.
 ```bash
 sudo docker compose down 
 ```
+
+# Access
+When the services have fully started, one can access them via:
+
+- [swagger page of core](http://localhost:8080/swagger-ui/index.html)
+- [web-ui through reverse-proxy](http://localhost:8080/)
