@@ -1,4 +1,5 @@
-# Fysiek Product Reserveren
+# Fysiek Product Lenen
+
 <table>
     <thead>
         <tr>
@@ -103,4 +104,6 @@
     </tbody>
 </table>
 
+![SSD Lening](../../system-sequence-diagrams/lening.png)<br>
+![SD Lening](../../../../design/artifacts/sequence-diagrams/loan-store.svg)<br>
 
