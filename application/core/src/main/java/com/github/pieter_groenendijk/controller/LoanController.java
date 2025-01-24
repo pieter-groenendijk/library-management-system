@@ -1,33 +1,13 @@
 package com.github.pieter_groenendijk.controller;
 
 import com.github.pieter_groenendijk.exception.EntityNotFoundException;
-import com.github.pieter_groenendijk.hibernate.SessionFactoryFactory;
 import com.github.pieter_groenendijk.dto.LoanRequestDTO;
 import com.github.pieter_groenendijk.entity.Loan;
-import com.github.pieter_groenendijk.repository.*;
-import com.github.pieter_groenendijk.entity.event.Event;
-import com.github.pieter_groenendijk.repository.loan.ILoanRepository;
-import com.github.pieter_groenendijk.repository.loan.LoanRepository;
-import com.github.pieter_groenendijk.repository.event.EventRepository;
-import com.github.pieter_groenendijk.repository.event.IEventRepository;
-import com.github.pieter_groenendijk.repository.loan.event.ILoanEventRepostory;
-import com.github.pieter_groenendijk.repository.loan.event.LoanEventRepostory;
-import com.github.pieter_groenendijk.repository.scheduling.ITaskRepository;
-import com.github.pieter_groenendijk.scheduling.TaskScheduler;
-import com.github.pieter_groenendijk.service.event.emitting.EventEmitterPool;
-import com.github.pieter_groenendijk.service.event.scheduling.EventScheduler;
 import com.github.pieter_groenendijk.service.loan.ILoanService;
-import com.github.pieter_groenendijk.service.loan.LoanService;
-import com.github.pieter_groenendijk.service.loan.event.ILoanEventService;
-import com.github.pieter_groenendijk.service.loan.event.LoanEventService;
-import com.github.pieter_groenendijk.service.loan.event.scheduling.LoanEventScheduler;
-import com.github.pieter_groenendijk.service.reservation.IReservationService;
-import com.github.pieter_groenendijk.service.reservation.ReservationService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
-import org.hibernate.SessionFactory;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -39,38 +19,12 @@ import java.util.List;
 @RestController
 @RequestMapping("/loan")
 public class LoanController {
+    private final ILoanService SERVICE;
 
-    private final SessionFactory sessionFactory = new SessionFactoryFactory().create();
-    private final ILoanService loanService;
-
-    public LoanController() {
-        ILoanRepository loanRepository = new LoanRepository(sessionFactory);
-        IProductRepository productRepository = new ProductRepository(sessionFactory);
-        IMembershipRepository membershipRepository = new MembershipRepository(sessionFactory);
-        IMembershipTypeRepository membershipTypeRepository = new MembershipTypeRepository(sessionFactory);
-        IReservationService reservationService = new ReservationService(
-            new ReservationRepository(sessionFactory),
-            membershipRepository,
-            new AccountRepository(sessionFactory),
-            productRepository,
-                new MembershipTypeRepository(sessionFactory)
-        );
-
-        // TODO: Make this mess work with beans or dependency injection!!!!
-        IEventRepository eventRepository = new EventRepository(sessionFactory);
-        ILoanEventRepostory loanEventRepostory = new LoanEventRepostory(sessionFactory);
-        ILoanEventService eventService = new LoanEventService(
-            new LoanEventScheduler(
-                eventRepository,
-                loanEventRepostory,
-                new EventScheduler(
-                    (ITaskRepository<Event<?>>) eventRepository,
-                    new TaskScheduler(1),
-                    new EventEmitterPool()
-                )
-            )
-        );
-        this.loanService = new LoanService(loanRepository, membershipRepository, eventService, reservationService, productRepository, membershipTypeRepository);
+    public LoanController(
+        ILoanService service
+    ) {
+        this.SERVICE = service;
     }
 
     @Operation(summary = "Create a Loan", description = "Create a new Loan")
@@ -81,7 +35,7 @@ public class LoanController {
     @PostMapping("/store")
     public ResponseEntity<?> store(@RequestBody LoanRequestDTO loanRequestDTO) throws Exception {
         try {
-            Loan loan = loanService.store(loanRequestDTO);
+            Loan loan = SERVICE.store(loanRequestDTO);
             return ResponseEntity.status(HttpStatus.CREATED).build();
         } catch (EntityNotFoundException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
@@ -96,7 +50,7 @@ public class LoanController {
     @GetMapping("loan/{loanId}")
     public ResponseEntity<?> retrieveLoanByLoanId(@PathVariable("loanId") long loanId) {
        try {
-            Loan loan = loanService.retrieveLoanByLoanId(loanId);
+            Loan loan = SERVICE.retrieveLoanByLoanId(loanId);
             return ResponseEntity.ok(loan);
         } catch (EntityNotFoundException ex) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
@@ -111,7 +65,7 @@ public class LoanController {
     @GetMapping("/member/{membershipId}")
     public ResponseEntity<List<Loan>> retrieveActiveLoansByMembershipId(@Parameter(description = "ID of the membership to retrieve loans for", required = true)
                                                                         @PathVariable("membershipId") long membershipId) {
-        List<Loan> loans = loanService.retrieveActiveLoansByMembershipId(membershipId);
+        List<Loan> loans = SERVICE.retrieveActiveLoansByMembershipId(membershipId);
         if (!loans.isEmpty()) {
             return new ResponseEntity<>(loans, HttpStatus.OK);
         } else {
