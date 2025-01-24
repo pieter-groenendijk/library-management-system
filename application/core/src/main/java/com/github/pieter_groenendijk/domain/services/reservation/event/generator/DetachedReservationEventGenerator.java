@@ -3,7 +3,7 @@ package com.github.pieter_groenendijk.domain.services.reservation.event.generato
 import com.github.pieter_groenendijk.domain.entities.reservation.Reservation;
 import com.github.pieter_groenendijk.domain.entities.event.EventType;
 import com.github.pieter_groenendijk.domain.entities.event.ReservationEvent;
-import com.github.pieter_groenendijk.repository.event.IEventRepository;
+import com.github.pieter_groenendijk.repositories.event.IEventRepository;
 import com.github.pieter_groenendijk.domain.shared.scheduling.TaskStorage;
 import com.github.pieter_groenendijk.domain.services.event.generator.DetachedEventGenerator;
 

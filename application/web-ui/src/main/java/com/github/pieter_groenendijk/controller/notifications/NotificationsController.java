@@ -1,6 +1,6 @@
 package com.github.pieter_groenendijk.controller.notifications;
 
-import com.github.pieter_groenendijk.repository.notifications.NotificationsRepository;
+import com.github.pieter_groenendijk.repositories.notifications.NotificationsRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

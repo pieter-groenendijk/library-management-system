@@ -1,7 +1,7 @@
 package com.github.pieter_groenendijk.domain.services.fine.type;
 
 import com.github.pieter_groenendijk.domain.entities.fine.FineType;
-import com.github.pieter_groenendijk.repository.fine.IFineRepository;
+import com.github.pieter_groenendijk.repositories.fine.IFineRepository;
 
 /**
  * This class provides a way of mapping between the static defined fine types and those retrieved at runtime.

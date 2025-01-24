@@ -1,7 +1,7 @@
 package com.github.pieter_groenendijk.domain.shared.scheduling;
 
 import com.github.pieter_groenendijk.domain.entities.scheduling.Task;
-import com.github.pieter_groenendijk.repository.scheduling.ITaskRepository;
+import com.github.pieter_groenendijk.repositories.scheduling.ITaskRepository;
 
 import java.time.Duration;
 import java.time.LocalDateTime;

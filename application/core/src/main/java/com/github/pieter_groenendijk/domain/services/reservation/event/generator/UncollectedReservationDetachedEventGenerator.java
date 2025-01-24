@@ -2,7 +2,7 @@ package com.github.pieter_groenendijk.domain.services.reservation.event.generato
 
 import com.github.pieter_groenendijk.domain.entities.reservation.Reservation;
 import com.github.pieter_groenendijk.domain.entities.event.EventType;
-import com.github.pieter_groenendijk.repository.event.IEventRepository;
+import com.github.pieter_groenendijk.repositories.event.IEventRepository;
 
 import java.time.LocalDateTime;
 

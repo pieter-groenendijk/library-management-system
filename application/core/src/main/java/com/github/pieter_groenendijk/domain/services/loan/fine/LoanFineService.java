@@ -1,8 +1,8 @@
 package com.github.pieter_groenendijk.domain.services.loan.fine;
 
 import com.github.pieter_groenendijk.domain.entities.loan.Loan;
-import com.github.pieter_groenendijk.repository.IAccountRepository;
-import com.github.pieter_groenendijk.repository.fine.IFineRepository;
+import com.github.pieter_groenendijk.repositories.account.IAccountRepository;
+import com.github.pieter_groenendijk.repositories.fine.IFineRepository;
 import com.github.pieter_groenendijk.domain.services.fine.processor.FineProcessor;
 import com.github.pieter_groenendijk.domain.services.fine.type.FineTypeRegistry;
 

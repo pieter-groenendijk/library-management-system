@@ -1,0 +1,15 @@
+package com.github.pieter_groenendijk.repositories.loan;
+
+import com.github.pieter_groenendijk.domain.entities.loan.Loan;
+
+import java.util.List;
+
+public interface ILoanRepository {
+
+    Loan retrieveLoanByLoanId(long loanId);
+    List<Loan> retrieveActiveLoansByMembershipId(long MembershipId);
+    Loan store(Loan loan);
+    void updateLoan(Loan loan);
+    List<Loan> retrieveAllActiveLoans();
+    int retrieveCurrentGenreLoanCount(long membershipId, long genreId);
+}

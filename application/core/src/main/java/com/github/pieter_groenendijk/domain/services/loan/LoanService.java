@@ -7,15 +7,15 @@ import com.github.pieter_groenendijk.domain.entities.membership.MembershipType;
 import com.github.pieter_groenendijk.domain.entities.reservation.Reservation;
 import com.github.pieter_groenendijk.domain.exception.EntityNotFoundException;
 import com.github.pieter_groenendijk.shared.dto.loan.LoanDTO;
-import com.github.pieter_groenendijk.repository.loan.ILoanRepository;
+import com.github.pieter_groenendijk.repositories.loan.ILoanRepository;
 import com.github.pieter_groenendijk.domain.entities.product.ProductCopy;
 import com.github.pieter_groenendijk.domain.entities.product.ProductCopyStatus;
 import com.github.pieter_groenendijk.domain.services.loan.event.ILoanEventService;
 
 import static com.github.pieter_groenendijk.domain.shared.ServiceUtils.LOAN_LENGTH;
-import com.github.pieter_groenendijk.repository.IMembershipRepository;
-import com.github.pieter_groenendijk.repository.IMembershipTypeRepository;
-import com.github.pieter_groenendijk.repository.IProductRepository;
+import com.github.pieter_groenendijk.repositories.membership.IMembershipRepository;
+import com.github.pieter_groenendijk.repositories.membership.type.IMembershipTypeRepository;
+import com.github.pieter_groenendijk.repositories.product.IProductRepository;
 import com.github.pieter_groenendijk.domain.services.reservation.IReservationService;
 import org.springframework.stereotype.Service;
 

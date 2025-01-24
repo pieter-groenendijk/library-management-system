@@ -2,7 +2,7 @@ package com.github.pieter_groenendijk.domain.services.notification.generators;
 
 import com.github.pieter_groenendijk.domain.entities.account.Account;
 import com.github.pieter_groenendijk.domain.entities.notification.Notification;
-import com.github.pieter_groenendijk.repository.notification.INotificationRepository;
+import com.github.pieter_groenendijk.repositories.notification.INotificationRepository;
 import com.github.pieter_groenendijk.domain.shared.scheduling.DetachedTask;
 import com.github.pieter_groenendijk.domain.shared.scheduling.TaskStorage;
 import com.github.pieter_groenendijk.domain.services.notification.sendstrategies.registry.SendStrategyType;
