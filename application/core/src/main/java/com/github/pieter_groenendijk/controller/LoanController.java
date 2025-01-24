@@ -78,7 +78,7 @@ public class LoanController {
             @ApiResponse(responseCode = "201", description = "Loan created"),
             @ApiResponse(responseCode = "404", description = "Membership or Product not found")
     })
-    @PostMapping
+    @PostMapping("/store")
     public ResponseEntity<?> store(@RequestBody LoanRequestDTO loanRequestDTO) throws Exception {
         try {
             Loan loan = loanService.store(loanRequestDTO);
@@ -93,8 +93,8 @@ public class LoanController {
             @ApiResponse(responseCode = "200", description = "Loan found"),
             @ApiResponse(responseCode = "404", description = "No loan found for the given loanId\"")
     })
-    @GetMapping("/{loanId}")
-    public ResponseEntity<Loan> retrieveLoanByLoanId(@PathVariable("loanId") long loanId) {
+    @GetMapping("loan/{loanId}")
+    public ResponseEntity<?> retrieveLoanByLoanId(@PathVariable("loanId") long loanId) {
        try {
             Loan loan = loanService.retrieveLoanByLoanId(loanId);
             return ResponseEntity.ok(loan);

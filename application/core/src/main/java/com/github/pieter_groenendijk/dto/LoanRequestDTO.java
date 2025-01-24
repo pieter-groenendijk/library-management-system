@@ -7,7 +7,6 @@ import java.time.LocalDate;
 public class LoanRequestDTO {
     private LocalDate startDate = LocalDate.now();
     private long productCopyId;
-    private LoanStatus loanStatus;
     private long membershipId;
 
     public LocalDate getStartDate() {
@@ -27,15 +26,12 @@ public class LoanRequestDTO {
         this.productCopyId = productCopyId;
     }
 
-    public LoanStatus getLoanStatus() {
-        return loanStatus != null ? loanStatus : LoanStatus.ACTIVE;
-    }
-
-    public void setLoanStatus(LoanStatus loanStatus) {
-        this.loanStatus = loanStatus;
-    }
 
     public long getMembershipId() {
         return membershipId;
+    }
+
+    public void setMembershipId(long membershipId) {
+        this.membershipId = membershipId;
     }
 }
