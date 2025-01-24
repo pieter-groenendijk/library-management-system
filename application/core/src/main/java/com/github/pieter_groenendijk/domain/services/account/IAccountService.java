@@ -2,13 +2,13 @@ package com.github.pieter_groenendijk.domain.services.account;
 
 import com.github.pieter_groenendijk.domain.entities.loan.LoanLimit;
 import com.github.pieter_groenendijk.domain.entities.account.Account;
-import com.github.pieter_groenendijk.dto.MembershipTypeRequestDTO;
+import com.github.pieter_groenendijk.dto.MembershipTypeDTO;
 import com.github.pieter_groenendijk.domain.entities.membership.MembershipType;
 import com.github.pieter_groenendijk.domain.entities.membership.Membership;
-import com.github.pieter_groenendijk.dto.MembershipRequestDTO;
+import com.github.pieter_groenendijk.dto.MembershipDTO;
 
 import java.util.List;
-import com.github.pieter_groenendijk.dto.AccountRequestDTO;
+import com.github.pieter_groenendijk.dto.AccountDTO;
 
 public interface IAccountService {
 
@@ -18,27 +18,27 @@ public interface IAccountService {
     
     void store(Account account) throws Exception;
 
-    void store(AccountRequestDTO account) throws Exception;
+    void store(AccountDTO account) throws Exception;
 
     void update(Account account) throws Exception;
 
-    void update(long id, AccountRequestDTO account) throws Exception;
+    void update(long id, AccountDTO account) throws Exception;
 
-    void store(MembershipTypeRequestDTO membershipType);
+    void store(MembershipTypeDTO membershipType);
     
     Membership retrieveMembershipById(long id);
     
-    void store(MembershipRequestDTO request) throws Exception;
+    void store(MembershipDTO request) throws Exception;
 
     List<Membership> retrieveMembershipsByAccountId (long id);
 
     void setIsBlocked(long id, boolean newValue) throws Exception;
 
-    void update(long id, MembershipTypeRequestDTO request);
+    void update(long id, MembershipTypeDTO request);
 
     List<MembershipType> retrieveMembershipTypeList();
 
-    void update(long id, MembershipRequestDTO request);
+    void update(long id, MembershipDTO request);
 
     void softDeleteAccount(long id) throws Exception;
 

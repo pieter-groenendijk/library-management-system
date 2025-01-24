@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import io.swagger.v3.oas.annotations.Operation;
 import com.github.pieter_groenendijk.domain.services.account.IAccountService;
 import com.github.pieter_groenendijk.domain.entities.account.Account;
-import com.github.pieter_groenendijk.dto.AccountRequestDTO;
+import com.github.pieter_groenendijk.dto.AccountDTO;
 
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -41,14 +41,14 @@ public class AccountController {
 
     @Operation(summary = "Create an account", description = "Add a new account to the database")
     @PostMapping
-    public ResponseEntity<?> createAccount(@RequestBody AccountRequestDTO account) throws Exception {
+    public ResponseEntity<?> createAccount(@RequestBody AccountDTO account) throws Exception {
         SERVICE.store(account);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @Operation(summary = "Update an account", description = "Update an account in the database")
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateAccount(@PathVariable("id") long id, @RequestBody AccountRequestDTO account) throws Exception {
+    public ResponseEntity<?> updateAccount(@PathVariable("id") long id, @RequestBody AccountDTO account) throws Exception {
         SERVICE.update(id, account);
         return ResponseEntity.status(HttpStatus.OK).build();
     }

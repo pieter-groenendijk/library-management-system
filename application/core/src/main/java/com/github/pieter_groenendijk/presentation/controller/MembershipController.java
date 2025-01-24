@@ -3,7 +3,7 @@ package com.github.pieter_groenendijk.presentation.controller;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
 import com.github.pieter_groenendijk.domain.services.account.IAccountService;
-import com.github.pieter_groenendijk.dto.MembershipRequestDTO;
+import com.github.pieter_groenendijk.dto.MembershipDTO;
 import com.github.pieter_groenendijk.domain.entities.membership.Membership;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -51,14 +51,14 @@ public class MembershipController{
 
     @Operation(summary = "Create a membership", description = "Add a new membership to the database")
     @PostMapping
-    public ResponseEntity<?> createMembership(@RequestBody MembershipRequestDTO request) throws Exception {
+    public ResponseEntity<?> createMembership(@RequestBody MembershipDTO request) throws Exception {
         ACCOUNT_SERVICE.store(request);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @Operation(summary = "Update a membership", description = "Update a membership in the database")
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateMembership(@PathVariable("id") long id, @RequestBody MembershipRequestDTO request){
+    public ResponseEntity<?> updateMembership(@PathVariable("id") long id, @RequestBody MembershipDTO request){
         ACCOUNT_SERVICE.update(id, request);
         return ResponseEntity.status(HttpStatus.OK).build();
     }

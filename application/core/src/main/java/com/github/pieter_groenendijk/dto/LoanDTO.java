@@ -2,7 +2,7 @@ package com.github.pieter_groenendijk.dto;
 
 import java.time.LocalDate;
 
-public class LoanRequestDTO {
+public class LoanDTO {
     private LocalDate startDate = LocalDate.now();
     private long productCopyId;
     private long membershipId;

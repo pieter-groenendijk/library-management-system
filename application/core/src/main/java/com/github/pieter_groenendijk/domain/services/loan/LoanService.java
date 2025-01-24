@@ -6,7 +6,7 @@ import com.github.pieter_groenendijk.domain.entities.membership.Membership;
 import com.github.pieter_groenendijk.domain.entities.membership.MembershipType;
 import com.github.pieter_groenendijk.domain.entities.reservation.Reservation;
 import com.github.pieter_groenendijk.domain.exception.EntityNotFoundException;
-import com.github.pieter_groenendijk.dto.LoanRequestDTO;
+import com.github.pieter_groenendijk.dto.LoanDTO;
 import com.github.pieter_groenendijk.repository.loan.ILoanRepository;
 import com.github.pieter_groenendijk.domain.entities.product.ProductCopy;
 import com.github.pieter_groenendijk.domain.entities.product.ProductCopyStatus;
@@ -49,22 +49,22 @@ public class LoanService implements ILoanService {
 
     // TODO: Implement correct error handling. Is a loan still successful if we failed to schedule events for it, or the other way around?
     @Override
-    public Loan store(LoanRequestDTO loanRequestDTO) throws Exception {
-        if (loanRequestDTO == null) {
+    public Loan store(LoanDTO loanDTO) throws Exception {
+        if (loanDTO == null) {
             throw new IllegalArgumentException("LoanRequestDTO cannot be null.");
         }
-        validateLoanRequestDTO(loanRequestDTO);
+        validateLoanRequestDTO(loanDTO);
 
         Loan loan = new Loan();
         loan.setLoanStatus(LoanStatus.ACTIVE);
         setLoanDates(loan);
 
 
-        Membership membership = membershipRepository.retrieveMembershipById(loanRequestDTO.getMembershipId())
+        Membership membership = membershipRepository.retrieveMembershipById(loanDTO.getMembershipId())
                 .orElseThrow(() -> new EntityNotFoundException("Membership not found"));
         loan.setMembership(membership);
         checkIfAccountIsBlocked(membership);
-        ProductCopy productCopy = productRepository.retrieveProductCopyById(loanRequestDTO.getProductCopyId())
+        ProductCopy productCopy = productRepository.retrieveProductCopyById(loanDTO.getProductCopyId())
                 .orElseThrow(() -> new EntityNotFoundException("ProductCopy not found"));
         loan.setProductCopy(productCopy);
 
@@ -203,8 +203,8 @@ public class LoanService implements ILoanService {
     }
 
     @Override
-    public void validateLoanRequestDTO(LoanRequestDTO loanRequestDTO) {
-        if (loanRequestDTO == null) {
+    public void validateLoanRequestDTO(LoanDTO loanDTO) {
+        if (loanDTO == null) {
             throw new IllegalArgumentException("LoanRequestDTO cannot be null.");
         }
     }

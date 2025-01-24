@@ -1,6 +1,6 @@
 package com.github.pieter_groenendijk.domain.services.product;
 
-import com.github.pieter_groenendijk.dto.CatalogueRequestDTO;
+import com.github.pieter_groenendijk.dto.CatalogueDTO;
 import com.github.pieter_groenendijk.domain.entities.product.ProductCopy;
 import com.github.pieter_groenendijk.domain.entities.product.ProductTemplate;
 import com.github.pieter_groenendijk.domain.entities.product.Genre;
@@ -18,7 +18,7 @@ public interface IProductService {
 
     ProductCopy retrieveProductByCopyId(long productCopyId);
 
-    List<ProductCopy> retrieveCatalogue(CatalogueRequestDTO catalogueRequestDTO);
+    List<ProductCopy> retrieveCatalogue(CatalogueDTO catalogueDTO);
 
     //Genre
     Genre retrieveGenreById(long id);

@@ -1,6 +1,6 @@
 package com.github.pieter_groenendijk.dto;
 
-public class MembershipTypeRequestDTO {
+public class MembershipTypeDTO {
 
     private String description;
     private boolean digitalProducts;

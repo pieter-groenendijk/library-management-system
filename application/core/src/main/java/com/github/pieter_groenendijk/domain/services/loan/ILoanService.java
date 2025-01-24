@@ -1,6 +1,6 @@
 package com.github.pieter_groenendijk.domain.services.loan;
 
-import com.github.pieter_groenendijk.dto.LoanRequestDTO;
+import com.github.pieter_groenendijk.dto.LoanDTO;
 import com.github.pieter_groenendijk.domain.entities.loan.Loan;
 import com.github.pieter_groenendijk.domain.entities.reservation.Reservation;
 
@@ -9,7 +9,7 @@ import java.util.List;
 
 
 public interface ILoanService {
-    Loan store(LoanRequestDTO loan) throws Exception;
+    Loan store(LoanDTO loan) throws Exception;
 
     void extendLoan(long loanId, LocalDate returnBy);
 
@@ -30,5 +30,5 @@ public interface ILoanService {
 
     Loan convertReservationToLoan(Reservation reservation);
 
-    void validateLoanRequestDTO(LoanRequestDTO loanRequestDTO);
+    void validateLoanRequestDTO(LoanDTO loanDTO);
 }

@@ -2,7 +2,7 @@ package com.github.pieter_groenendijk.dto;
 
 import java.util.Date;
 
-public class AccountRequestDTO {
+public class AccountDTO {
 
     private String email;
     private String firstName;

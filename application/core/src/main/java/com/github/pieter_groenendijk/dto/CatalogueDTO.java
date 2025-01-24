@@ -2,7 +2,7 @@ package com.github.pieter_groenendijk.dto;
 
 import com.github.pieter_groenendijk.domain.entities.product.MediaType;
 
-public class CatalogueRequestDTO {
+public class CatalogueDTO {
     private String searchString;
     private long genreId;
     private boolean onlyAvailableProducts;

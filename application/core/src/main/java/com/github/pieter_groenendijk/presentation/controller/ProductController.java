@@ -1,6 +1,6 @@
 package com.github.pieter_groenendijk.presentation.controller;
 
-import com.github.pieter_groenendijk.dto.CatalogueRequestDTO;
+import com.github.pieter_groenendijk.dto.CatalogueDTO;
 import com.github.pieter_groenendijk.domain.entities.product.ProductCopy;
 import com.github.pieter_groenendijk.domain.services.product.IProductService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -45,8 +45,8 @@ public class ProductController {
             @ApiResponse(responseCode = "404", description = "No product found")
     })
     @PostMapping("/catalogue")
-    public ResponseEntity<?> retrieveCatalogue(@RequestBody CatalogueRequestDTO catalogueRequestDTO) {
-        List<ProductCopy> catalogue = SERVICE.retrieveCatalogue(catalogueRequestDTO);
+    public ResponseEntity<?> retrieveCatalogue(@RequestBody CatalogueDTO catalogueDTO) {
+        List<ProductCopy> catalogue = SERVICE.retrieveCatalogue(catalogueDTO);
         if (catalogue.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
         } else {

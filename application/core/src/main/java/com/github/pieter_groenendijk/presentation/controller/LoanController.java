@@ -1,7 +1,7 @@
 package com.github.pieter_groenendijk.presentation.controller;
 
 import com.github.pieter_groenendijk.domain.exception.EntityNotFoundException;
-import com.github.pieter_groenendijk.dto.LoanRequestDTO;
+import com.github.pieter_groenendijk.dto.LoanDTO;
 import com.github.pieter_groenendijk.domain.entities.loan.Loan;
 import com.github.pieter_groenendijk.domain.services.loan.ILoanService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -33,9 +33,9 @@ public class LoanController {
             @ApiResponse(responseCode = "404", description = "Membership or Product not found")
     })
     @PostMapping("/store")
-    public ResponseEntity<?> store(@RequestBody LoanRequestDTO loanRequestDTO) throws Exception {
+    public ResponseEntity<?> store(@RequestBody LoanDTO loanDTO) throws Exception {
         try {
-            Loan loan = SERVICE.store(loanRequestDTO);
+            Loan loan = SERVICE.store(loanDTO);
             return ResponseEntity.status(HttpStatus.CREATED).build();
         } catch (EntityNotFoundException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();

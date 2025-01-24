@@ -1,6 +1,6 @@
 package com.github.pieter_groenendijk.dto;
 
-public class MembershipRequestDTO {
+public class MembershipDTO {
     private Long membershipTypeId;
     private Long accountId;
 

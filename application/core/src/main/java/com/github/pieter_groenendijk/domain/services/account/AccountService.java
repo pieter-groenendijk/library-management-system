@@ -12,9 +12,9 @@ import com.github.pieter_groenendijk.domain.exception.EntityNotFoundException;
 import com.github.pieter_groenendijk.domain.exception.InputValidationException;
 import com.github.pieter_groenendijk.domain.shared.validator.EmailValidator;
 import com.github.pieter_groenendijk.domain.shared.validator.GenderCheck;
-import com.github.pieter_groenendijk.dto.MembershipRequestDTO;
-import com.github.pieter_groenendijk.dto.MembershipTypeRequestDTO;
-import com.github.pieter_groenendijk.dto.AccountRequestDTO;
+import com.github.pieter_groenendijk.dto.MembershipDTO;
+import com.github.pieter_groenendijk.dto.MembershipTypeDTO;
+import com.github.pieter_groenendijk.dto.AccountDTO;
 import org.springframework.stereotype.Repository;
 
 import java.util.Date;
@@ -56,7 +56,7 @@ public class AccountService implements IAccountService {
         throw new InputValidationException("Account input is not valid");
     }
 
-    public void store(AccountRequestDTO request) throws Exception {
+    public void store(AccountDTO request) throws Exception {
         boolean emailAlreadyExists = accountRepository.doesAccountExistByEmail(request.getEmail());
         if (emailAlreadyExists) {
             throw new InputValidationException("E-mail already exists!");
@@ -90,7 +90,7 @@ public class AccountService implements IAccountService {
         }
     }
 
-    public void update(long id, AccountRequestDTO account) throws Exception {
+    public void update(long id, AccountDTO account) throws Exception {
         Account retrievedAccount =  retrieveAccountById(id);
         if (retrievedAccount == null) {
             throw new EntityNotFoundException("Account with ID " + id + " not found.");
@@ -172,7 +172,7 @@ public class AccountService implements IAccountService {
 
     //MembershipTypeFunctionality
 
-    public void store(MembershipTypeRequestDTO request){
+    public void store(MembershipTypeDTO request){
         if (request.getMaxLendings() <= 0) {
             throw new InputValidationException("MaxLendings should be at least 1!");
         }
@@ -190,7 +190,7 @@ public class AccountService implements IAccountService {
         membershipTypeRepository.store(membershipType);
     }
 
-    public void update(long id, MembershipTypeRequestDTO request) {
+    public void update(long id, MembershipTypeDTO request) {
         if (request.getMaxLendings() <= 0) {
             throw new InputValidationException("MaxLendings should be at least 1!");
         }
@@ -246,7 +246,7 @@ public class AccountService implements IAccountService {
         return memberships;
     }
 
-    public void store(MembershipRequestDTO request) throws Exception {
+    public void store(MembershipDTO request) throws Exception {
         Account account = accountRepository.retrieveAccountById(request.getAccountId())
         .orElseThrow(() -> new EntityNotFoundException("Account with ID " + request.getAccountId() + "not found."));
 
@@ -263,7 +263,7 @@ public class AccountService implements IAccountService {
         membershipRepository.store(membership);
     }
 
-    public void update(long id, MembershipRequestDTO request){
+    public void update(long id, MembershipDTO request){
         Membership retrievedMembership = retrieveMembershipById(id);
         if (retrievedMembership.getAccount().getAccountId() != request.getAccountId()) {
             throw new InputValidationException("Cannot move a membership between accounts!");

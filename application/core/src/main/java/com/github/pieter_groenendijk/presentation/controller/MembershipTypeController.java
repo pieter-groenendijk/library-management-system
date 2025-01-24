@@ -7,7 +7,7 @@ import com.github.pieter_groenendijk.domain.services.account.IAccountService;
 import com.github.pieter_groenendijk.domain.entities.membership.MembershipType;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
-import com.github.pieter_groenendijk.dto.MembershipTypeRequestDTO;
+import com.github.pieter_groenendijk.dto.MembershipTypeDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import java.util.*;
@@ -37,14 +37,14 @@ public class MembershipTypeController {
 
     @Operation(summary = "Create a membershipType", description = "Add a new membershipType to the database")
     @PostMapping
-    public ResponseEntity<?> createMembershipType(@RequestBody MembershipTypeRequestDTO membershipType) {
+    public ResponseEntity<?> createMembershipType(@RequestBody MembershipTypeDTO membershipType) {
         ACCOUNT_SERVICE.store(membershipType);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @Operation(summary = "Update a membershipType", description = "Change a membershipType ")
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateMembershipType(@PathVariable("id") long id, @RequestBody MembershipTypeRequestDTO membershipType) {
+    public ResponseEntity<?> updateMembershipType(@PathVariable("id") long id, @RequestBody MembershipTypeDTO membershipType) {
         ACCOUNT_SERVICE.update(id, membershipType);
         return ResponseEntity.status(HttpStatus.OK).build();
     }
