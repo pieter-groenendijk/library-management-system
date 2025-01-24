@@ -1,4 +1,15 @@
 # Architectuur
+
+## Samenvatting: Architecture Patterns
+- Page Controller
+- Template View
+- Data Access
+- Data Transfer Object
+- Service Laag
+- Data Mapper
+- Layer Supertype
+- MVC
+
 ## Services
 In een productieomgeving zullen we drie duidelijke services hebben [^1], namelijk:
 - **web-ui** service
