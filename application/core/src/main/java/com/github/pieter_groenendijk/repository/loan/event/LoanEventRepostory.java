@@ -10,6 +10,7 @@ import org.hibernate.SessionFactory;
 
 import java.util.List;
 
+@org.springframework.stereotype.Repository
 public class LoanEventRepostory extends Repository implements ILoanEventRepostory {
     private final List<EventType> DUENESS_TYPES = List.of(
         EventType.OVERDUE_LOAN,

@@ -94,8 +94,4 @@ public abstract class Notification extends Task {
     public void setSendStrategyType(SendStrategyType sendStrategyType) {
         this.sendStrategyType = sendStrategyType;
     }
-
-    public boolean isScheduledBefore(LocalDateTime dateTime) {
-        return this.getScheduledAt().isBefore(dateTime);
-    }
 }

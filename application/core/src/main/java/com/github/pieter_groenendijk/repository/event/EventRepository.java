@@ -7,9 +7,10 @@ import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Repository
-public class EventRepository extends TaskRepository<Event> implements IEventRepository {
+public class EventRepository extends TaskRepository<Event<?>> implements IEventRepository {
     public EventRepository(SessionFactory sessionFactory) {
         super(sessionFactory);
     }
@@ -19,18 +20,21 @@ public class EventRepository extends TaskRepository<Event> implements IEventRepo
         super.persist(event);
     }
 
-    // TODO: We could probably generalize this somehow
-    // TODO: We should probably remove the generics for the association so this is not pain.
     @Override
-    public List<Event> retrieveUntil(LocalDateTime until) throws Exception {
+    public List<Event<?>> retrieveUntil(LocalDateTime until) throws Exception {
         return super.performAtomicOperationReturning((session -> {
-            return session.createQuery(
+            List<Event> uncastEvents = session.createQuery(
                     "select n from Event as n where scheduledAt <= :until",
                     Event.class
                 )
                 .setParameter("until", until)
                 .getResultList();
 
+            // TODO: We should probably remove the generics for the association so this is not pain.
+            return uncastEvents
+                .stream()
+                .map(event -> (Event<?>) event)
+                .collect(Collectors.toList());
         }));
     }
 }

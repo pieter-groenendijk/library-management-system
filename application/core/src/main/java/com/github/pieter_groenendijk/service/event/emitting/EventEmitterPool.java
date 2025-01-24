@@ -3,12 +3,14 @@ package com.github.pieter_groenendijk.service.event.emitting;
 import com.github.pieter_groenendijk.entity.event.EventType;
 import com.github.pieter_groenendijk.service.event.listener.IEventListener;
 import org.jetbrains.annotations.NotNull;
+import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 
 /**
  * This class adds a centralized way to emit events. Handy for classes that emit multiple events.
  */
+@Component
 public class EventEmitterPool {
     private final HashMap<EventType, EventEmitter<?>> EMITTERS;
 

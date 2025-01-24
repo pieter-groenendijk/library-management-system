@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface IEventRepository {
     void store(Event<?> event) throws Exception;
-    List<Event> retrieveUntil(LocalDateTime until) throws Exception; // TODO: Could generalize this in a separate interface; very similar for notifications.
+    List<Event<?>> retrieveUntil(LocalDateTime until) throws Exception; // TODO: Could generalize this in a separate interface; very similar for notifications.
 }

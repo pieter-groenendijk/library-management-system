@@ -1,4 +1,4 @@
-package com.github.pieter_groenendijk.configuration;
+package com.github.pieter_groenendijk.configuration.beans;
 
 import com.github.pieter_groenendijk.hibernate.configuration.DefaultConfigurationFactory;
 import org.hibernate.SessionFactory;
