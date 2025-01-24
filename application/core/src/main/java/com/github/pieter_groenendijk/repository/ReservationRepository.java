@@ -4,11 +4,13 @@ import com.github.pieter_groenendijk.entity.Reservation;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Repository
 public class ReservationRepository implements IReservationRepository {
 
     private SessionFactory sessionFactory;

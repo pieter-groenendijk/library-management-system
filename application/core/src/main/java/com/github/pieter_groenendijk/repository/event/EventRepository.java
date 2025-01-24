@@ -3,10 +3,12 @@ package com.github.pieter_groenendijk.repository.event;
 import com.github.pieter_groenendijk.entity.event.Event;
 import com.github.pieter_groenendijk.repository.scheduling.TaskRepository;
 import org.hibernate.SessionFactory;
+import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Repository
 public class EventRepository extends TaskRepository<Event> implements IEventRepository {
     public EventRepository(SessionFactory sessionFactory) {
         super(sessionFactory);
