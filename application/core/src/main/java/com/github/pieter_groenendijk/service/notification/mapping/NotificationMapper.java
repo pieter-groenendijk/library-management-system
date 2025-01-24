@@ -2,9 +2,11 @@ package com.github.pieter_groenendijk.service.notification.mapping;
 
 import com.github.pieter_groenendijk.dto.NotificationDTO;
 import com.github.pieter_groenendijk.entity.notification.Notification;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class NotificationMapper {
     public NotificationDTO toDTO(Notification notification) {
         NotificationDTO dto = new NotificationDTO();

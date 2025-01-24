@@ -4,9 +4,11 @@ import com.github.pieter_groenendijk.dto.NotificationDTO;
 import com.github.pieter_groenendijk.exception.EntityNotFoundException;
 import com.github.pieter_groenendijk.repository.notification.INotificationRepository;
 import com.github.pieter_groenendijk.service.notification.mapping.NotificationMapper;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class NotificationService implements INotificationService {
     private final INotificationRepository REPOSITORY;
     private final NotificationMapper MAPPER;
@@ -14,10 +16,11 @@ public class NotificationService implements INotificationService {
     private final int ALLOWED_MAX_AMOUNT_THRESHOLD = 50; // TODO: Could centralize this for certain retrievals.
 
     public NotificationService(
-        INotificationRepository repository
+        INotificationRepository repository,
+        NotificationMapper mapper
     ) {
         this.REPOSITORY = repository;
-        this.MAPPER = new NotificationMapper();
+        this.MAPPER = mapper;
     }
 
     @Override
