@@ -2,7 +2,7 @@ package com.github.pieter_groenendijk.domain.entities.notification;
 
 import com.github.pieter_groenendijk.domain.entities.account.Account;
 import com.github.pieter_groenendijk.domain.entities.scheduling.Task;
-import com.github.pieter_groenendijk.service.notification.sendstrategies.registry.SendStrategyType;
+import com.github.pieter_groenendijk.domain.services.notification.sendstrategies.registry.SendStrategyType;
 import jakarta.persistence.*;
 
 @Entity

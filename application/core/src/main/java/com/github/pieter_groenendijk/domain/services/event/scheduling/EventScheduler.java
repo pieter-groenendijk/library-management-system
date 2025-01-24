@@ -1,0 +1,51 @@
+package com.github.pieter_groenendijk.domain.services.event.scheduling;
+
+import com.github.pieter_groenendijk.domain.entities.event.Event;
+import com.github.pieter_groenendijk.repository.scheduling.ITaskRepository;
+import com.github.pieter_groenendijk.scheduling.LongTermTaskScheduler;
+import com.github.pieter_groenendijk.scheduling.TaskScheduler;
+import com.github.pieter_groenendijk.domain.services.event.emitting.EventEmitterPool;
+import org.jetbrains.annotations.NotNull;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+// TODO: Do something about the big constructors
+@Component
+public class EventScheduler extends LongTermTaskScheduler<Event<?>> {
+    private final EventEmitterPool EMITTER_POOL;
+
+    @Autowired
+    public EventScheduler(
+        @NotNull ITaskRepository<Event<?>> taskRepository,
+        @NotNull TaskScheduler scheduler,
+        @NotNull EventEmitterPool eventEmitterPool
+    ) {
+        super(
+            taskRepository,
+            scheduler
+        );
+
+        this.EMITTER_POOL = eventEmitterPool;
+    }
+
+    public EventScheduler(
+        int amountOfThreads,
+        @NotNull ITaskRepository<Event<?>> taskRepository,
+        @NotNull EventEmitterPool eventEmitterPool
+    ) {
+        super(
+            taskRepository,
+            amountOfThreads
+        );
+
+        this.EMITTER_POOL = eventEmitterPool;
+    }
+
+    @Override
+    protected void executeTask(@NotNull Event<?> event) {
+        this.EMITTER_POOL.emit(
+            event.getType(),
+            event.getAssociation()
+        );
+    }
+}

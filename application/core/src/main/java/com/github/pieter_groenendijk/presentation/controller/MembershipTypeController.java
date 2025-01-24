@@ -3,7 +3,7 @@ package com.github.pieter_groenendijk.presentation.controller;
 import com.github.pieter_groenendijk.domain.entities.loan.LoanLimit;
 import org.springframework.web.bind.annotation.*;
 import io.swagger.v3.oas.annotations.Operation;
-import com.github.pieter_groenendijk.service.IAccountService;
+import com.github.pieter_groenendijk.domain.services.account.IAccountService;
 import com.github.pieter_groenendijk.domain.entities.membership.MembershipType;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;

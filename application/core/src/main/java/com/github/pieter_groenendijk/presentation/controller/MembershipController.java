@@ -2,7 +2,7 @@ package com.github.pieter_groenendijk.presentation.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
-import com.github.pieter_groenendijk.service.IAccountService;
+import com.github.pieter_groenendijk.domain.services.account.IAccountService;
 import com.github.pieter_groenendijk.dto.MembershipRequestDTO;
 import com.github.pieter_groenendijk.domain.entities.membership.Membership;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;

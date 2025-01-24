@@ -2,7 +2,7 @@ package com.github.pieter_groenendijk.presentation.controller;
 
 import com.github.pieter_groenendijk.dto.CatalogueRequestDTO;
 import com.github.pieter_groenendijk.domain.entities.product.ProductCopy;
-import com.github.pieter_groenendijk.service.IProductService;
+import com.github.pieter_groenendijk.domain.services.product.IProductService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;

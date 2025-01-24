@@ -1,0 +1,30 @@
+package com.github.pieter_groenendijk.domain.services.loan.event.listener;
+
+import com.github.pieter_groenendijk.domain.entities.loan.Loan;
+import com.github.pieter_groenendijk.domain.entities.event.EventType;
+import com.github.pieter_groenendijk.domain.services.event.listener.EventListener;
+import com.github.pieter_groenendijk.domain.services.loan.event.scheduling.LoanEventScheduler;
+import com.github.pieter_groenendijk.domain.services.loan.fine.LoanFineService;
+
+class DayOverdueEventListener extends EventListener<Loan> {
+    private final LoanEventScheduler SCHEDULER;
+    private final LoanFineService SERVICE;
+
+    public DayOverdueEventListener(
+        LoanEventScheduler scheduler,
+        LoanFineService service
+    ) {
+        super(
+            EventType.DAY_OVERDUE_LOAN
+        );
+        SCHEDULER = scheduler;
+
+        this.SERVICE = service;
+    }
+
+    @Override
+    public void tryReact(Loan loan) throws Exception {
+        this.SCHEDULER.scheduleDayOverdueLoanEvent(loan);
+        this.SERVICE.declareDayOverdueFine(loan);
+    }
+}

@@ -1,7 +1,7 @@
 package com.github.pieter_groenendijk.presentation.controller;
 
 import com.github.pieter_groenendijk.dto.FineSummaryDTO;
-import com.github.pieter_groenendijk.service.fine.IFineService;
+import com.github.pieter_groenendijk.domain.services.fine.IFineService;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

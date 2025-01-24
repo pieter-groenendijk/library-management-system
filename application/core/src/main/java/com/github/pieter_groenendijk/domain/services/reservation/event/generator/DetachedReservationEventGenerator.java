@@ -1,0 +1,30 @@
+package com.github.pieter_groenendijk.domain.services.reservation.event.generator;
+
+import com.github.pieter_groenendijk.domain.entities.reservation.Reservation;
+import com.github.pieter_groenendijk.domain.entities.event.EventType;
+import com.github.pieter_groenendijk.domain.entities.event.ReservationEvent;
+import com.github.pieter_groenendijk.repository.event.IEventRepository;
+import com.github.pieter_groenendijk.scheduling.TaskStorage;
+import com.github.pieter_groenendijk.domain.services.event.generator.DetachedEventGenerator;
+
+import java.time.LocalDateTime;
+
+public abstract class DetachedReservationEventGenerator extends DetachedEventGenerator<Reservation, ReservationEvent> {
+    protected DetachedReservationEventGenerator(IEventRepository repository, EventType type) {
+        super(repository, type);
+    }
+
+    @Override
+    protected abstract LocalDateTime determineScheduledDateTime(Reservation reservation);
+
+    @Override
+    protected ReservationEvent generateEmptyEvent() {
+        return new ReservationEvent();
+    }
+
+    @Override
+    protected TaskStorage<ReservationEvent> generateEventStorage() {
+        // TODO: Hibernate determines the object type at runtime, so the need for generating event storage should be reconsidered.
+        return super.REPOSITORY::store;
+    }
+}
